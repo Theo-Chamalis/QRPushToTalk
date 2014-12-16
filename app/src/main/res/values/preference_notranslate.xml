@@ -102,8 +102,8 @@
         <item>6</item>
     </string-array>
 
-    <string name="copyright">Copyright &#169; Andrew Comminos 2014</string>
-    <string name="acknowledgements_link">https://raw.github.com/Morlunk/Plumble/master/THANKS</string>
+    <string name="copyright">Copyright &#169; Terracom Informatics ltd 2014</string>
+    <string name="acknowledgements_link">http://www.terracom.gr</string>
     <string name="license_gplv3">GNU General Public License v3.0</string>
     <string name="license_gplv3_link">https://www.gnu.org/copyleft/gpl.html</string>
     <string name="license_apache2">Apache License Version 2.0</string>

@@ -2,7 +2,7 @@
 <resources>
   <!--About-->
   <string name="about">Info su</string>
-  <string name="acknowledgementsSum">Guarda chi ha contribuito a Plumble</string>
+  <string name="acknowledgementsSum">Guarda chi ha contribuito a QRPushToTalk</string>
   <string name="licenses">Licenze</string>
   <string name="authentication">Autenticazione</string>
   <string name="authenticationSum">Gestisci e crea certificati</string>

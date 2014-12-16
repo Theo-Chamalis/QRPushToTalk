@@ -43,5 +43,11 @@
                 android:action="android.intent.action.VIEW"
                 android:data="@string/license_apache2_link"/>
         </Preference>
+
+        <Preference>
+        </Preference>
+        <Preference>
+        </Preference>
+
     </PreferenceCategory>
 </PreferenceScreen>

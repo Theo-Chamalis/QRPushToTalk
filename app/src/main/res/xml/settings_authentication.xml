@@ -38,4 +38,5 @@
         android:key="clearTrust"
         android:title="@string/clearServerCertificates"
         android:summary="@string/clearServerCertificatesSum"/>
+
 </PreferenceScreen>

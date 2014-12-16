@@ -63,10 +63,10 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 21
-        applicationId "com.morlunk.mumbleclient"
+        applicationId "com.terracom.mumbleclient"
         versionCode 72
-        versionName "3.2.0"
-        testPackageName "com.morlunk.mumbleclient.test"
+        versionName "1.0.0"
+        testPackageName "com.terracom.mumbleclient.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }
@@ -74,11 +74,11 @@ android {
     productFlavors {
 
         official {
-            applicationId "com.morlunk.mumbleclient"
+            applicationId "com.terracom.mumbleclient"
         }
 
         free {
-            applicationId "com.morlunk.mumbleclient.free"
+            applicationId "com.terracom.mumbleclient.free"
             buildConfigField "boolean", "DONATE_NAG", "true"
         }
 
@@ -92,7 +92,7 @@ android {
                 versionCode 0
                 versionName "Unknown Nightly"
             }
-            applicationId "com.morlunk.mumbleclient.jenkins"
+            applicationId "com.terracom.mumbleclient.jenkins"
         }
     }
 

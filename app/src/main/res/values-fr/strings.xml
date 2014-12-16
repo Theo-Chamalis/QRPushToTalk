@@ -58,7 +58,7 @@
   <string name="server_match_found">Serveur trouvé</string>
   <string name="server_match_not_found">Impossible de trouver le serveur</string>
   <string name="server_match_expand_country">Impossible de trouver aucun serveur optimal dans votre pays. Étendre la recherche au monde entier ?</string>
-  <string name="server_match_description">Plumble peut vous trouver automatiquement un serveur vide, en optimisant en se basant sur la position du serveur, sa version, et sa latence.</string>
+  <string name="server_match_description">QRPushToTalk peut vous trouver automatiquement un serveur vide, en optimisant en se basant sur la position du serveur, sa version, et sa latence.</string>
   <!--Common-->
   <string name="channels">Canaux</string>
   <string name="server_add">Ajouter un serveur</string>
@@ -123,9 +123,9 @@
   <string name="offline">Hors ligne</string>
   <string name="clearChat">Vider le chat</string>
   <string name="connected">Connecté</string>
-  <string name="plumbleConnected">Plumble connecté</string>
-  <string name="plumbleConnecting">Plumble en connexion</string>
-  <string name="plumbleDisconnected">Plumble déconnecté</string>
+  <string name="qrpttConnected">QRPushToTalk connecté</string>
+  <string name="qrpttConnecting">QRPushToTalk en connexion</string>
+  <string name="qrpttDisconnected">QRPushToTalk déconnecté</string>
   <string name="lostConnection">Connexion au serveur perdu.</string>
   <string name="resume">Reprendre</string>
   <string name="channel">Salon</string>
@@ -153,7 +153,7 @@
   <string name="country">Pays</string>
   <string name="share">Partager</string>
   <string name="description">Description</string>
-  <string name="shareMessage">Rejoindre ce serveur Mumble avec Plumble ! %s</string>
+  <string name="shareMessage">Rejoindre ce serveur Mumble avec QRPushToTalk ! %s</string>
   <string name="noServerInfo">Pinguer pour récupérer des infos</string>
   <string name="status_notify_muted_and_deafened">Muet et sourd.</string>
   <string name="status_notify_muted">Muet.</string>
@@ -179,7 +179,7 @@
   <string name="hint_reason">Raison</string>
   <string name="hint_ptt">Appuyer pour parler</string>
   <string name="hint_ptt_summary">Appuyez simplement sur ce bouton enfoncé pour parler. Double-cliquez pour l\'activer.</string>
-  <string name="hint_server_add">Bienvenue sur Plumble</string>
+  <string name="hint_server_add">Bienvenue sur QRPushToTalk</string>
   <string name="hint_server_add_summary">Pour commence, ajouter un serveur favori en appuyant sur le bouton ajouter dans la barre d\'action.</string>
   <string name="hint_switching">Basculer entre les vues</string>
   <string name="hint_switching_summary">Basculer entre le chat et le salon en utilisant les boutons en haut à gauche ou en glissant.</string>
@@ -195,7 +195,7 @@
   <string name="channel_add">Ajouter un salon</string>
   <string name="tts_failed">Erreur de l\'initialisation de TTS</string>
   <string name="mumble_url_parse_failed">Échec de l\'analyse de l\'URL Mumble !</string>
-  <string name="first_run_generate_certificate_title">Bienvenue dans Plumble!</string>
+  <string name="first_run_generate_certificate_title">Bienvenue dans QRPushToTalk!</string>
   <string name="first_run_generate_certificate">Générer un certificat est très recommandé, et nécessaire pour la connexion à certains serveurs.</string>
   <string name="generate">Générer</string>
   <string name="certificate_not_valid">Impossible de charger le certificat \'%s\'!</string>

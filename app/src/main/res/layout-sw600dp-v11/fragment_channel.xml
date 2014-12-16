@@ -31,12 +31,14 @@
         android:id="@+id/left_split"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:weightSum="1">
 
         <FrameLayout
             android:id="@+id/chat_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="0.52" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,6 +58,8 @@
             android:id="@+id/pushtotalk_view"
             android:layout_width="match_parent"
             android:layout_height="51dp"
+            android:layout_weight="0.02"
+            android:layout_marginBottom="20dp"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
 
@@ -69,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/ptt"
-                android:textSize="12sp"
+                android:textSize="18sp"
                 android:textColor="#858585"
                 android:textStyle="bold"
                 android:background="?attr/selectableItemBackground"/>

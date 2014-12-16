@@ -52,7 +52,7 @@
   <string name="generateCertProgress">Trwa generowanie certyfikatu…</string>
   <string name="search">Szukaj</string>
   <string name="searchHint">Wyszukiwanie kanału</string>
-  <string name="undocumentedWakeLock">Niestety, Plumble nie jest w stanie zapewnić obsługi sensora zbliżeniowego w twoim urządzeniu. Proszę zmienić tryb wyjścia dźwięku na głośnik.</string>
+  <string name="undocumentedWakeLock">Niestety, QRPushToTalk nie jest w stanie zapewnić obsługi sensora zbliżeniowego w twoim urządzeniu. Proszę zmienić tryb wyjścia dźwięku na głośnik.</string>
   <string name="recordingVolume">Opcja pozwala na regulację poziomu głośności mikrofonu.</string>
   <string name="quickConnect">Szybkie połączenie</string>
   <string name="connect">Połącz</string>
@@ -66,7 +66,7 @@
   <string name="offline">Offline</string>
   <string name="clearChat">Wyczyść czat</string>
   <string name="connected">Połączony</string>
-  <string name="plumbleConnected">Plumble - Połączono</string>
+  <string name="qrpttConnected">QRPushToTalk - Połączono</string>
   <string name="lostConnection">Utracono połączenie z serwerem.</string>
   <string name="resume">Wznów</string>
   <string name="channel">Kanał</string>
@@ -92,7 +92,7 @@
   <string name="name">Nazwie</string>
   <string name="country">Kraju</string>
   <string name="share">Udostępnij</string>
-  <string name="shareMessage">Dołącz na ten serwer z Plumble! %s</string>
+  <string name="shareMessage">Dołącz na ten serwer z QRPushToTalk! %s</string>
   <string name="noServerInfo">Użyj Ping, aby zebrać informacje</string>
   <string name="status_notify_muted_and_deafened">Ogłuszony oraz wyciszony mikrofon.</string>
   <string name="status_notify_muted">Wyciszony mikrofon</string>

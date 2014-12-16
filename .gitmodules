@@ -1,6 +1,6 @@
 [submodule "libraries/Jumble"]
 	path = libraries/Jumble
-	url = https://www.github.com/Morlunk/Jumble.git
+	url = https://www.github.com//Jumble.git
 [submodule "libraries/NetCipher"]
 	path = libraries/NetCipher
-	url = https://github.com/Morlunk/OnionKit.git
+	url = https://github.com//OnionKit.git

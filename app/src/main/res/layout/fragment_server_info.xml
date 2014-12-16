@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/version"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"/>
         <TextView
             android:id="@+id/server_info_protocol"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/control_channel"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
         <TextView
@@ -76,7 +76,7 @@
             android:id="@+id/server_info_host"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Remote host www.morlunk.com (port 64738)"
+            android:text="Remote host www.terracom.com (port 64738)"
             android:layout_marginBottom="8dp"
             />
 
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:text="@string/voice_channel"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
         <TextView
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:text="@string/audio_bandwidth"
             android:textSize="24sp"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp" />
         <TextView

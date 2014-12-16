@@ -17,6 +17,6 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:plumble="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/menu_add_server_item" android:title="@string/add" android:icon="@drawable/ic_action_add_dark" plumble:showAsAction="ifRoom" android:orderInCategory="0"></item>
+      xmlns:qrptt="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_add_server_item" android:title="@string/add" android:icon="@drawable/ic_action_add_dark" qrptt:showAsAction="ifRoom" android:orderInCategory="0"></item>
 </menu>

@@ -38,7 +38,8 @@
             android:gravity="center_vertical"
             android:layout_marginLeft="8dp"
             android:textSize="16sp"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-medium"
             android:textColor="?android:textColorPrimaryInverse"
             android:layout_weight="1"/>
+    <!-- light EDWWW-->
 </LinearLayout>

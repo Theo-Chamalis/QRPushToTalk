@@ -3,7 +3,7 @@
   <!--About-->
   <string name="authentication">Uwierzytelnianie</string>
   <string name="certificateFile">Plik certyfikatu</string>
-  <string name="certificateFileSum">Wybór certyfikatu P12, znajdującego się w katalogu \"Plumble\" w pamięci zewnętrznej.</string>
+  <string name="certificateFileSum">Wybór certyfikatu P12, znajdującego się w katalogu \"QRPushToTalk\" w pamięci zewnętrznej.</string>
   <string name="certificatePassword">Hasło certyfikatu</string>
   <string name="certificatePasswordSum">Hasło do twojego certyfikatu PKCS12. (Opcjonalne)</string>
   <string name="audioInput">Wejście Dźwięku</string>
@@ -28,7 +28,7 @@
   <string name="chatNotifications">Powiadomienia czatu</string>
   <string name="chatNotificationsSum">Wyświetlaj powiadomienia, gdy ktoś napisze wiadomość.</string>
   <string name="certificateGenerate">Generowanie certyfikatu</string>
-  <string name="certificateGenerateSum">Generuje nowy własnoręcznie podpisany certyfikat Plumble. Zalecane dla początkujących.</string>
+  <string name="certificateGenerateSum">Generuje nowy własnoręcznie podpisany certyfikat QRPushToTalk. Zalecane dla początkujących.</string>
   <string name="pttSettings">Konfiguracja aktywacji przyciskiem</string>
   <string name="pttSettingsSum">Konfiguracja aktywacji przyciskiem, gdy jest włączona.</string>
   <string name="voiceActivitySettings">Konfiguracja aktywacji głosowej</string>

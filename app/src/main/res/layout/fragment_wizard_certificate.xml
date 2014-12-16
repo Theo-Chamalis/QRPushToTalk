@@ -28,9 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="Creating a certificate uniquely identifies yourself on Mumble servers, and provides a basic degree of security. Certificate usage is highly recommended, and often mandatory."
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif-medium"
         android:textSize="16sp"
         android:layout_weight="1"/>
+    <!-- light EDWWW-->
 
     <Button
         android:layout_width="wrap_content"
@@ -43,9 +44,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="sans-serif-medium"
         android:textStyle="italic"
-        android:text="If you already have a certificate you would like to use with Plumble, you can put it in the Plumble folder on your external storage and load it in settings later."
+        android:text="If you already have a certificate you would like to use with QRPushToTalk, you can put it in the QRPushToTalk folder on your external storage and load it in settings later."
         android:padding="4dp"
         android:gravity="right"/>
+    <!-- light EDWWW-->
 </LinearLayout>

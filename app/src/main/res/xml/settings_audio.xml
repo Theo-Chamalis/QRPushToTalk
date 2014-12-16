@@ -18,7 +18,7 @@
   -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference
+  <ListPreference
         android:defaultValue="voiceActivity"
         android:entries="@array/audioInputNames"
         android:entryValues="@array/audioInputValues"
@@ -32,7 +32,7 @@
         android:summary="@string/handsetModeSum"
         android:defaultValue="false"/>
 
-    <com.morlunk.mumbleclient.preference.SeekBarDialogPreference
+    <com.terracom.mumbleclient.preference.SeekBarDialogPreference
         android:title="@string/audioInputVolume"
         android:summary="@string/audioInputVolumeSum"
         android:key="inputVolume"
@@ -42,7 +42,7 @@
 
     <PreferenceCategory android:title="@string/voiceActivitySettings"
         android:key="vad_settings">
-        <com.morlunk.mumbleclient.preference.SeekBarDialogPreference
+        <com.terracom.mumbleclient.preference.SeekBarDialogPreference
             multiplier="0.1"
             android:defaultValue="50"
             android:key="vadThreshold"
@@ -52,7 +52,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pttSettings"
         android:key="ptt_settings">
-        <com.morlunk.mumbleclient.preference.KeySelectDialogPreference
+        <com.terracom.mumbleclient.preference.KeySelectDialogPreference
             android:key="talkKey"
             android:summary="@string/pttKeySum"
             android:title="@string/pttKey" />
@@ -97,7 +97,7 @@
             android:entries="@array/audioSampleRateValues"
             android:entryValues="@array/audioSampleRateValues"/>
 
-        <com.morlunk.mumbleclient.preference.SeekBarDialogPreference
+        <com.terracom.mumbleclient.preference.SeekBarDialogPreference
             android:key="input_bitrate"
             android:title="@string/inputQuality"
             android:summary="@string/inputQualitySum"
@@ -133,10 +133,12 @@
             android:title="@string/callMode" />
             -->
 
+        <!--
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="disableOpus"
             android:summary="@string/disableOpusSum"
             android:title="@string/disableOpus" />
+            -->
     </PreferenceCategory>
 </PreferenceScreen>

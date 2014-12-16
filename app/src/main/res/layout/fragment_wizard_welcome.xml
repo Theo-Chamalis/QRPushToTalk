@@ -26,21 +26,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28sp"
-        android:text="Welcome to Plumble"
+        android:text="Welcome to QRPushToTalk"
         android:id="@+id/wizard_welcome_title"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:fontFamily="sans-serif-light"/>
+        android:fontFamily="sans-serif-medium"/>
+    <!-- light EDWWW-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Thanks for installing Plumble!\nLet's get started."
+        android:text="Thanks for installing QRPushToTalk!\nLet's get started."
         android:gravity="center"
         android:layout_below="@+id/wizard_welcome_title"
         android:layout_alignRight="@+id/wizard_welcome_title"
         android:layout_alignLeft="@+id/wizard_welcome_title"
-        android:fontFamily="sans-serif-light" />
+        android:fontFamily="sans-serif-medium" />
+    <!-- light EDWWW-->
 </RelativeLayout>

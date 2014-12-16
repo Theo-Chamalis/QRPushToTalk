@@ -32,6 +32,49 @@
 
     <CheckBoxPreference
         android:defaultValue="true"
+        android:key="autoReconnect"
+        android:summary="@string/autoReconnectSum"
+        android:title="@string/autoReconnect" />
+
+    <Preference
+        android:enabled="false"
+        android:shouldDisableView="true"
+        android:defaultValue="true"
+        android:key="useTts"/>
+
+    <Preference
+        android:enabled="false"
+        android:shouldDisableView="true"
+        android:defaultValue="true"
+        android:key="load_images"/>
+
+    <Preference
+        android:enabled="false"
+        android:shouldDisableView="true"
+        android:defaultValue="false"
+        android:key="forceTcp"/>
+
+    <Preference
+        android:enabled="false"
+        android:shouldDisableView="true"
+        android:defaultValue="false"
+        android:key="useTor"/>
+
+    <!--
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="chatNotify"
+        android:summary="@string/chatNotificationsSum"
+        android:title="@string/chatNotifications" />
+
+    <CheckBoxPreference
+        android:key="stay_awake"
+        android:defaultValue="false"
+        android:title="@string/stay_awake"
+        android:summary="@string/stay_awake_sum" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
         android:key="useTts"
         android:summary="@string/useTtsSum"
         android:title="@string/useTts" />
@@ -48,7 +91,7 @@
         android:summary="@string/autoReconnectSum"
         android:title="@string/autoReconnect" />
 
-    <CheckBoxPreference
+   <CheckBoxPreference
         android:defaultValue="false"
         android:key="forceTcp"
         android:summary="@string/forceTcpSum"
@@ -59,4 +102,6 @@
         android:key="useTor"
         android:summary="@string/useTorSum"
         android:title="@string/useTor"/>
+    -->
+
 </PreferenceScreen>

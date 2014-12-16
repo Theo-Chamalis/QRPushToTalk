@@ -31,7 +31,8 @@
         android:id="@+id/server_edit_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:inputType="text"
+        android:hint="Terracom"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,8 +47,9 @@
             android:id="@+id/server_edit_host"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="textUri" />
+            android:layout_weight="0.92"
+            android:inputType="textUri"
+            android:hint="141.237.72.148"/>
 
         <EditText
             android:id="@+id/server_edit_port"

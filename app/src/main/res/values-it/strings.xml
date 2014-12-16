@@ -81,9 +81,9 @@
   <string name="offline">Offline</string>
   <string name="clearChat">Pulisci chat</string>
   <string name="connected">Connesso</string>
-  <string name="plumbleConnected">Plumble connesso</string>
-  <string name="plumbleConnecting">Plumble in connessione</string>
-  <string name="plumbleDisconnected">Plumble disconnesso </string>
+  <string name="qrpttConnected">QRPushToTalk connesso</string>
+  <string name="qrpttConnecting">QRPushToTalk in connessione</string>
+  <string name="qrpttDisconnected">QRPushToTalk disconnesso </string>
   <string name="lostConnection">Connessione al server persa.</string>
   <string name="resume">Riprendi</string>
   <string name="channel">Canale</string>
@@ -111,7 +111,7 @@
   <string name="coming_soon">Questa caratteristica arriverà presto.</string>
   <string name="search_channel_users">%d utenti</string>
   <string name="hint_reason">Ragione</string>
-  <string name="hint_server_add">Benvenuto su Plumble</string>
+  <string name="hint_server_add">Benvenuto su QRPushToTalk</string>
   <string name="action_settings">Impostazioni</string>
   <string name="reconnect">Riconnetti</string>
   <string name="confirm">Conferma</string>
@@ -120,7 +120,7 @@
   <string name="position">Posizione</string>
   <string name="channel_edit">Modifica canale</string>
   <string name="channel_add">Aggiungi canale</string>
-  <string name="first_run_generate_certificate_title">Benvenuto su Plumble!</string>
+  <string name="first_run_generate_certificate_title">Benvenuto su QRPushToTalk!</string>
   <string name="generate">Genera</string>
   <string name="invalid_password">Password non valida.</string>
   <string name="send_message">Invia messaggio</string>
