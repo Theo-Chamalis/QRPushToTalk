@@ -1,7 +1,7 @@
 QRPushToTalk
 =======
 
-QRPushToTalk is a robust GPLv3 Mumble client for Android that uses the [Jumble](https://github.com/terracom/Jumble) protocol implementation.
+QRPushToTalk is a robust GPLv3 Mumble client for Android that uses the [Jumble](https://github.com/Morlunk/Jumble) protocol implementation.
 It is intended to be used by lone workers of companies (i.e. cleaning companies, companies in industrialized areas) and mainly for security
 companies that need to monitor and communicate with their patrolling guards. It will be used alongside with the app below:
 
