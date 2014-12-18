@@ -79,7 +79,7 @@ public class Settings {
     public static final Boolean DEFAULT_CHAT_NOTIFY = true;
 
     public static final String PREF_USE_TTS = "useTts";
-    public static final Boolean DEFAULT_USE_TTS = true;
+    public static final Boolean DEFAULT_USE_TTS = false;
 
     public static final String PREF_AUTO_RECONNECT = "autoReconnect";
     public static final Boolean DEFAULT_AUTO_RECONNECT = true;

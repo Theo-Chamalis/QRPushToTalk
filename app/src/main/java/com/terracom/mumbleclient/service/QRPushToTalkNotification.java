@@ -59,7 +59,7 @@ public class QRPushToTalkNotification {
             } else if (BROADCAST_DEAFEN.equals(intent.getAction())) {
                 mListener.onDeafenToggled();
             } else if (BROADCAST_OVERLAY.equals(intent.getAction())) {
-                mListener.onOverlayToggled();
+//                mListener.onOverlayToggled();
             } else if (BROADCAST_CANCEL_RECONNECT.equals(intent.getAction())) {
                 mListener.onReconnectCanceled();
             }
@@ -127,7 +127,7 @@ public class QRPushToTalkNotification {
         IntentFilter filter = new IntentFilter();
         filter.addAction(BROADCAST_DEAFEN);
         filter.addAction(BROADCAST_MUTE);
-        filter.addAction(BROADCAST_OVERLAY);
+//        filter.addAction(BROADCAST_OVERLAY);
         filter.addAction(BROADCAST_CANCEL_RECONNECT);
         try {
             mService.registerReceiver(mNotificationReceiver, filter);
@@ -166,7 +166,7 @@ public class QRPushToTalkNotification {
             // Add notification triggers
             Intent muteIntent = new Intent(BROADCAST_MUTE);
             Intent deafenIntent = new Intent(BROADCAST_DEAFEN);
-            Intent overlayIntent = new Intent(BROADCAST_OVERLAY);
+            //Intent overlayIntent = new Intent(BROADCAST_OVERLAY);
 
             builder.addAction(R.drawable.ic_action_microphone,
                     mService.getString(R.string.mute), PendingIntent.getBroadcast(mService, 1,
@@ -174,9 +174,9 @@ public class QRPushToTalkNotification {
             builder.addAction(R.drawable.ic_action_audio,
                     mService.getString(R.string.deafen), PendingIntent.getBroadcast(mService, 1,
                             deafenIntent, PendingIntent.FLAG_CANCEL_CURRENT));
-            builder.addAction(R.drawable.ic_action_channels,
+            /*builder.addAction(R.drawable.ic_action_channels,
                     mService.getString(R.string.overlay), PendingIntent.getBroadcast(mService, 2,
-                            overlayIntent, PendingIntent.FLAG_CANCEL_CURRENT));
+                            overlayIntent, PendingIntent.FLAG_CANCEL_CURRENT));*/
         } else {
             Intent cancelIntent = new Intent(BROADCAST_CANCEL_RECONNECT);
             builder.addAction(R.drawable.ic_action_delete_dark,
