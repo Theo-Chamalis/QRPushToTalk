@@ -106,8 +106,8 @@ public class ChannelActionModeCallback extends ChatTargetActionModeCallback {
         try {
             Server server = mService.getConnectedServer();
             if(server != null) {
-                menu.findItem(R.id.context_channel_pin)
-                        .setChecked(mDatabase.isChannelPinned(server.getId(), mChannel.getId()));
+//                menu.findItem(R.id.context_channel_pin)
+//                        .setChecked(mDatabase.isChannelPinned(server.getId(), mChannel.getId()));
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -164,7 +164,7 @@ public class ChannelActionModeCallback extends ChatTargetActionModeCallback {
                         ChannelDescriptionFragment.class.getName(), commentArgs);
                 commentFragment.show(mFragmentManager, ChannelDescriptionFragment.class.getName());
                 break;
-            case R.id.context_channel_pin:
+/*            case R.id.context_channel_pin:
                 try {
                     long serverId = mService.getConnectedServer().getId();
                     boolean pinned = mDatabase.isChannelPinned(serverId, mChannel.getId());
@@ -173,7 +173,7 @@ public class ChannelActionModeCallback extends ChatTargetActionModeCallback {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                break;
+                break;  */
         }
         actionMode.finish();
         return true;

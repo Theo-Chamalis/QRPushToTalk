@@ -40,9 +40,11 @@
         android:title="@string/channel_menu_view_description"
         app:showAsAction="never"
         />
+    <!--
     <item android:id="@+id/context_channel_pin"
         android:checkable="true"
         android:title="@string/channel_menu_pin"
         app:showAsAction="never"
         />
+     -->
 </menu>
