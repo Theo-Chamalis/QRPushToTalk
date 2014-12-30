@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.92"
             android:inputType="textUri"
-            android:hint="141.237.72.148"/>
+            android:hint="http://www.plan.gr"/>
 
         <EditText
             android:id="@+id/server_edit_port"

@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Gravity;
 
 import com.terracom.jumble.Constants;
@@ -94,7 +93,7 @@ public class Settings {
     public static final String PREF_CERT_PASSWORD = "certificatePassword";
 
     public static final String PREF_DEFAULT_USERNAME = "defaultUsername";
-    public static final String DEFAULT_DEFAULT_USERNAME = "GuardID_GuardPIN"; // funny var name -> QRPushToTalk_User default
+    public static final String DEFAULT_DEFAULT_USERNAME = "GuardID_GuardPIN"; // funny var name
 
     public static final String PREF_FORCE_TCP = "forceTcp";
     public static final Boolean DEFAULT_FORCE_TCP = false;
@@ -170,41 +169,14 @@ public class Settings {
     public int getJumbleInputMethod() {
         String inputMethod = getInputMethod();
         if (ARRAY_INPUT_METHOD_VOICE.equals(inputMethod)) {
-            //Log.d("---------------MhnymaaaaaaaVOICE-----------------", inputMethod);
             return Constants.TRANSMIT_VOICE_ACTIVITY;
-            //return Constants.TRANSMIT_PUSH_TO_TALK;
         } else if (ARRAY_INPUT_METHOD_PTT.equals(inputMethod)) {
-            //Log.d("---------------MhnymaaaaaaaPTT-----------------",inputMethod);
             return Constants.TRANSMIT_PUSH_TO_TALK;
         } else if (ARRAY_INPUT_METHOD_CONTINUOUS.equals(inputMethod)) {
-            //Log.d("---------------MhnymaaaaaaaCONTINUOUS-----------------",inputMethod);
             return Constants.TRANSMIT_CONTINUOUS;
-            //return Constants.TRANSMIT_PUSH_TO_TALK;
         }
         throw new RuntimeException("Could not convert input method '" + inputMethod + "' to a Jumble input method id!");
     }
-    /*public int getJumbleInputMethod() {
-        String inputMethod = getInputMethod();
-        if (ARRAY_INPUT_METHOD_VOICE.equals(inputMethod)) {
-            return Constants.TRANSMIT_PUSH_TO_TALK;
-        } else if (ARRAY_INPUT_METHOD_PTT.equals(inputMethod)) {
-            return Constants.TRANSMIT_PUSH_TO_TALK;
-        } else if (ARRAY_INPUT_METHOD_CONTINUOUS.equals(inputMethod)) {
-            return Constants.TRANSMIT_PUSH_TO_TALK;
-        }
-        throw new RuntimeException("Could not convert input method '" + inputMethod + "' to a Jumble input method id!");
-    }*/
-
-
-    /*public void setInputMethod(String inputMethod) {
-        if(ARRAY_INPUT_METHOD_VOICE.equals(inputMethod) ||
-                ARRAY_INPUT_METHOD_PTT.equals(inputMethod) ||
-                ARRAY_INPUT_METHOD_CONTINUOUS.equals(inputMethod)) {
-            preferences.edit().putString(PREF_INPUT_METHOD, inputMethod).apply();
-        } else {
-            throw new RuntimeException("Invalid input method " + inputMethod);
-        }
-    }*/
 
     public void setInputMethod(String inputMethod) {
         if(ARRAY_INPUT_METHOD_VOICE.equals(inputMethod) ||
@@ -269,9 +241,7 @@ public class Settings {
     /**
      * @return the resource ID of the user-defined theme.
      */
-
-    /*
-    public int getTheme() {
+    /*public int getTheme() {
         String theme = preferences.getString(PREF_THEME, ARRAY_THEME_LIGHT);
         if(ARRAY_THEME_LIGHT.equals(theme))
             return R.style.Theme_QRPushToTalk;
@@ -282,13 +252,14 @@ public class Settings {
         else if(ARRAY_THEME_SOLARIZED_DARK.equals(theme))
             return R.style.Theme_QRPushToTalk_Solarized_Dark;
         return -1;
-    }
-    */
+    }*/
+
     public int getTheme() {
 
         return R.style.Theme_QRPushToTalk_Solarized_Light;
 
     }
+
     /**
      * Attempts to read the certificate from the path specified in settings.
      * @return The parsed bytes of the certificate, or null otherwise.

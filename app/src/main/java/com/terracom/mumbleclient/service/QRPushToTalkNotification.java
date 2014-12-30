@@ -166,7 +166,7 @@ public class QRPushToTalkNotification {
             // Add notification triggers
             Intent muteIntent = new Intent(BROADCAST_MUTE);
             Intent deafenIntent = new Intent(BROADCAST_DEAFEN);
-            //Intent overlayIntent = new Intent(BROADCAST_OVERLAY);
+//            Intent overlayIntent = new Intent(BROADCAST_OVERLAY);
 
             builder.addAction(R.drawable.ic_action_microphone,
                     mService.getString(R.string.mute), PendingIntent.getBroadcast(mService, 1,
@@ -174,7 +174,7 @@ public class QRPushToTalkNotification {
             builder.addAction(R.drawable.ic_action_audio,
                     mService.getString(R.string.deafen), PendingIntent.getBroadcast(mService, 1,
                             deafenIntent, PendingIntent.FLAG_CANCEL_CURRENT));
-            /*builder.addAction(R.drawable.ic_action_channels,
+/*            builder.addAction(R.drawable.ic_action_channels,
                     mService.getString(R.string.overlay), PendingIntent.getBroadcast(mService, 2,
                             overlayIntent, PendingIntent.FLAG_CANCEL_CURRENT));*/
         } else {

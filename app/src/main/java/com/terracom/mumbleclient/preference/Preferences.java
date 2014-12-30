@@ -244,9 +244,9 @@ public class Preferences extends PreferenceActivity {
     private static void updateAudioDependents(PreferenceScreen screen, String inputMethod) {
         PreferenceCategory pttCategory = (PreferenceCategory) screen.findPreference("ptt_settings");
         PreferenceCategory vadCategory = (PreferenceCategory) screen.findPreference("vad_settings");
-        //pttCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_PTT.equals(inputMethod));
+//        pttCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_PTT.equals(inputMethod));
         pttCategory.setEnabled(true);
-        //vadCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_VOICE.equals(inputMethod));
+//        vadCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_VOICE.equals(inputMethod));
         vadCategory.setEnabled(false);
     }
 

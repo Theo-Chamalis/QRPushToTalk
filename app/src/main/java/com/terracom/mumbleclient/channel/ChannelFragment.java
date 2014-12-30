@@ -164,7 +164,7 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        //inflater.inflate(R.menu.channel_menu, menu);
+//        inflater.inflate(R.menu.channel_menu, menu);
     }
 
     @Override

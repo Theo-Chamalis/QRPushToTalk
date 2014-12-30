@@ -107,9 +107,11 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
 
         @Override
         public void onUserConnected(User user) throws RemoteException {
-            // Immediately request avatar upon connection.
-            // FIXME: we need to refresh avatar when hash changes
-            getBinder().requestAvatar(user.getSession());
+            if (user.getTextureHash() != null &&
+                    user.getTexture() == null) {
+                // Request avatar data if available.
+                getBinder().requestAvatar(user.getSession());
+            }
         }
 
         @Override
@@ -126,6 +128,12 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
                         contentText = getString(R.string.connected);
                     mNotification.setCustomContentText(contentText);
                 }
+            }
+
+            if (user.getTextureHash() != null &&
+                    user.getTexture() == null) {
+                // Update avatar data if available.
+                getBinder().requestAvatar(user.getSession());
             }
         }
 

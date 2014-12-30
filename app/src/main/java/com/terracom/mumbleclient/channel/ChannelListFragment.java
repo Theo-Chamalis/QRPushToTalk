@@ -304,7 +304,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                return true; */
+                return true;*/
         }
 
         return super.onOptionsItemSelected(item);
