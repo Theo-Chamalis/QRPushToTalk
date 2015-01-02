@@ -48,9 +48,9 @@ public class FavouriteServerAdapter extends ServerAdapter<Server> {
             case R.id.menu_server_edit:
                 mListener.editServer(server);
                 return true;
-            case R.id.menu_server_share:
+            /*case R.id.menu_server_share:
                 mListener.shareServer(server);
-                return true;
+                return true;*/
             case R.id.menu_server_delete:
                 mListener.deleteServer(server);
                 return true;

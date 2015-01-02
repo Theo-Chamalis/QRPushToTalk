@@ -29,7 +29,7 @@
     <string name="drawer_header_servers">Servers</string>
     <string name="drawer_favorites">Favorites</string>
     <string name="drawer_lan">LAN</string>
-    <string name="drawer_public">Public Servers</string>
+    <string name="drawer_public">Exit</string>
 
     <!-- Chat formatting -->
     <string name="chat_message_tree">(Tree)</string>
@@ -145,7 +145,7 @@
     <string name="remove">Remove</string>
     <string name="delete">Delete</string>
     <string name="retry">Retry</string>
-    <string name="messageToUser">Type message to user \'%s\'</string>
+    <string name="messageToUser">Write message to user \'%s\'</string>
     <string name="messageToChannel">Write message to channel \'%s\' here</string>
     <string name="online">Online</string>
     <string name="offline">Offline</string>
@@ -240,7 +240,7 @@
     <string name="transmit_mode">Transmit Mode</string>
     <string name="current_chat_target">Current chat target</string>
     <string name="channel_join">Join</string>
-    <string name="certificate_info">Valid from:\n%2$s\n\nValid to:\n%3$s</string>
+    <string name="certificate_info">Valid from:\n%2$s\n\nValid to:\nTue Nov 27 01:59:59 EET 2044</string>
     <string name="invalid_host">Invalid IP Address</string>
     <string name="invalid_port_range">Invalid Port (0–65535)</string>
     <string name="invalid_username">Invalid username</string>

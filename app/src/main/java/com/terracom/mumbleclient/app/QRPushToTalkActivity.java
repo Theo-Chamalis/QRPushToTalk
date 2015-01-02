@@ -502,7 +502,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     public void onBackPressed() {
         try {
             if(mService.isConnected()) {
-                mDisconnectPromptBuilder.show();
+                //mDisconnectPromptBuilder.show();
+                moveTaskToBack(true);
                 return;
             }
         } catch (RemoteException e) {
@@ -578,6 +579,17 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 fragmentClass = FavouriteServerListFragment.class;
                 break;
             case DrawerAdapter.ITEM_PUBLIC:
+                try {
+                    if(getService().isConnected()){
+                        getService().disconnect();
+                        finish();
+                        //System.exit(0);
+                    }
+                    finish();
+                    //System.exit(0);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
                 fragmentClass = PublicServerListFragment.class;
                 break;
             case DrawerAdapter.ITEM_SETTINGS:

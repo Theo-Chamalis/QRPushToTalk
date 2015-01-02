@@ -108,6 +108,8 @@ public class DrawerAdapter extends ArrayAdapter<DrawerAdapter.DrawerRow> {
 //        add(new DrawerAdapter.DrawerItem(ITEM_PUBLIC, context.getString(R.string.drawer_public), R.drawable.ic_action_search));
         add(new DrawerAdapter.DrawerHeader(HEADER_GENERAL, context.getString(R.string.general)));
         add(new DrawerAdapter.DrawerItem(ITEM_SETTINGS, context.getString(R.string.action_settings), R.drawable.ic_action_settings));
+        add(new DrawerAdapter.DrawerItem(ITEM_PUBLIC, context.getString(R.string.drawer_public), R.drawable.ic_action_error));
+
     }
 
     @Override
