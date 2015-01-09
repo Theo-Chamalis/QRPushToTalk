@@ -408,11 +408,12 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem disconnectButton = menu.findItem(R.id.action_disconnect);
-        try {
+        disconnectButton.setVisible(false);
+        /*try {
             disconnectButton.setVisible(mService != null && mService.isConnected());
         } catch (RemoteException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Color the action bar icons to the primary text color of the theme.
         int foregroundColor = getSupportActionBar().getThemedContext()
