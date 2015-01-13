@@ -408,11 +408,12 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem disconnectButton = menu.findItem(R.id.action_disconnect);
-        try {
+        disconnectButton.setVisible(false);
+        /*try {
             disconnectButton.setVisible(mService != null && mService.isConnected());
         } catch (RemoteException e) {
             e.printStackTrace();
-        }
+        }*/
 
         // Color the action bar icons to the primary text color of the theme.
         int foregroundColor = getSupportActionBar().getThemedContext()
@@ -563,13 +564,29 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 fragmentClass = ServerInfoFragment.class;
                 break;
             case DrawerAdapter.ITEM_ACCESS_TOKENS:
-                fragmentClass = AccessTokenFragment.class;
+                try {
+                    if(getService().isConnected()){
+                        //getService().disconnect();
+                        mDisconnectPromptBuilder.show();
+                        loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
+                        /*if(mService.isConnected()){
+                            mService.disconnect();
+                        }*/
+                    }else{
+                        Toast.makeText(QRPushToTalkActivity.this, "You are not connected!", Toast.LENGTH_LONG).show();
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                /*fragmentClass = AccessTokenFragment.class;
                 try {
                     args.putLong("server", mService.getConnectedServer().getId());
                     args.putStringArrayList("access_tokens", (ArrayList<String>) mDatabase.getAccessTokens(mService.getConnectedServer().getId()));
                 } catch (RemoteException e) {
                     e.printStackTrace();
-                }
+                }*/
+                //fragmentClass = PublicServerListFragment.class;
+                fragmentClass = ChannelFragment.class;
                 break;
             case DrawerAdapter.ITEM_PINNED_CHANNELS:
                 fragmentClass = ChannelFragment.class;
@@ -583,14 +600,19 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                     if(getService().isConnected()){
                         getService().disconnect();
                         finish();
+                        fragmentClass = ChannelFragment.class;
                         //System.exit(0);
                     }
-                    finish();
-                    //System.exit(0);
+                    else{
+                        finish();
+                        fragmentClass = PublicServerListFragment.class;
+                        //System.exit(0);
+                    }
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                fragmentClass = PublicServerListFragment.class;
+
+                //fragmentClass = PublicServerListFragment.class;
                 break;
             case DrawerAdapter.ITEM_SETTINGS:
                 Intent prefIntent = new Intent(this, Preferences.class);

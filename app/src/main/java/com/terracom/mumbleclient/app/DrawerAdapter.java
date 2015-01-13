@@ -100,7 +100,7 @@ public class DrawerAdapter extends ArrayAdapter<DrawerAdapter.DrawerRow> {
         add(new DrawerAdapter.DrawerHeader(HEADER_CONNECTED_SERVER, context.getString(R.string.drawer_not_connected)));
         add(new DrawerAdapter.DrawerItem(ITEM_SERVER, context.getString(R.string.drawer_server), R.drawable.ic_action_channels));
 //        add(new DrawerAdapter.DrawerItem(ITEM_INFO, context.getString(R.string.information), R.drawable.ic_action_info_dark));
-//        add(new DrawerAdapter.DrawerItem(ITEM_ACCESS_TOKENS, context.getString(R.string.drawer_tokens), R.drawable.ic_action_save));
+        add(new DrawerAdapter.DrawerItem(ITEM_ACCESS_TOKENS, "Disconnect", R.drawable.ic_action_save));
 //        add(new DrawerAdapter.DrawerItem(ITEM_PINNED_CHANNELS, context.getString(R.string.drawer_pinned), R.drawable.ic_action_comment));
         add(new DrawerAdapter.DrawerHeader(HEADER_SERVERS, context.getString(R.string.drawer_header_servers)));
         add(new DrawerAdapter.DrawerItem(ITEM_FAVOURITES, context.getString(R.string.drawer_favorites), R.drawable.ic_action_favourite_on));

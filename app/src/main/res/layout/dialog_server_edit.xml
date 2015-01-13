@@ -24,39 +24,43 @@
     <TextView
         android:id="@+id/server_edit_name_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/server_label" />
+        android:layout_height="1dp"
+        android:text="@string/server_label"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/server_edit_name"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:inputType="text"
-        android:hint="Terracom"/>
+        android:text="Terracom"
+        android:visibility="invisible"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/server_host" />
+        android:layout_height="0dp"
+        android:text="@string/server_host"
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <EditText
             android:id="@+id/server_edit_host"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.92"
+            android:layout_height="0dp"
             android:inputType="textUri"
-            android:hint="Enter plan.gr here!"/>
+            android:text="plan.gr"
+            android:visibility="invisible"/>
 
         <EditText
             android:id="@+id/server_edit_port"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/default_server_port"
-            android:inputType="number">
+            android:inputType="number"
+            android:visibility="invisible">
 
         </EditText>
 
