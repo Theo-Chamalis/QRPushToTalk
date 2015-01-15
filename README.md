@@ -28,9 +28,8 @@ And here is QRPushToTalk on my personal dropbox account if you want to test it:
 Building on GNU/Linux
 ---------------------
 
-Make sure you have the following installed on your linux machine: Android Studio, Oracle java 8,
-ant, awk, make, git, the Android SDK and the Android NDK. Then fork the original github project
-created by Andrew Comminos at https://github.com/Morlunk/Plumble and execute the commands below: 
+Make sure you have the following installed on your linux machine: Android Studio, Oracle java,
+ant, awk, make, git, the Android SDK and the Android NDK. Then fork or download the original github project created by Andrew Comminos at https://github.com/Morlunk/Plumble and execute the commands below: 
 
     git submodule update --init --recursive
     ndk-build -C libraries/Jumble/src/main/jni/
@@ -48,6 +47,6 @@ Contributing
 Coding
 ------
 
-Standard FOSS project procedure applies; fork and submit a PR!
+Standard FOSS project procedure applies; fork and submit a PR or just write me a pm!
 
 Please use Transifex for translations, not pull requests.
