@@ -28,14 +28,21 @@ And here is QRPushToTalk on my personal dropbox account if you want to test it:
 Building on GNU/Linux
 ---------------------
 
+Make sure you have the following installed on your linux machine: Android Studio, Oracle java 8,
+ant, awk, make, git, the Android SDK and the Android NDK. Then fork the original github project
+created by Andrew Comminos at https://github.com/Morlunk/Plumble and execute the commands below: 
+
     git submodule update --init --recursive
     ndk-build -C libraries/Jumble/src/main/jni/
     ./gradlew assembleDebug
 
-It's that simple!
+This is necessary in order to download the libraries that the initial application uses.
+Keep in mind that throughout the proccess you should use chmod command on the whole project file
+to give it the right permissions. Finally, download the files of my project and overwrite the old
+ones. If you encounter any problem throughout the procedure feel free to contact me.
 
 
-Contributing
+Contributing	
 ============
 
 Coding
