@@ -89,8 +89,8 @@
     <string name="channels">Channels</string>
     <string name="no_servers">No servers added.\nPress the \'\u002B\' button on the bar to add one.</string>
     <string name="server_add">Add Server</string>
-    <string name="server_password">Password (Optional)</string>
-    <string name="server_username">Guard ID and Guard PIN (if exists)</string>
+    <string name="server_password">Guard PIN (Optional)</string>
+    <string name="server_username">Guard ID</string>
     <string name="server_port">Port</string>
     <string name="server_host">IP Address and Port</string>
     <string name="server_label">Company Name (Optional)</string>

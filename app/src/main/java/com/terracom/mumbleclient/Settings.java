@@ -93,7 +93,7 @@ public class Settings {
     public static final String PREF_CERT_PASSWORD = "certificatePassword";
 
     public static final String PREF_DEFAULT_USERNAME = "defaultUsername";
-    public static final String DEFAULT_DEFAULT_USERNAME = "GuardID_GuardPIN"; // funny var name
+    public static final String DEFAULT_DEFAULT_USERNAME = "demo"; // funny var name
 
     public static final String PREF_FORCE_TCP = "forceTcp";
     public static final Boolean DEFAULT_FORCE_TCP = false;

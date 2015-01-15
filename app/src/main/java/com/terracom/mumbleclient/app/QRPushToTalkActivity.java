@@ -287,7 +287,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 supportInvalidateOptionsMenu();
             }
 
-            @Override
+            /*@Override
             public void onDrawerStateChanged(int newState) {
                 if (newState == DrawerLayout.STATE_DRAGGING) {
                     try {
@@ -299,7 +299,21 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                         e.printStackTrace();
                     }
                 }
-            }
+            }*/
+
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+
+                try {
+                        if (getService().isConnected() && getService().isTalking() && !mSettings.isPushToTalkToggle()) {
+                             getService().setTalkingState(false);
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -685,6 +699,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         // Allow username entry
         final EditText usernameField = new EditText(this);
         usernameField.setHint(settings.getDefaultUsername());
+        //usernameField.setHint("Leave empty, a demo GuardID will be used");
         alertBuilder.setView(usernameField);
 
         alertBuilder.setTitle(R.string.connectToServer);

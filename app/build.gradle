@@ -61,7 +61,7 @@ android {
         targetSdkVersion 21
         applicationId "com.terracom.mumbleclient"
         versionCode 72
-        versionName "1.0.0"
+        versionName "0.8.1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }

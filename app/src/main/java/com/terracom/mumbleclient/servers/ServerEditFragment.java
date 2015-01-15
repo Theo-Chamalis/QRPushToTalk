@@ -26,12 +26,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.terracom.jumble.Constants;
 import com.terracom.jumble.model.Server;
 import com.terracom.mumbleclient.R;
 import com.terracom.mumbleclient.Settings;
+import com.terracom.mumbleclient.app.QRPushToTalkActivity;
 import com.terracom.mumbleclient.db.DatabaseProvider;
+import com.terracom.mumbleclient.preference.Preferences;
+
+import java.util.Random;
 
 public class ServerEditFragment extends DialogFragment {
     private TextView mNameTitle;
@@ -108,7 +113,8 @@ public class ServerEditFragment extends DialogFragment {
         mHostEdit = (EditText) view.findViewById(R.id.server_edit_host);
         mPortEdit = (EditText) view.findViewById(R.id.server_edit_port);
         mUsernameEdit = (EditText) view.findViewById(R.id.server_edit_username);
-        mUsernameEdit.setHint(settings.getDefaultUsername());
+        //mUsernameEdit.setHint(settings.getDefaultUsername());
+        mUsernameEdit.setHint("Insert demo here");
         mPasswordEdit = (EditText) view.findViewById(R.id.server_edit_password);
         mErrorText = (TextView) view.findViewById(R.id.server_edit_error);
         if (getServer() != null) {
@@ -150,6 +156,11 @@ public class ServerEditFragment extends DialogFragment {
 		String name = (mNameEdit).getText().toString().trim();
 		String host = (mHostEdit).getText().toString().trim();
 
+        Random randomNum = new Random();
+        int randomNumInt;
+        randomNumInt = randomNum.nextInt(9999 - 1 + 1) + 1;
+        final String randomNumStr = ("demo" + randomNumInt + "").trim();
+
 		int port;
 		try {
 			port = Integer.parseInt((mPortEdit).getText().toString());
@@ -158,10 +169,18 @@ public class ServerEditFragment extends DialogFragment {
 		}
 
 		String username = (mUsernameEdit).getText().toString().trim();
+        username = randomNumStr;
         String password = mPasswordEdit.getText().toString();
 
-        if (username.equals(""))
-            username = mUsernameEdit.getHint().toString();
+        if(username.equals("demo")){
+            username = randomNumStr;
+            mUsernameEdit.setText(username);
+        }
+
+        if(username.equals("")){
+            username = randomNumStr;
+            mUsernameEdit.setText(username);
+        }
 
         Server server;
 
@@ -202,6 +221,11 @@ public class ServerEditFragment extends DialogFragment {
             } catch (NumberFormatException nfe) {
                 error = getString(R.string.invalid_port_range);
             }
+        }
+
+
+        if(!mUsernameEdit.getText().equals("demo") && !mUsernameEdit.getText().toString().startsWith("demo") ){
+            error = "Not a valid username! Use demo instead";
         }
 
         mErrorText.setVisibility(mErrorText != null ? View.VISIBLE : View.GONE);
