@@ -145,8 +145,8 @@
     <string name="remove">Remove</string>
     <string name="delete">Delete</string>
     <string name="retry">Retry</string>
-    <string name="messageToUser">Write message to user \'%s\'</string>
-    <string name="messageToChannel">Write message to channel \'%s\' here</string>
+    <string name="messageToUser">Write to user %s</string>
+    <string name="messageToChannel">Write to %s</string>
     <string name="online">Online</string>
     <string name="offline">Offline</string>
     <string name="clearChat">Clear Chat</string>
