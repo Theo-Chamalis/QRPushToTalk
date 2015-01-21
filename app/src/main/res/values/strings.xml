@@ -95,7 +95,7 @@
     <string name="server_host">IP Address and Port</string>
     <string name="server_label">Company Name (Optional)</string>
     <string name="connecting">Connecting</string>
-    <string name="connecting_to_server">Connecting to %1$s:%2$s</string>
+    <string name="connecting_to_server">Connecting...</string>
     <string name="fragment_chat">Chat</string>
     <string name="fragment_channel">Channel</string>
     <string name="menu_settings">Settings</string>
@@ -199,7 +199,7 @@
     <string name="register">Register Self</string>
     <string name="userControl">User Control</string>
     <string name="registerSelfSuccess">Sent registration request</string>
-    <string name="error_fetching_servers">Error fetching servers!\nCheck your internet connection.</string>
+    <string name="error_fetching_servers">\t\t\t\t\t\tError!\nCheck your internet connection.</string>
     <string name="coming_soon">This feature is coming soon.</string>
     <string name="search_channel_users">%d users</string>
     <string name="reconnecting">Reconnecting in %d seconds.</string>

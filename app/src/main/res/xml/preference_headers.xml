@@ -21,35 +21,35 @@
     <header
         android:title="@string/general"
         android:summary="@string/generalSum"
-        android:fragment="com.terracom.mumbleclient.preference.Preferences$QRPushToTalkPreferenceFragment">
+        android:fragment="com.terracom.qrpttbeta.preference.Preferences$QRPushToTalkPreferenceFragment">
         <extra android:name="settings" android:value="general"></extra>
     </header>
     <!--
         <header
             android:title="@string/authentication"
             android:summary="@string/authenticationSum"
-            android:fragment="com.terracom.mumbleclient.preference.Preferences$QRPushToTalkPreferenceFragment">
+            android:fragment="betaqrptteference.Preferences$QRPushToTalkPreferenceFragment">
             <extra android:name="settings" android:value="authentication"></extra>
         </header>
 
         <header
             android:title="@string/audio"
             android:summary="@string/audioSum"
-            android:fragment="com.terracom.mumbleclient.preference.Preferences$QRPushToTalkPreferenceFragment">
+            android:fragment="betaqrptteference.Preferences$QRPushToTalkPreferenceFragment">
             <extra android:name="settings" android:value="audio"></extra>
         </header>
 
        <header
             android:title="@string/appearance"
             android:summary="@string/appearanceSum"
-            android:fragment="com.terracom.mumbleclient.preference.Preferences$QRPushToTalkPreferenceFragment">
+            android:fragment="betaqrptteference.Preferences$QRPushToTalkPreferenceFragment">
             <extra android:name="settings" android:value="appearance"></extra>
         </header>
     -->
     <header
         android:title="@string/about"
         android:summary="@string/aboutSum"
-        android:fragment="com.terracom.mumbleclient.preference.Preferences$QRPushToTalkPreferenceFragment">
+        android:fragment="com.terracom.qrpttbeta.preference.Preferences$QRPushToTalkPreferenceFragment">
         <extra android:name="settings" android:value="about"></extra>
     </header>
 

@@ -48,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:textStyle="bold"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="left|center_vertical"
                 android:lines="1"
@@ -96,6 +97,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="?android:textColorSecondary"
+                    android:visibility="invisible"
                     android:text="100ms"
                     android:gravity="center_vertical"
                     android:layout_centerVertical="true"
@@ -136,25 +138,38 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="left|center_vertical" >
+                android:gravity="left|center_vertical"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_server_light"
+                    android:src="@drawable/ic_action_move"
                     android:tint="?android:attr/textColorPrimary" />
 
                 <TextView
                     android:id="@+id/server_row_address"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:gravity="center"
                     android:textColor="?android:textColorSecondary"
-                    android:text="@string/server_host"/>
+                    android:text="Press Here To Connect"
+                    android:textSize="20dp"
+                    android:layout_weight="0.82" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
+<!--
+    <TextView
+        android:id="@+id/server_row_address"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:textColor="?android:textColorSecondary"
+        android:text="@string/server_host"
+        android:layout_weight="0.85" /> -->
     <!-- We can't have a focusable element in a GridView item -->
 
     <ImageView

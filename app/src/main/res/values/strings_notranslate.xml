@@ -18,7 +18,7 @@
 
 <!-- Here be constants. These resources do NOT need translation. -->
 <resources>
-    <string name="app_name">QRPushToTalk</string>
+    <string name="app_name">QR PushToTalk BETA</string>
     <string name="default_server_port">64738</string>
     <string name="notification_message">%1$s: %2$s</string>
 </resources>

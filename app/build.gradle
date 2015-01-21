@@ -59,7 +59,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 21
-        applicationId "com.terracom.mumbleclient"
+        applicationId "com.terracom.qrpttbeta"
         versionCode 72
         versionName "0.8.1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
@@ -69,11 +69,11 @@ android {
     productFlavors {
 
         official {
-            applicationId "com.terracom.mumbleclient"
+            applicationId "com.terracom.qrpttbeta"
         }
 
         free {
-            applicationId "com.terracom.mumbleclient.free"
+            applicationId "com.terracom.qrpttbeta.free"
             buildConfigField "boolean", "DONATE_NAG", "true"
         }
 
@@ -87,7 +87,7 @@ android {
                 versionCode 0
                 versionName "Unknown Nightly"
             }
-            applicationId "com.terracom.mumbleclient.jenkins"
+            applicationId "com.terracom.qrpttbeta.jenkins"
         }
     }
 
