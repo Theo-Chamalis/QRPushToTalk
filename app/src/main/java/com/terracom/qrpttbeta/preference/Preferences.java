@@ -21,6 +21,7 @@ import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -37,11 +38,14 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.text.InputType;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.Settings;
+import com.terracom.qrpttbeta.app.DrawerAdapter;
+import com.terracom.qrpttbeta.app.QRPushToTalkActivity;
 import com.terracom.qrpttbeta.util.QRPushToTalkTrustStore;
 
 import java.io.File;

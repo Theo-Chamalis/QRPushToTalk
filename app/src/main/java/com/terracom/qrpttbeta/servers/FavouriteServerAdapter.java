@@ -22,6 +22,7 @@ import android.view.MenuItem;
 
 import com.terracom.jumble.model.Server;
 import com.terracom.qrpttbeta.R;
+import com.terracom.qrpttbeta.app.QRPushToTalkActivity;
 
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class FavouriteServerAdapter extends ServerAdapter<Server> {
     public int getPopupMenuResource() {
         return R.menu.popup_favourite_server;
     }
+
 
     @Override
     public boolean onPopupItemClick(Server server, MenuItem menuItem) {

@@ -156,7 +156,7 @@
                     android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="?android:textColorSecondary"
-                    android:text="Press Here To Connect"
+                    android:text="Press Here To Enter"
                     android:textSize="20dp"
                     android:layout_weight="0.82" />
             </LinearLayout>

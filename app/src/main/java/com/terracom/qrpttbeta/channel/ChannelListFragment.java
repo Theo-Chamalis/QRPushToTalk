@@ -43,9 +43,11 @@ import android.view.ViewGroup;
 
 import com.terracom.jumble.IJumbleObserver;
 import com.terracom.jumble.IJumbleService;
+import com.terracom.jumble.JumbleService;
 import com.terracom.jumble.model.Channel;
 import com.terracom.jumble.model.Server;
 import com.terracom.jumble.model.User;
+import com.terracom.jumble.util.JumbleException;
 import com.terracom.jumble.util.JumbleObserver;
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.channel.actionmode.ChannelActionModeCallback;
@@ -58,7 +60,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
 
 	private IJumbleObserver mServiceObserver = new JumbleObserver() {
         @Override
-        public void onDisconnected() throws RemoteException {
+        public void onDisconnected(JumbleException e) throws RemoteException {
             mChannelView.setAdapter(null);
         }
 
@@ -112,13 +114,13 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         }
 	};
 
-    private BroadcastReceiver mBluetoothReceiver = new BroadcastReceiver() {
+    /*private BroadcastReceiver mBluetoothReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if(getActivity() != null)
                 getActivity().supportInvalidateOptionsMenu(); // Update bluetooth menu item
         }
-    };
+    };*/
 
 	private RecyclerView mChannelView;
 	private ChannelListAdapter mChannelListAdapter;
@@ -161,14 +163,14 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         registerForContextMenu(mChannelView);
-        getActivity().registerReceiver(mBluetoothReceiver, new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_CHANGED));
+        //getActivity().registerReceiver(mBluetoothReceiver, new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_CHANGED));
     }
 
-    @Override
+    /*@Override
     public void onDetach() {
         getActivity().unregisterReceiver(mBluetoothReceiver);
         super.onDetach();
-    }
+    }*/
 
     @Override
     public IJumbleObserver getServiceObserver() {
@@ -178,10 +180,11 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
     @Override
     public void onServiceBound(IJumbleService service) {
         try {
-            if(mChannelListAdapter == null)
+            if (mChannelListAdapter == null) {
                 setupChannelList();
-            else
-                mChannelListAdapter.notifyDataSetChanged();
+            } else {
+                mChannelListAdapter.setService(service);
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -195,7 +198,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         MenuItem deafenItem = menu.findItem(R.id.menu_deafen_button);
 
         try {
-            if(getService() != null && getService().isConnected() && getService().getSessionUser() != null) {
+            if(getService() != null && getService().getConnectionState() == JumbleService.STATE_CONNECTED && getService().getSessionUser() != null) {
                 // Color the action bar icons to the primary text color of the theme, TODO move this elsewhere
                 int foregroundColor = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.textColorPrimaryInverse}).getColor(0, -1);
 

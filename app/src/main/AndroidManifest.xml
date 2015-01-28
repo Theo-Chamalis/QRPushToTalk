@@ -44,27 +44,27 @@
             android:name="com.terracom.qrpttbeta.preference.Preferences"
             android:parentActivityName="com.terracom.qrpttbeta.app.QRPushToTalkActivity" >
             <intent-filter>
-                <action android:name="com.terracom.mumbleclient.app.PREFS_GENERAL" />
+                <action android:name="com.terracom.qrpttbeta.app.PREFS_GENERAL" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.terracom.mumbleclient.app.PREFS_AUTHENTICATION" />
+                <action android:name="com.terracom.qrpttbeta.app.PREFS_AUTHENTICATION" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.terracom.mumbleclient.app.PREFS_AUDIO" />
+                <action android:name="com.terracom.qrpttbeta.app.PREFS_AUDIO" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.terracom.mumbleclient.app.PREFS_APPEARANCE" />
+                <action android:name="com.terracom.qrpttbeta.app.PREFS_APPEARANCE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.terracom.mumbleclient.app.PREFS_ABOUT" />
+                <action android:name="com.terracom.qrpttbeta.app.PREFS_ABOUT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -83,9 +83,6 @@
         <activity
             android:name="com.terracom.qrpttbeta.app.QRPushToTalkActivity"
             android:label="@string/app_name"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:taskAffinity=""
             android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

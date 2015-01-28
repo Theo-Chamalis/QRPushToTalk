@@ -51,6 +51,7 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
     private DatabaseProvider mDatabaseProvider;
     private GridView mServerGrid;
     private ServerAdapter mServerAdapter;
+    public static boolean myEditedflag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +125,11 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
         args.putParcelable("server", server);
         infoDialog.setArguments(args);
         infoDialog.show(getFragmentManager(), "serverInfo");
+        setEditedUsernameFlag(true);
+    }
+
+    public static void setEditedUsernameFlag(boolean myflag){
+        myEditedflag = myflag;
     }
 
     public void shareServer(Server server) {

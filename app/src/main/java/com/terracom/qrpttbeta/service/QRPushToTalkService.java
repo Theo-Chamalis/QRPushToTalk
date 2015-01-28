@@ -32,6 +32,7 @@ import com.terracom.jumble.Constants;
 import com.terracom.jumble.JumbleService;
 import com.terracom.jumble.model.Message;
 import com.terracom.jumble.model.User;
+import com.terracom.jumble.util.JumbleException;
 import com.terracom.jumble.util.JumbleObserver;
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.Settings;
@@ -41,7 +42,10 @@ import com.terracom.qrpttbeta.service.ipc.TalkBroadcastReceiver;
  * An extension of the Jumble service with some added QRPushToTalk-exclusive non-standard Mumble features.
  * Created by andrew on 28/07/13.
  */
-public class QRPushToTalkService extends JumbleService implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class QRPushToTalkService extends JumbleService implements
+        SharedPreferences.OnSharedPreferenceChangeListener,
+        QRPushToTalkNotification.OnActionListener,
+        QRPushToTalkReconnectNotification.OnActionListener {
     /** Undocumented constant that permits a proximity-sensing wake lock. */
     public static final int PROXIMITY_SCREEN_OFF_WAKE_LOCK = 32;
     public static final int TTS_THRESHOLD = 250; // Maximum number of characters to read
@@ -50,12 +54,18 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
     private QRPushToTalkBinder mBinder = new QRPushToTalkBinder();
     private Settings mSettings;
     private QRPushToTalkNotification mNotification;
+    private QRPushToTalkReconnectNotification mReconnectNotification;
     /** Channel view overlay. */
     private QRPushToTalkOverlay mChannelOverlay;
     /** Proximity lock for handset mode. */
     private PowerManager.WakeLock mProximityLock;
     /** Play sound when push to talk key is pressed */
     private boolean mPTTSoundEnabled;
+    /**
+     * True if an error causing disconnection has been dismissed by the user.
+     * This should serve as a hint not to bother the user.
+     */
+            private boolean mErrorShown;
 
     private TextToSpeech mTTS;
     private TextToSpeech.OnInitListener mTTSInitListener = new TextToSpeech.OnInitListener() {
@@ -95,14 +105,42 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
     private JumbleObserver mObserver = new JumbleObserver() {
 
         @Override
-        public void onConnectionError(String message, boolean reconnecting) throws RemoteException {
-            if(reconnecting) {
-                String tickerMessage = getString(R.string.reconnecting, RECONNECT_DELAY/1000);
-                if (mNotification != null) {
-                    mNotification.setCustomContentText(tickerMessage);
-                    mNotification.setReconnecting(true);
-                }
+        public void onConnecting() throws RemoteException {
+            // Remove old notification left from reconnect,
+            if (mReconnectNotification != null) {
+                mReconnectNotification.hide();
+                mReconnectNotification = null;
             }
+
+            mNotification = QRPushToTalkNotification.showForeground(QRPushToTalkService.this,
+                    getString(R.string.qrpttConnecting),
+                    getString(R.string.connecting),
+                    QRPushToTalkService.this);
+                    mErrorShown = false;
+        }
+
+        @Override
+        public void onConnected() throws RemoteException {
+            if (mNotification != null) {
+                mNotification.setCustomTicker(getString(R.string.qrpttConnected));
+                mNotification.setCustomContentText(getString(R.string.connected));
+                mNotification.setActionsShown(true);
+                mNotification.show();
+            }
+        }
+
+        @Override
+        public void onDisconnected(JumbleException e) throws RemoteException {
+            if (mNotification != null) {
+                mNotification.hide();
+                mNotification = null;
+            }
+            if (e != null) {
+                mReconnectNotification =
+                        QRPushToTalkReconnectNotification.show(QRPushToTalkService.this, e.getMessage(),
+                                getBinder().isReconnecting(),
+                                QRPushToTalkService.this);
+                }
         }
 
         @Override
@@ -127,6 +165,7 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
                     else
                         contentText = getString(R.string.connected);
                     mNotification.setCustomContentText(contentText);
+                    mNotification.show();
                 }
             }
 
@@ -149,6 +188,7 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
 
                 if(mSettings.isChatNotifyEnabled() && mNotification != null) {
                     mNotification.addMessage(formattedMessage);
+                    mNotification.show();
                 }
 
                 // Read if TTS is enabled, the message is less than threshold, is a text message, and not deafened
@@ -168,6 +208,7 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
             if(mSettings.isChatNotifyEnabled() &&
                     mNotification != null) {
                 mNotification.setCustomTicker(reason);
+                mNotification.show();
             }
         }
 
@@ -180,51 +221,6 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
                     mPTTSoundEnabled) {
                 AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
                 audioManager.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD, -1);
-            }
-        }
-    };
-    private QRPushToTalkNotification.OnActionListener mNotificationActionListener = new QRPushToTalkNotification.OnActionListener() {
-        @Override
-        public void onMuteToggled() {
-            try {
-                User user = mBinder.getSessionUser();
-                if (isConnected() && user != null) {
-                    boolean muted = !user.isSelfMuted();
-                    boolean deafened = user.isSelfDeafened() && muted;
-                    mBinder.setSelfMuteDeafState(muted, deafened);
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onDeafenToggled() {
-            try {
-                User user = mBinder.getSessionUser();
-                if (isConnected() && user != null) {
-                    mBinder.setSelfMuteDeafState(!user.isSelfDeafened(), !user.isSelfDeafened());
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void onOverlayToggled() {
-            if (!mChannelOverlay.isShown()) {
-                mChannelOverlay.show();
-            } else {
-                mChannelOverlay.hide();
-            }
-        }
-
-        @Override
-        public void onReconnectCanceled() {
-            try {
-                mBinder.cancelReconnect();
-            } catch (RemoteException e) {
-                e.printStackTrace();
             }
         }
     };
@@ -261,7 +257,14 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
 
     @Override
     public void onDestroy() {
-        stopForeground(true);
+        if (mNotification != null) {
+            mNotification.hide();
+            mNotification = null;
+            }
+        if (mReconnectNotification != null) {
+            mReconnectNotification.hide();
+            mReconnectNotification = null;
+            }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
         try {
@@ -297,14 +300,6 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
     public void onConnectionSynchronized() {
         super.onConnectionSynchronized();
 
-        // Remove old notification left from reconnect,
-        if (mNotification != null) {
-            mNotification.hide();
-            mNotification = null;
-        }
-
-        mNotification = QRPushToTalkNotification.showForeground(this, mNotificationActionListener);
-
         registerReceiver(mTalkReceiver, new IntentFilter(TalkBroadcastReceiver.BROADCAST_TALK));
 
         if (mSettings.isHotCornerEnabled()) {
@@ -317,12 +312,11 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
     }
 
     @Override
-    public void onConnectionDisconnected() {
-        super.onConnectionDisconnected();
+    public void onConnectionDisconnected(JumbleException e) {
+        super.onConnectionDisconnected(e);
         try {
             unregisterReceiver(mTalkReceiver);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+        } catch (IllegalArgumentException iae) {
         }
 
         // Remove overlay if present.
@@ -331,66 +325,72 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
         mHotCorner.setShown(false);
 
         setProximitySensorOn(false);
-
-        try {
-            if(!getBinder().isReconnecting() && mNotification != null) {
-                mNotification.hide();
-                mNotification = null;
-//                stopSelf(); // Stop manual control of the service's lifecycle.
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
+}
 
     /**
-     * Called when the user makes a change to their preferences. Should update all preferences relevant to the service.
+     * Called when the user makes a change to their preferences.
+     * Should update all preferences relevant to the service.
      */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (!isConnected()) return; // These properties should all be set on connect regardless.
-
-        if (Settings.PREF_INPUT_METHOD.equals(key)) {
-            /* Convert input method defined in settings to an integer format used by Jumble. */
-            int inputMethod = mSettings.getJumbleInputMethod();
-            try {
-                getBinder().setTransmitMode(inputMethod);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-            mChannelOverlay.setPushToTalkShown(inputMethod == Constants.TRANSMIT_PUSH_TO_TALK);
-        } else if (Settings.PREF_HANDSET_MODE.equals(key)) {
-            setProximitySensorOn(mSettings.isHandsetMode());
-        } else if (Settings.PREF_THRESHOLD.equals(key)) {
-            try {
-                getBinder().setVADThreshold(mSettings.getDetectionThreshold());
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        } else if (Settings.PREF_HOT_CORNER_KEY.equals(key)) {
-            mHotCorner.setGravity(mSettings.getHotCornerGravity());
-            mHotCorner.setShown(mSettings.isHotCornerEnabled());
-        } else if (Settings.PREF_USE_TTS.equals(key)) {
-            if (mTTS == null && mSettings.isTextToSpeechEnabled())
-                mTTS = new TextToSpeech(this, mTTSInitListener);
-            else if (mTTS != null && !mSettings.isTextToSpeechEnabled()) {
-                mTTS.shutdown();
-                mTTS = null;
-            }
-        } else if (Settings.PREF_AMPLITUDE_BOOST.equals(key)) {
-            try {
-                getBinder().setAmplitudeBoost(mSettings.getAmplitudeBoostMultiplier());
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        } else if (Settings.PREF_HALF_DUPLEX.equals(key)) {
-            try {
-                getBinder().setHalfDuplex(mSettings.isHalfDuplex());
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        } else if (Settings.PREF_PTT_SOUND.equals(key)) {
-            mPTTSoundEnabled = mSettings.isPttSoundEnabled();
+        switch (key) {
+            case Settings.PREF_INPUT_METHOD:
+                /* Convert input method defined in settings to an integer format used by Jumble. */
+                int inputMethod = mSettings.getJumbleInputMethod();
+                try {
+                    if (isConnected()) {
+                        getBinder().setTransmitMode(inputMethod);
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                mChannelOverlay.setPushToTalkShown(inputMethod == Constants.TRANSMIT_PUSH_TO_TALK);
+                break;
+            case Settings.PREF_HANDSET_MODE:
+                setProximitySensorOn(isConnected() && mSettings.isHandsetMode());
+                break;
+            case Settings.PREF_THRESHOLD:
+                try {
+                    if (isConnected()) {
+                        getBinder().setVADThreshold(mSettings.getDetectionThreshold());
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case Settings.PREF_HOT_CORNER_KEY:
+                mHotCorner.setGravity(mSettings.getHotCornerGravity());
+                mHotCorner.setShown(isConnected() && mSettings.isHotCornerEnabled());
+                break;
+            case Settings.PREF_USE_TTS:
+                if (mTTS == null && mSettings.isTextToSpeechEnabled())
+                    mTTS = new TextToSpeech(this, mTTSInitListener);
+                else if (mTTS != null && !mSettings.isTextToSpeechEnabled()) {
+                    mTTS.shutdown();
+                    mTTS = null;
+                }
+                break;
+            case Settings.PREF_AMPLITUDE_BOOST:
+                try {
+                    if (isConnected()) {
+                        getBinder().setAmplitudeBoost(mSettings.getAmplitudeBoostMultiplier());
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case Settings.PREF_HALF_DUPLEX:
+                try {
+                    if (isConnected()) {
+                        getBinder().setHalfDuplex(mSettings.isHalfDuplex());
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case Settings.PREF_PTT_SOUND:
+                mPTTSoundEnabled = mSettings.isPttSoundEnabled();
+                break;
         }
     }
 
@@ -415,6 +415,59 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
         return mBinder;
     }
 
+    @Override
+    public void onMuteToggled() {
+        try {
+            User user = mBinder.getSessionUser();
+            if (isConnected() && user != null) {
+                boolean muted = !user.isSelfMuted();
+                boolean deafened = user.isSelfDeafened() && muted;
+                mBinder.setSelfMuteDeafState(muted, deafened);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDeafenToggled() {
+        try {
+            User user = mBinder.getSessionUser();
+            if (isConnected() && user != null) {
+                mBinder.setSelfMuteDeafState(!user.isSelfDeafened(), !user.isSelfDeafened());
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onOverlayToggled() {
+        if (!mChannelOverlay.isShown()) {
+            mChannelOverlay.show();
+        } else {
+            mChannelOverlay.hide();
+        }
+    }
+    @Override
+    public void onReconnectNotificationDismissed() {
+        mErrorShown = true;
+        }
+
+    @Override
+    public void reconnect() {
+        connect();
+    }
+
+    @Override
+    public void cancelReconnect() {
+        try {
+            mBinder.cancelReconnect();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * An extension of JumbleBinder to add QRPushToTalk-specific functionality.
      */
@@ -432,14 +485,26 @@ public class QRPushToTalkService extends JumbleService implements SharedPreferen
         }
 
         public void clearChatNotifications() throws RemoteException {
-            if (mNotification != null) mNotification.clearMessages();
+            if (mNotification != null) {
+                mNotification.clearMessages();
+                mNotification.show();
+                }
         }
 
-        public void cancelReconnect() throws RemoteException {
-            if (mNotification != null) {
-                mNotification.hide();
-                mNotification = null;
+        public void markErrorShown() {
+            mErrorShown = true;
             }
+
+        public boolean isErrorShown() {
+            return mErrorShown;
+            }
+
+        public void cancelReconnect() throws RemoteException {
+            if (mReconnectNotification != null) {
+                mReconnectNotification.hide();
+                mReconnectNotification = null;
+            }
+
             super.cancelReconnect();
         }
     }

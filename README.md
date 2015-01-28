@@ -29,7 +29,7 @@ Building on GNU/Linux
 ---------------------
 
 Make sure you have the following installed on your linux machine: Android Studio, Oracle java,
-ant, awk, make, git, the Android SDK and the Android NDK. Then fork or download the original github project created by Andrew Comminos at https://github.com/Morlunk/Plumble and execute the commands below: 
+ant, awk, make, git, the Android SDK and the Android NDK. Then fork or download the original github project created by Andrew Comminos at https://github.com/Morlunk/QRPushToTalk and execute the commands below:
 
     git submodule update --init --recursive
     ndk-build -C libraries/Jumble/src/main/jni/
