@@ -19,7 +19,7 @@ And here is QRPushToTalk on my personal dropbox account if you want to test it:
 <strong>QR PushToTalk</strong>
 
 <a href="https://dl.dropboxusercontent.com/u/25024443/QRPushToTalk.apk">
-  <img alt="Get it from my personal Dropbox" src="https://dt8kf6553cww8.cloudfront.net/static/images/icons/blue_dropbox_glyph-vflJ8-C5d.png" />
+  <img alt="Get it from my personal Dropbox" src="https://cf.dropboxstatic.com/static/images/index/logo-vflme-Gvg.png" />
 </a>
 
 
