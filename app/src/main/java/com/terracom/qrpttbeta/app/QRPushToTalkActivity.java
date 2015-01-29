@@ -185,22 +185,22 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
                 final X509Certificate x509 = (X509Certificate) certFactory.generateCertificate(new ByteArrayInputStream(certBytes));
 
-                AlertDialog.Builder adb = new AlertDialog.Builder(QRPushToTalkActivity.this);
-                adb.setTitle(R.string.untrusted_certificate);
+                //AlertDialog.Builder adb = new AlertDialog.Builder(QRPushToTalkActivity.this);
+                //adb.setTitle(R.string.untrusted_certificate);
                 try {
                     MessageDigest digest = MessageDigest.getInstance("SHA-1");
                     byte[] certDigest = digest.digest(x509.getEncoded());
                     String hexDigest = new String(Hex.encode(certDigest));
-                    adb.setMessage(getString(R.string.certificate_info,
+                    /*adb.setMessage(getString(R.string.certificate_info,
                             x509.getSubjectDN().getName(),
                             x509.getNotBefore().toString(),
                             x509.getNotAfter().toString(),
-                            hexDigest));
+                            hexDigest));*/
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
-                    adb.setMessage(x509.toString());
+                    //adb.setMessage(x509.toString());
                 }
-                adb.setPositiveButton(R.string.allow, new DialogInterface.OnClickListener() {
+                /*adb.setPositiveButton(R.string.allow, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -219,7 +219,17 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                     }
                 });
                 adb.setNegativeButton(R.string.wizard_cancel, null);
-                adb.show();
+                adb.show();*/
+                try {
+                    String alias = lastServer.getHost();
+                    KeyStore trustStore = QRPushToTalkTrustStore.getTrustStore(QRPushToTalkActivity.this);
+                    trustStore.setCertificateEntry(alias, x509);
+                    QRPushToTalkTrustStore.saveTrustStore(QRPushToTalkActivity.this, trustStore);
+                    connectToServer(lastServer);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(QRPushToTalkActivity.this, R.string.trust_add_failed + "Exit from the app and try again", Toast.LENGTH_LONG).show();
+                }
             } catch (CertificateException e) {
                 e.printStackTrace();
             }
@@ -510,7 +520,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
      * Shows a nice looking setup wizard to guide the user through the app's settings.
      * Will do nothing if it isn't the first launch.
      */
-    private void showSetupWizard() {
+    /*private void showSetupWizard() {
         // Prompt the user to generate a certificate, FIXME
         if(mSettings.isUsingCertificate()) return;
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
@@ -530,6 +540,41 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             }
         });
         adb.show();
+        mSettings.setFirstRun(false);
+
+        // TODO: finish wizard
+//        Intent intent = new Intent(this, WizardActivity.class);
+//        startActivity(intent);
+    }*/
+
+    private void showSetupWizard() {
+        // Prompt the user to generate a certificate, FIXME
+        if(mSettings.isUsingCertificate()) return;
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(R.string.first_run_generate_certificate_title);
+        adb.setMessage(R.string.first_run_generate_certificate);
+        adb.setPositiveButton(R.string.generate, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                QRPushToTalkCertificateGenerateTask generateTask = new QRPushToTalkCertificateGenerateTask(QRPushToTalkActivity.this) {
+                    @Override
+                    protected void onPostExecute(File result) {
+                        super.onPostExecute(result);
+                        if(result != null) mSettings.setCertificatePath(result.getAbsolutePath());
+                    }
+                };
+                generateTask.execute();
+            }
+        });
+        QRPushToTalkCertificateGenerateTask generateTask = new QRPushToTalkCertificateGenerateTask(QRPushToTalkActivity.this) {
+            @Override
+            protected void onPostExecute(File result) {
+                super.onPostExecute(result);
+                if(result != null) mSettings.setCertificatePath(result.getAbsolutePath());
+            }
+        };
+        generateTask.execute();
+        //adb.show();
         mSettings.setFirstRun(false);
 
         // TODO: finish wizard

@@ -89,7 +89,7 @@
     <string name="channels">Channels</string>
     <string name="no_servers">No servers added.\nPress the \'\u002B\' button on the bar to add one.</string>
     <string name="server_add">Add Server</string>
-    <string name="server_password">Guard PIN (Optional)</string>
+    <string name="server_password">Guard PIN (if exists)</string>
     <string name="server_username">Guard ID</string>
     <string name="server_port">Port</string>
     <string name="server_host">IP Address and Port</string>
@@ -130,7 +130,7 @@
     <string name="pushToTalkHint">(tick checkbox to enable toggle)</string>
     <string name="messageReceived">New message</string>
     <string name="generateCert">Generate Certificate</string>
-    <string name="generateCertSuccess">All necessary files are loaded!</string>
+    <string name="generateCertSuccess">Loading complete!</string>
     <string name="generateCertFailure">Failed to generate certificate.</string>
     <string name="generateCertProgress">Loading...</string>
     <string name="search">Search</string>

@@ -111,7 +111,7 @@ public class ServerEditFragment extends DialogFragment {
         mPortEdit = (EditText) view.findViewById(R.id.server_edit_port);
         mUsernameEdit = (EditText) view.findViewById(R.id.server_edit_username);
         //mUsernameEdit.setHint(settings.getDefaultUsername());
-        mUsernameEdit.setHint("Insert demo here");
+        //mUsernameEdit.setHint("Insert demo here");
         mPasswordEdit = (EditText) view.findViewById(R.id.server_edit_password);
         mErrorText = (TextView) view.findViewById(R.id.server_edit_error);
         if (getServer() != null) {
@@ -225,7 +225,7 @@ public class ServerEditFragment extends DialogFragment {
             error = "Not a valid username! Use demo instead";
         }
 
-        mErrorText.setVisibility(mErrorText != null ? View.VISIBLE : View.GONE);
+        mErrorText.setVisibility(error != null ? View.VISIBLE : View.GONE);
         if (error != null) {
             mErrorText.setText(error);
             return false;

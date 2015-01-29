@@ -19,7 +19,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/server_edit_name_title"
@@ -74,7 +75,6 @@
     <EditText
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:hint="Enter demo for now"
         android:id="@+id/server_edit_username"
         android:inputType="text"></EditText>
 
@@ -88,6 +88,24 @@
         android:layout_width="match_parent"
         android:id="@+id/server_edit_password"
         android:inputType="textPassword"></EditText>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="For testing enter Guard ID: demo and leave Guard PIN empty"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal|top"
+            android:textAlignment="center"
+            android:textColor="@color/holo_blue_dark"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/server_edit_error"
