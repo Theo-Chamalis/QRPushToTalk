@@ -88,6 +88,7 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import info.guardianproject.onionkit.ui.OrbotHelper;
 
@@ -191,6 +192,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                     MessageDigest digest = MessageDigest.getInstance("SHA-1");
                     byte[] certDigest = digest.digest(x509.getEncoded());
                     String hexDigest = new String(Hex.encode(certDigest));
+
                     /*adb.setMessage(getString(R.string.certificate_info,
                             x509.getSubjectDN().getName(),
                             x509.getNotBefore().toString(),

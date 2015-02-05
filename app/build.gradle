@@ -60,8 +60,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
         applicationId "com.terracom.qrpttbeta"
-        versionCode 76
-        versionName "0.8.6"
+        versionCode 78
+        versionName "0.8.8"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }

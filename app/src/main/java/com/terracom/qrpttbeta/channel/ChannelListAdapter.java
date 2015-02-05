@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.RemoteException;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     private QRPushToTalkDatabase mDatabase;
     private List<Integer> mRootChannels;
     private List<Node> mNodes;
+    public static Channel TempoChannel;
     /**
      * A mapping of user-set channel expansions.
      * If a key is not mapped, default to hiding empty channels.
@@ -107,7 +109,34 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final Node node = mNodes.get(position);
-        if (node.isChannel()) {
+
+        if(node.isChannel() && !node.getChannel().getName().equals("Demo Channel") && !node.getChannel().getName().equals("QR-PushToTalk Server")){
+
+            final Channel channel = node.getChannel();
+            ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
+            cvh.mChannelExpandToggle.setVisibility(View.INVISIBLE);
+            cvh.mChannelName.setText("");
+            cvh.mChannelUserCount.setText("");
+            try {
+                updateChannels(); // FIXME: very inefficient.
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+        } else if(node.isUser() && !node.getParent().getChannel().getName().equals("Demo Channel")){
+
+            final User user = node.getUser();
+            UserViewHolder uvh = (UserViewHolder) viewHolder;
+            uvh.mUserName.setText("");
+            uvh.mUserTalkHighlight.setVisibility(View.INVISIBLE);
+            try {
+                updateChannels(); // FIXME: very inefficient.
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else if (node.isChannel()) {
             final Channel channel = node.getChannel();
             ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
             cvh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +172,12 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
             cvh.mChannelName.setText(channel.getName());
 
             int userCount = channel.getSubchannelUserCount();
-            cvh.mChannelUserCount.setText(String.format("%d", userCount));
+            if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                cvh.mChannelUserCount.setText("");
+            else{
+                cvh.mChannelUserCount.setText(String.format("%d", userCount));
+            }
+
 
             // Pad the view depending on channel's nested level.
             DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
@@ -152,7 +186,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                     cvh.mChannelHolder.getPaddingTop(),
                     cvh.mChannelHolder.getPaddingRight(),
                     cvh.mChannelHolder.getPaddingBottom());
-        } else if (node.isUser()) {
+        } else if (node.isUser() ) {
             final User user = node.getUser();
             UserViewHolder uvh = (UserViewHolder) viewHolder;
             uvh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +225,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         Node node = mNodes.get(position);
+
         if (node.isChannel()) {
             return R.layout.channel_row;
         } else if (node.isUser()) {
@@ -355,6 +390,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
             super(itemView);
             mUserHolder = (LinearLayout) itemView.findViewById(R.id.user_row_title);
             mUserTalkHighlight = (ImageView) itemView.findViewById(R.id.user_row_talk_highlight);
+
             mUserName = (TextView) itemView.findViewById(R.id.user_row_name);
         }
     }
@@ -411,7 +447,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
 
         public Channel getChannel() {
-            return mChannel;
+                return mChannel;
         }
 
         public User getUser() {

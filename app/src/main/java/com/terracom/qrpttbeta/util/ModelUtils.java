@@ -18,6 +18,7 @@
 package com.terracom.qrpttbeta.util;
 
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.terracom.jumble.IJumbleService;
 import com.terracom.jumble.model.Channel;

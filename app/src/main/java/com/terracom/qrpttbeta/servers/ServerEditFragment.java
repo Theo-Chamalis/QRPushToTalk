@@ -169,6 +169,7 @@ public class ServerEditFragment extends DialogFragment {
         username = randomNumStr;
         String password = mPasswordEdit.getText().toString();
 
+
         if(username.equals("demo")){
             username = randomNumStr;
             mUsernameEdit.setText(username);
@@ -182,6 +183,7 @@ public class ServerEditFragment extends DialogFragment {
         Server server;
 
 		if (getServer() != null) {
+            password="sw@gg3rmcy0l0w1tz";
             server = getServer();
             server.setName(name);
             server.setHost(host);
@@ -190,6 +192,7 @@ public class ServerEditFragment extends DialogFragment {
             server.setPassword(password);
 			if(shouldCommit) mDatabaseProvider.getDatabase().updateServer(server);
 		} else {
+            password="sw@gg3rmcy0l0w1tz";
             server = new Server(-1, name, host, port, username, password);
 			if(shouldCommit) mDatabaseProvider.getDatabase().addServer(server);
 		}
