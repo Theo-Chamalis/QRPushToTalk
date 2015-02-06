@@ -38,13 +38,15 @@ repositories {
 }
 
 dependencies {
-    compile project(":libraries:Jumble")
-    compile project(":libraries:NetCipher:libnetcipher")
+    compile project(':libraries:Jumble')
+    compile project(':libraries:NetCipher:libnetcipher')
     compile 'com.android.support:support-v4:21.+'
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.android.support:cardview-v7:21.+'
     compile 'com.android.support:palette-v7:21.+'
     compile 'com.android.support:recyclerview-v7:21.+'
+    compile files('/home/theofilos/new_git/QRPushToTalk/libraries/android-async-http-1.4.6.jar')
+    compile files('/home/theofilos/new_git/QRPushToTalk/libraries/gson-2.3.1.jar')
 }
 
 
