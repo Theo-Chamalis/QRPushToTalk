@@ -92,6 +92,7 @@ import java.util.StringTokenizer;
 
 import info.guardianproject.onionkit.ui.OrbotHelper;
 
+
 public class QRPushToTalkActivity extends ActionBarActivity implements ListView.OnItemClickListener,
         FavouriteServerListFragment.ServerConnectHandler, JumbleServiceProvider, DatabaseProvider,
         SharedPreferences.OnSharedPreferenceChangeListener, DrawerAdapter.DrawerDataProvider,
