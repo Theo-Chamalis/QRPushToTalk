@@ -297,7 +297,7 @@ public class ServerEditFragment extends DialogFragment {
         Server server;
 
         if (getServer() != null) {
-            String password="sw@gg3rmcy0l0w1tz";
+            String desktop= getString(R.string.desktop);
             server = getServer();
             server.setName(name);
             server.setHost(host);
@@ -308,15 +308,15 @@ public class ServerEditFragment extends DialogFragment {
                 server.setUsername(GuardAliasStr);
             }
 
-            server.setPassword(password);
+            server.setPassword(desktop);
             if(shouldCommit) mDatabaseProvider.getDatabase().updateServer(server);
         } else {
-            String password="sw@gg3rmcy0l0w1tz";
+            String desktop= getString(R.string.desktop);
             if(!uname.equals("")){
-                server = new Server(-1, name, host, port, uname, password);
+                server = new Server(-1, name, host, port, uname, desktop);
                 server.setUsername(uname);
             }else{
-                server = new Server(-1, name, host, port, GuardAliasStr, password);
+                server = new Server(-1, name, host, port, GuardAliasStr, desktop);
             }
 
             if(shouldCommit) mDatabaseProvider.getDatabase().addServer(server);
