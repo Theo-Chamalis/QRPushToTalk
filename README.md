@@ -39,7 +39,7 @@ Downloads
 
 <br />
 
-<strong>QR-PTT PushToTalk on dropbox </strong>
+<strong>QR-PTT PushToTalk on Dropbox </strong>
 
 <a href="https://dl.dropboxusercontent.com/u/25024443/QRPushToTalk.apk">
   <img alt="Get it from my personal Dropbox" src="https://cf.dropboxstatic.com/static/images/index/logo-vflme-Gvg.png" />
@@ -49,17 +49,17 @@ Downloads
 Also it can be used alongside with Kerveros QR-Patrol guard tour app which keeps track and
 records of your guards' or Lone Workers patrols :
 <br />
-<strong>Kerveros QR-Patrol guard tour</strong>
+<strong>Kerveros QR-Patrol guard tour on Google Play</strong>
 
 <a href="https://play.google.com/store/apps/details?id=com.terracom.gr.kerverosqrpatrol">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>  
-
+<br/><br/>
 
 *Keep in mind that any communication through the demo channel is public. 
 
 
-
+<br/>
 Building on GNU/Linux
 ---------------------
 
