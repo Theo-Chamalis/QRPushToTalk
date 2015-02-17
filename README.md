@@ -4,7 +4,7 @@ QR-PTT PushToTalk
 QR-PTT PushToTalk is a robust GPLv3 Mumble client for Android that uses the [Jumble] (https://github.com/Morlunk/Jumble) protocol implementation. <br/>QR-PTT PushToTalk is an easy to use ptt over IP client for lone workers communication. It can be used by companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication or by sending a text message within the app.
 <br/>To try it for free enter "demo" as GuardID.*
 
-It's main features are:
+Its main features are:
 - Easy to use
 - Fast and low latency real time voice communication
 - Superior voice compression
@@ -25,6 +25,8 @@ It's main features are:
 - Automatic channel assignment
 - QR-PTT stays active in background so you can use any other app of the phone and 
 listen to your Workers in real time
+- It can be used alongside with Kerveros QR-Patrol guard tour app which keeps track and
+records of your guards' or Lone Workers patrols 
 
 Downloads
 ---------------------
@@ -46,10 +48,9 @@ Downloads
 </a>
 
 <br/>
-Also it can be used alongside with Kerveros QR-Patrol guard tour app which keeps track and
-records of your guards' or Lone Workers patrols :
+
 <br />
-<strong>Kerveros QR-Patrol guard tour on Google Play</strong>
+<strong>Kerveros QR-Patrol guard tour on Google Play</strong><br/>
 
 <a href="https://play.google.com/store/apps/details?id=com.terracom.gr.kerverosqrpatrol">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
