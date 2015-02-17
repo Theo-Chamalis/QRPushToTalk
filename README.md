@@ -39,7 +39,6 @@ Downloads
 
 <br />
 
-<br />
 
 <strong>QR-PTT PushToTalk on Dropbox </strong>
 
@@ -49,7 +48,6 @@ Downloads
 
 <br/>
 
-<br />
 <strong>Kerveros QR-Patrol guard tour on Google Play</strong><br/>
 
 <a href="https://play.google.com/store/apps/details?id=com.terracom.gr.kerverosqrpatrol">
