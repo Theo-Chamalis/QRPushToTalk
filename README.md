@@ -1,7 +1,7 @@
 QR-PTT PushToTalk
 =======
 
-QR-PTT PushToTalk is a robust GPLv3 Mumble client for Android that uses the [Jumble] (https://github.com/Morlunk/Jumble) protocol implementation. <br/>QR-PTT Push To Talk is an easy to use ptt over IP client for lone workers communication. It can be used by companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication or by sending a text message within the app.
+QR-PTT PushToTalk is a robust GPLv3 Mumble client for Android that uses the [Jumble] (https://github.com/Morlunk/Jumble) protocol implementation. <br/>QR-PTT PushToTalk is an easy to use ptt over IP client for lone workers communication. It can be used by companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication or by sending a text message within the app.
 <br/>To try it for free enter "demo" as GuardID.*
 
 It's main features are:
