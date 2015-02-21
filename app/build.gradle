@@ -47,6 +47,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.+'
     compile files('/home/theofilos/new_git/QRPushToTalk/libraries/android-async-http-1.4.6.jar')
     compile files('/home/theofilos/new_git/QRPushToTalk/libraries/gson-2.3.1.jar')
+    compile files('/home/theo/git/QRPushToTalk/libraries/android-async-http-1.4.6.jar')
+    compile files('/home/theo/git/QRPushToTalk/libraries/gson-2.3.1.jar')
 }
 
 
@@ -62,8 +64,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
         applicationId "com.terracom.qrpttbeta"
-        versionCode 79
-        versionName "0.8.9"
+        versionCode 80
+        versionName "0.9.0"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }
