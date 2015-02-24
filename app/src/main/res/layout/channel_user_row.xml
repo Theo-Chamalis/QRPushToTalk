@@ -25,8 +25,9 @@
     android:background="?attr/selectableItemBackground">
 
     <FrameLayout
-        android:layout_width="32dp"
-        android:layout_height="32dp">
+        android:id="@+id/eikonitsa"
+        android:layout_width="28dp"
+        android:layout_height="28dp">
 
         <!--<betaqrpttew.CircleImageView-->
             <!--android:id="@+id/user_row_avatar"-->

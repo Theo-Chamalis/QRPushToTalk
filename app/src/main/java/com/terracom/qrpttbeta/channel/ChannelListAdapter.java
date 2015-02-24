@@ -25,11 +25,11 @@ import android.os.Build;
 import android.os.RemoteException;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +38,7 @@ import com.terracom.jumble.IJumbleService;
 import com.terracom.jumble.model.Channel;
 import com.terracom.jumble.model.User;
 import com.terracom.qrpttbeta.R;
+import com.terracom.qrpttbeta.app.QRPushToTalkActivity;
 import com.terracom.qrpttbeta.db.QRPushToTalkDatabase;
 import com.terracom.qrpttbeta.drawable.CircleDrawable;
 import com.terracom.qrpttbeta.drawable.FlipDrawable;
@@ -54,6 +55,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     // Set particular bits to make the integer-based model item ids unique.
     public static final long CHANNEL_ID_MASK = (0x1L << 32);
     public static final long USER_ID_MASK = (0x1L << 33);
+    String nameOfChannel = QRPushToTalkActivity.nameOfSavedLastLoggedChannel;
 
     /**
      * Time (in ms) to run the flip animation for.
@@ -65,7 +67,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     private QRPushToTalkDatabase mDatabase;
     private List<Integer> mRootChannels;
     private List<Node> mNodes;
-    public static Channel TempoChannel;
     /**
      * A mapping of user-set channel expansions.
      * If a key is not mapped, default to hiding empty channels.
@@ -110,111 +111,277 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final Node node = mNodes.get(position);
 
-        if(node.isChannel() && !node.getChannel().getName().equals("Demo Channel") && !node.getChannel().getName().equals("QR-PushToTalk Server")){
+        if(!nameOfChannel.equals("")){
+            if(node.isChannel() && !node.getChannel().getName().equals(nameOfChannel) && !node.getChannel().getName().equals("QR-PushToTalk Server")){
 
-            final Channel channel = node.getChannel();
-            ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
-            cvh.mChannelExpandToggle.setVisibility(View.INVISIBLE);
-            cvh.mChannelName.setText("");
-            cvh.mChannelUserCount.setText("");
-            try {
-                updateChannels(); // FIXME: very inefficient.
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-
-        } else if(node.isUser() && !node.getParent().getChannel().getName().equals("Demo Channel")){
-
-            final User user = node.getUser();
-            UserViewHolder uvh = (UserViewHolder) viewHolder;
-            uvh.mUserName.setText("");
-            uvh.mUserTalkHighlight.setVisibility(View.INVISIBLE);
-            try {
-                updateChannels(); // FIXME: very inefficient.
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-
-        }
-        else if (node.isChannel()) {
-            final Channel channel = node.getChannel();
-            ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
-            cvh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mChannelClickListener != null) {
-                        mChannelClickListener.onChannelClick(channel);
-                    }
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
-            });
-
-            final boolean expandUsable = channel.getSubchannels().size() > 0 ||
-                    channel.getSubchannelUserCount() > 0;
-            cvh.mChannelExpandToggle.setImageResource(node.isExpanded() ?
-                    R.drawable.ic_action_expanded : R.drawable.ic_action_collapsed);
-            cvh.mChannelExpandToggle.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    mExpandedChannels.put(channel.getId(), !node.isExpanded());
-                    try {
-                        updateChannels(); // FIXME: very inefficient.
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
-                    notifyDataSetChanged();
-                }
-            });
-            // Dim channel expand toggle when no subchannels exist
-            cvh.mChannelExpandToggle.setEnabled(expandUsable);
-            cvh.mChannelExpandToggle.setVisibility(expandUsable ? View.VISIBLE : View.INVISIBLE);
-
-            cvh.mChannelName.setText(channel.getName());
-
-            int userCount = channel.getSubchannelUserCount();
-            if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
+                cvh.mChannelExpandToggle.setVisibility(View.GONE);
+                cvh.mChannelName.setText("");
+                cvh.mChannelName.setVisibility(View.GONE);
                 cvh.mChannelUserCount.setText("");
-            else{
-                cvh.mChannelUserCount.setText(String.format("%d", userCount));
-            }
-
-
-            // Pad the view depending on channel's nested level.
-            DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
-            float margin = node.getDepth() * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
-            cvh.mChannelHolder.setPadding((int) margin,
-                    cvh.mChannelHolder.getPaddingTop(),
-                    cvh.mChannelHolder.getPaddingRight(),
-                    cvh.mChannelHolder.getPaddingBottom());
-        } else if (node.isUser() ) {
-            final User user = node.getUser();
-            UserViewHolder uvh = (UserViewHolder) viewHolder;
-            uvh.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mUserClickListener != null) {
-                        mUserClickListener.onUserClick(user);
-                    }
+                cvh.mChannelUserCount.setVisibility(View.GONE);
+                cvh.mChannelHolder.setVisibility(View.GONE);
+                cvh.itemView.setVisibility(View.GONE);
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
-            });
 
-            uvh.mUserName.setText(user.getName());
-            try {
-                uvh.mUserName.setTypeface(null, user.getSession() == mService.getSession() ? Typeface.BOLD : Typeface.NORMAL);
-            } catch (RemoteException e) {
-                e.printStackTrace();
+            } else if(node.isUser() && !node.getParent().getChannel().getName().equals(nameOfChannel)){
+
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                UserViewHolder uvh = (UserViewHolder) viewHolder;
+                uvh.mUserName.setText("");
+                uvh.mUserName.setVisibility(View.GONE);
+                uvh.mUserTalkHighlight.setVisibility(View.GONE);
+                uvh.mPicofMic.setVisibility(View.GONE);
+                uvh.mUserHolder.setVisibility(View.GONE);
+                uvh.itemView.setVisibility(View.GONE);
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                uvh.mUserHolder.setPadding((int) margin,0,uvh.mUserHolder.getPaddingRight(),0);
+
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
+            else if (node.isChannel() ) {
+                final Channel channel = node.getChannel();
+                ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
+                cvh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mChannelClickListener != null) {
+                            mChannelClickListener.onChannelClick(channel);
+                        }
+                    }
+                });
 
-            uvh.mUserTalkHighlight.setImageDrawable(getTalkStateDrawable(user));
+                final boolean expandUsable = channel.getSubchannels().size() > 0 ||
+                        channel.getSubchannelUserCount() > 0;
+                cvh.mChannelExpandToggle.setImageResource(node.isExpanded() ?
+                        R.drawable.ic_action_expanded : R.drawable.ic_action_collapsed);
+                cvh.mChannelExpandToggle.setOnClickListener(new View.OnClickListener() {
 
-            // Pad the view depending on channel's nested level.
-            DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
-            float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
-            uvh.mUserHolder.setPadding((int) margin,
-                    uvh.mUserHolder.getPaddingTop(),
-                    uvh.mUserHolder.getPaddingRight(),
-                    uvh.mUserHolder.getPaddingBottom());
+                    @Override
+                    public void onClick(View v) {
+                        mExpandedChannels.put(channel.getId(), !node.isExpanded());
+                        try {
+                            updateChannels(); // FIXME: very inefficient.
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                        notifyDataSetChanged();
+                    }
+                });
+                // Dim channel expand toggle when no subchannels exist
+                cvh.mChannelExpandToggle.setEnabled(expandUsable);
+                cvh.mChannelExpandToggle.setVisibility(expandUsable ? View.VISIBLE : View.INVISIBLE);
+
+                cvh.mChannelName.setText(channel.getName());
+
+                int userCount = channel.getSubchannelUserCount();
+                if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                    cvh.mChannelUserCount.setText("");
+                else{
+                    cvh.mChannelUserCount.setText(String.format("%d", userCount));
+                }
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = node.getDepth() * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                cvh.mChannelHolder.setPadding((int) margin,
+                        cvh.mChannelHolder.getPaddingTop(),
+                        cvh.mChannelHolder.getPaddingRight(),
+                        cvh.mChannelHolder.getPaddingBottom());
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            } else if (node.isUser()) {
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                final User user = node.getUser();
+                UserViewHolder uvh = (UserViewHolder) viewHolder;
+                uvh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mUserClickListener != null) {
+                            mUserClickListener.onUserClick(user);
+                        }
+                    }
+                });
+
+                uvh.mUserName.setText(user.getName());
+                try {
+                    uvh.mUserName.setTypeface(null, user.getSession() == mService.getSession() ? Typeface.BOLD : Typeface.NORMAL);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+                uvh.mUserTalkHighlight.setImageDrawable(getTalkStateDrawable(user));
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                uvh.mUserHolder.setPadding((int) margin,
+                        uvh.mUserHolder.getPaddingTop(),
+                        uvh.mUserHolder.getPaddingRight(),
+                        uvh.mUserHolder.getPaddingBottom());
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            if(node.isChannel() && !node.getChannel().getName().equals("Demo Channel") && !node.getChannel().getName().equals("QR-PushToTalk Server")){
+                ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
+                cvh.mChannelExpandToggle.setVisibility(View.GONE);
+                cvh.mChannelName.setText("");
+                cvh.mChannelName.setVisibility(View.GONE);
+                cvh.mChannelUserCount.setText("");
+                cvh.mChannelUserCount.setVisibility(View.GONE);
+                cvh.mChannelHolder.setVisibility(View.GONE);
+                cvh.itemView.setVisibility(View.GONE);
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+            } else if(node.isUser() && !node.getParent().getChannel().getName().equals("Demo Channel")){
+                UserViewHolder uvh = (UserViewHolder) viewHolder;
+                uvh.mUserName.setText("");
+                uvh.mUserName.setVisibility(View.GONE);
+                uvh.mUserTalkHighlight.setVisibility(View.GONE);
+                uvh.mPicofMic.setVisibility(View.GONE);
+                uvh.mUserHolder.setVisibility(View.GONE);
+                uvh.itemView.setVisibility(View.GONE);
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                uvh.mUserHolder.setPadding((int) margin,
+                        uvh.mUserHolder.getPaddingTop(),
+                        uvh.mUserHolder.getPaddingRight(),
+                        uvh.mUserHolder.getPaddingBottom());
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (node.isChannel()) {
+                final Channel channel = node.getChannel();
+                ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
+                cvh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mChannelClickListener != null) {
+                            mChannelClickListener.onChannelClick(channel);
+                        }
+                    }
+                });
+
+                final boolean expandUsable = channel.getSubchannels().size() > 0 ||
+                        channel.getSubchannelUserCount() > 0;
+                cvh.mChannelExpandToggle.setImageResource(node.isExpanded() ?
+                        R.drawable.ic_action_expanded : R.drawable.ic_action_collapsed);
+                cvh.mChannelExpandToggle.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        mExpandedChannels.put(channel.getId(), !node.isExpanded());
+                        try {
+                            updateChannels(); // FIXME: very inefficient.
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                        notifyDataSetChanged();
+                    }
+                });
+                // Dim channel expand toggle when no subchannels exist
+                cvh.mChannelExpandToggle.setEnabled(expandUsable);
+                cvh.mChannelExpandToggle.setVisibility(expandUsable ? View.VISIBLE : View.INVISIBLE);
+
+                cvh.mChannelName.setText(channel.getName());
+
+                int userCount = channel.getSubchannelUserCount();
+                if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                    cvh.mChannelUserCount.setText("");
+                else{
+                    cvh.mChannelUserCount.setText(String.format("%d", userCount));
+                }
+
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = node.getDepth() * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                cvh.mChannelHolder.setPadding((int) margin,
+                        cvh.mChannelHolder.getPaddingTop(),
+                        cvh.mChannelHolder.getPaddingRight(),
+                        cvh.mChannelHolder.getPaddingBottom());
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            } else if (node.isUser() ) {
+                final User user = node.getUser();
+                UserViewHolder uvh = (UserViewHolder) viewHolder;
+                uvh.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mUserClickListener != null) {
+                            mUserClickListener.onUserClick(user);
+                        }
+                    }
+                });
+
+                uvh.mUserName.setText(user.getName());
+                try {
+                    uvh.mUserName.setTypeface(null, user.getSession() == mService.getSession() ? Typeface.BOLD : Typeface.NORMAL);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+
+                uvh.mUserTalkHighlight.setImageDrawable(getTalkStateDrawable(user));
+
+                // Pad the view depending on channel's nested level.
+                DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+                float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
+                uvh.mUserHolder.setPadding((int) margin,
+                        uvh.mUserHolder.getPaddingTop(),
+                        uvh.mUserHolder.getPaddingRight(),
+                        uvh.mUserHolder.getPaddingBottom());
+                try {
+                    updateChannels(); // FIXME: very inefficient.
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+
     }
 
     @Override
@@ -383,11 +550,13 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     private static class UserViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout mUserHolder;
         public TextView mUserName;
+        public FrameLayout mPicofMic;
 //        public ImageView mUserAvatar;
         public ImageView mUserTalkHighlight;
 
         public UserViewHolder(View itemView) {
             super(itemView);
+            mPicofMic = (FrameLayout) itemView.findViewById(R.id.eikonitsa);
             mUserHolder = (LinearLayout) itemView.findViewById(R.id.user_row_title);
             mUserTalkHighlight = (ImageView) itemView.findViewById(R.id.user_row_talk_highlight);
 

@@ -102,6 +102,9 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
      */
     public static final String EXTRA_DRAWER_FRAGMENT = "drawer_fragment";
 
+    public static final String LastChannelPreference = "lastchannelloggedprefs";
+    public static String nameOfSavedLastLoggedChannel = "";
+
     private QRPushToTalkService.QRPushToTalkBinder mService;
     private QRPushToTalkDatabase mDatabase;
     private Settings mSettings;
@@ -386,6 +389,16 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
         mDatabase.close();
+
+
+        if(!ServerEditFragment.CompanyNameStr.equals("")){
+            SharedPreferences mysettings = getSharedPreferences(LastChannelPreference,0);
+            SharedPreferences.Editor myEditor = mysettings.edit();
+            myEditor.putString("LastChannel",ServerEditFragment.CompanyNameStr);
+            myEditor.commit();
+        }
+
+
         super.onDestroy();
     }
 
@@ -746,6 +759,11 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 return;
             }
         }*/
+
+
+        SharedPreferences mysettings = getSharedPreferences(LastChannelPreference,0);
+        nameOfSavedLastLoggedChannel = mysettings.getString("LastChannel","");
+
 
         ServerConnectTask connectTask = new ServerConnectTask(this, mDatabase);
         connectTask.execute(server);
