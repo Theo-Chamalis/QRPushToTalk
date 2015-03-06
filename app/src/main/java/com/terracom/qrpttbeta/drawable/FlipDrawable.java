@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.drawable;
 
 import android.animation.ValueAnimator;
@@ -24,10 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 
-/**
- * A transition drawable that shows a "flip" between two different images.
- * Created by andrew on 19/10/14.
- */
 @TargetApi(11)
 public class FlipDrawable extends LayerDrawable implements ValueAnimator.AnimatorUpdateListener {
     private Drawable mFrom;
@@ -71,10 +50,6 @@ public class FlipDrawable extends LayerDrawable implements ValueAnimator.Animato
         return mRotate > 90 ? mTo : mFrom;
     }
 
-    /**
-     * Starts the flip animation.
-     * @param duration The duration in ms for the flip to occur.
-     */
     public void start(long duration) {
         ValueAnimator animator = ValueAnimator.ofFloat(0, 180);
         animator.setDuration(duration);

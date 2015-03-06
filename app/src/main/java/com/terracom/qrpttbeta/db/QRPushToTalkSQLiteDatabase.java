@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.db;
 
 import android.content.ContentValues;
@@ -151,7 +134,6 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
 
     @Override
     public void open() {
-        // Do nothing. Database will be opened automatically when accessing it.
     }
 
     @Override
@@ -216,7 +198,6 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
     public void removeServer(Server server) {
         getWritableDatabase().delete(TABLE_SERVER, SERVER_ID + "=?",
                 new String[] { String.valueOf(server.getId()) });
-        // Clean up server-specific entries
         getWritableDatabase().delete(TABLE_FAVOURITES, FAVOURITES_SERVER + "=?",
                 new String[] { String.valueOf(server.getId()) });
         getWritableDatabase().delete(TABLE_TOKENS, TOKENS_SERVER + "=?",
@@ -251,33 +232,6 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
     }
 
     @Override
-    public void addPinnedChannel(long serverId, int channelId) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(FAVOURITES_CHANNEL, channelId);
-        contentValues.put(FAVOURITES_SERVER, serverId);
-        getWritableDatabase().insert(TABLE_FAVOURITES, null, contentValues);
-    }
-
-    @Override
-    public boolean isChannelPinned(long serverId, int channelId) {
-        Cursor c = getReadableDatabase().query(
-                TABLE_FAVOURITES,
-                new String[]{FAVOURITES_CHANNEL},
-                FAVOURITES_SERVER + "=? AND " +
-                FAVOURITES_CHANNEL + "=?",
-                new String[]{String.valueOf(serverId), String.valueOf(channelId)},
-                null,
-                null,
-                null);
-        c.moveToFirst();
-        return !c.isAfterLast();
-    }
-
-    public void removePinnedChannel(long serverId, int channelId) {
-        getWritableDatabase().delete(TABLE_FAVOURITES, "server = ? AND channel = ?", new String[] { Long.toString(serverId), Integer.toString(channelId)});
-    }
-
-    @Override
     public List<String> getAccessTokens(long serverId) {
         Cursor cursor = getReadableDatabase().query(TABLE_TOKENS, new String[] { TOKENS_VALUE }, TOKENS_SERVER+"=?", new String[] { String.valueOf(serverId) }, null, null, null);
         cursor.moveToFirst();
@@ -288,19 +242,6 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
         }
         cursor.close();
         return tokens;
-    }
-
-    @Override
-    public void addAccessToken(long serverId, String token) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(TOKENS_SERVER, serverId);
-        contentValues.put(TOKENS_VALUE, token);
-        getWritableDatabase().insert(TABLE_TOKENS, null, contentValues);
-    }
-
-    @Override
-    public void removeAccessToken(long serverId, String token) {
-        getWritableDatabase().delete(TABLE_TOKENS, TOKENS_SERVER+"=? AND "+TOKENS_VALUE+"=?", new String[] {String.valueOf(serverId), token });
     }
 
     @Override
@@ -363,25 +304,5 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
         getWritableDatabase().delete(TABLE_LOCAL_IGNORE,
                 LOCAL_IGNORE_SERVER + "=? AND " + LOCAL_IGNORE_USER + "=?",
                 new String[] { String.valueOf(serverId), String.valueOf(userId) });
-    }
-
-    @Override
-    public boolean isCommentSeen(String hash, byte[] commentHash) {
-        Cursor cursor = getReadableDatabase().query(TABLE_COMMENTS,
-                new String[]{COMMENTS_WHO, COMMENTS_COMMENT, COMMENTS_SEEN}, COMMENTS_WHO + "=? AND " + COMMENTS_COMMENT + "=?",
-                new String[]{hash, new String(commentHash)},
-                null, null, null);
-        boolean hasNext = cursor.moveToNext();
-        cursor.close();
-        return hasNext;
-    }
-
-    @Override
-    public void markCommentSeen(String hash, byte[] commentHash) {
-        ContentValues values = new ContentValues();
-        values.put(COMMENTS_WHO, hash);
-        values.put(COMMENTS_COMMENT, commentHash);
-        values.put(COMMENTS_SEEN, "datetime('now')");
-        getWritableDatabase().replace(TABLE_COMMENTS, null, values);
     }
 }

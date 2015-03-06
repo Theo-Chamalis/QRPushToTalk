@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.app.SearchManager;
@@ -66,19 +49,16 @@ public class ChannelSearchProvider extends ContentProvider {
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public String getType(Uri uri) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -91,8 +71,7 @@ public class ChannelSearchProvider extends ContentProvider {
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {	
-		
-		// Try to connect to the service. Wait for conn to establish.
+
 		if(mService == null) {
 			Intent serviceIntent = new Intent(getContext(), QRPushToTalkService.class);
 			getContext().bindService(serviceIntent, mConn, 0);
@@ -145,22 +124,12 @@ public class ChannelSearchProvider extends ContentProvider {
 		return cursor;
 	}
 
-    /**
-     * Recursively searches the channel tree for a user with a name containing the given string,
-     * ignoring case.
-     * @param root The channel to recursively search for users within.
-     * @param str The string to match against the user's name. Case insensitive.
-     * @return A list of users whose names contain str.
-     */
     private List<User> userSearch(Channel root, String str) throws RemoteException {
         List<User> list = new LinkedList<User>();
         userSearch(root, str, list);
         return list;
     }
 
-    /**
-     * @see #userSearch(Channel,String)
-     */
     private void userSearch(Channel root, String str, List<User> users) throws RemoteException {
         if (root == null) {
             return;
@@ -178,22 +147,12 @@ public class ChannelSearchProvider extends ContentProvider {
         }
     }
 
-    /**
-     * Recursively searches the channel tree for a channel with a name containing the given string,
-     * ignoring case.
-     * @param root The channel to recursively search for subchannels within.
-     * @param str The string to match against the channel's name. Case insensitive.
-     * @return A list of channels whose names contain str.
-     */
     private List<Channel> channelSearch(Channel root, String str) throws RemoteException {
         List<Channel> list = new LinkedList<Channel>();
         channelSearch(root, str, list);
         return list;
     }
 
-    /**
-     * @see #channelSearch(Channel,String)
-     */
     private void channelSearch(Channel root, String str, List<Channel> channels) throws RemoteException {
         if (root == null) {
             return;
@@ -212,7 +171,6 @@ public class ChannelSearchProvider extends ContentProvider {
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

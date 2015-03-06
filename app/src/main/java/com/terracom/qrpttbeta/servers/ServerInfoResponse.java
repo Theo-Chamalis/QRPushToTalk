@@ -1,31 +1,9 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.servers;
 
 import com.terracom.jumble.model.Server;
 
 import java.nio.ByteBuffer;
 
-/**
- * Response from server pings.
- * @see http://mumble.sourceforge.net/Protocol
- * @author terracom
- */
 public class ServerInfoResponse {
 
 	private long mIdentifier;
@@ -36,16 +14,8 @@ public class ServerInfoResponse {
 	private int mLatency;
     private Server mServer;
 
-	/**
-	 * Whether or not this server info response represents a failure to retrieve a response. Used to efficiently denote failed responses.
-	 */
 	private boolean mDummy = false;
-		
-	/**
-	 * Creates a ServerInfoResponse object with the bytes obtained from the server.
-	 * @param response The response to the UDP pings sent by the server.
-	 * @see http://mumble.sourceforge.net/Protocol
-	 */
+
 	public ServerInfoResponse(Server server, byte[] response, int latency) {
 		ByteBuffer buffer = ByteBuffer.wrap(response);
 		mVersion = buffer.getInt();
@@ -57,15 +27,8 @@ public class ServerInfoResponse {
         mServer = server;
 	}
 
-	/**
-	 * Instantiating a ServerInfoResponse with no data will cause it to be considered a 'dummy' response by its handler.
-	 */
 	public ServerInfoResponse() {
 		this.mDummy = true;
-	}
-	
-	public long getIdentifier() {
-		return mIdentifier;
 	}
 
 	public int getVersion() {
@@ -83,10 +46,6 @@ public class ServerInfoResponse {
 
 	public int getMaximumUsers() {
 		return mMaximumUsers;
-	}
-
-	public int getAllowedBandwidth() {
-		return mAllowedBandwidth;
 	}
 
     public int getLatency() {

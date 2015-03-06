@@ -1,27 +1,9 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.preference;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -38,14 +20,11 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.text.InputType;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.Settings;
-import com.terracom.qrpttbeta.app.DrawerAdapter;
-import com.terracom.qrpttbeta.app.QRPushToTalkActivity;
 import com.terracom.qrpttbeta.util.QRPushToTalkTrustStore;
 
 import java.io.File;
@@ -56,10 +35,6 @@ import java.util.List;
 
 import info.guardianproject.onionkit.ui.OrbotHelper;
 
-/**
- * This entire class is a mess.
- * FIXME. Please.
- */
 public class Preferences extends PreferenceActivity {
 
     public static final String ACTION_PREFS_GENERAL = "com.terracom.qrpttbeta.app.PREFS_GENERAL";
@@ -77,8 +52,6 @@ public class Preferences extends PreferenceActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Legacy preference section handling
 
         String action = getIntent().getAction();
         if (action != null) {
@@ -128,20 +101,16 @@ public class Preferences extends PreferenceActivity {
         certificatePathPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                // Unset password
                 SharedPreferences preferences = preference.getSharedPreferences();
                 preferences.edit()
                         .putString(Settings.PREF_CERT_PASSWORD, "")
                         .commit();
 
-                if("".equals(newValue)) return true; // No certificate
+                if("".equals(newValue)) return true;
                 File cert = new File((String)newValue);
                 try {
                     boolean needsPassword = QRPushToTalkCertificateManager.isPasswordRequired(cert);
                     if(!needsPassword) return true;
-
-                    // If we need a password, prompt the user. Do NOT change the preference until
-                    // the password has been provided.
                     promptCertificatePassword(preference.getContext(), (ListPreference) preference, cert);
 
                 } catch (Exception e) {
@@ -160,7 +129,6 @@ public class Preferences extends PreferenceActivity {
             }
         });
 
-        // Make sure media is mounted, otherwise do not allow certificate loading.
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             try {
                 updateCertificatePath(certificatePathPreference);
@@ -174,10 +142,6 @@ public class Preferences extends PreferenceActivity {
         }
     }
 
-    /**
-     * Prompts the user for the given certificate's password, setting the certificate as
-     * active if the password is correct.
-     */
     private static void promptCertificatePassword(final Context context, final ListPreference certificatePreference, final File certificate) {
         AlertDialog.Builder adb = new AlertDialog.Builder(context);
         adb.setTitle(R.string.certificatePassword);
@@ -232,7 +196,6 @@ public class Preferences extends PreferenceActivity {
             }
         });
 
-        // Scan each bitrate and determine if the device supports it
         ListPreference inputQualityPreference = (ListPreference) screen.findPreference(Settings.PREF_INPUT_RATE);
         String[] bitrateNames = new String[inputQualityPreference.getEntryValues().length];
         for(int x=0;x<bitrateNames.length;x++) {
@@ -248,21 +211,13 @@ public class Preferences extends PreferenceActivity {
     private static void updateAudioDependents(PreferenceScreen screen, String inputMethod) {
         PreferenceCategory pttCategory = (PreferenceCategory) screen.findPreference("ptt_settings");
         PreferenceCategory vadCategory = (PreferenceCategory) screen.findPreference("vad_settings");
-//        pttCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_PTT.equals(inputMethod));
         pttCategory.setEnabled(true);
-//        vadCategory.setEnabled(Settings.ARRAY_INPUT_METHOD_VOICE.equals(inputMethod));
         vadCategory.setEnabled(false);
     }
 
-    /**
-     * Updates the passed preference with the certificate paths found on external storage.
-     *
-     * @param preference The ListPreference to update.
-     */
     private static void updateCertificatePath(ListPreference preference) throws NullPointerException, IOException {
         List<File> certificateFiles = QRPushToTalkCertificateManager.getAvailableCertificates();
 
-        // Get arrays of certificate paths and names.
         String[] certificateNames = new String[certificateFiles.size() + 1]; // Extra space for 'None' option
         String[] certificatePaths = new String[certificateFiles.size() + 1];
         for (int x = 0; x < certificateFiles.size(); x++) {
@@ -277,11 +232,6 @@ public class Preferences extends PreferenceActivity {
         preference.setEntryValues(certificatePaths);
     }
 
-    /**
-     * Generates a new certificate and sets it as active.
-     *
-     * @param certificateList If passed, will update the list of certificates available. Messy.
-     */
     private static void generateCertificate(final ListPreference certificateList) {
         QRPushToTalkCertificateGenerateTask generateTask = new QRPushToTalkCertificateGenerateTask(certificateList.getContext()) {
             @Override
@@ -290,7 +240,7 @@ public class Preferences extends PreferenceActivity {
 
                 if (result != null) {
                     try {
-                        updateCertificatePath(certificateList); // Update cert path after
+                        updateCertificatePath(certificateList);
                         certificateList.setValue(result.getAbsolutePath());
                     } catch (IOException e) {
                         e.printStackTrace();

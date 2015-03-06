@@ -3,21 +3,21 @@
   <string name="inputMethodVoice">Activité vocale</string>
   <string name="inputMethodPtt">Appuyer pour parler</string>
   <string name="inputMethodContinuous">Continu</string>
-    <!--Theme names-->
+
     <string name="theme_light">Clair</string>
     <string name="theme_dark">Sombre</string>
     <string name="theme_solarized_light">Solaire</string>
     <string name="theme_solarized_dark">Lunaire</string>
-    <!--Call modes-->
+
     <string name="call_mode_speakerphone">Haut-parleur</string>
     <string name="call_mode_voice_call">Appel vocal</string>
-    <!--Hot corner-->
+
     <string name="hot_corner_none">Aucun</string>
     <string name="hot_corner_top_left">En haut à gauche</string>
     <string name="hot_corner_bottom_left">En bas à gauche</string>
     <string name="hot_corner_top_right">En haut à droite</string>
     <string name="hot_corner_bottom_right">En bas à droite</string>
-  <!--About-->
+
   <string name="about">À propos</string>
   <string name="aboutSum">Mentions et remerciements</string>
   <string name="acknowledgements">Remerciements</string>

@@ -1,13 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
-  <!--Chat formatting-->
-  <!--User menu-->
-  <!--Channel menu-->
-  <!--Comment Fragment-->
-  <!--Server Info Fragment-->
-  <!--Server matching-->
-  <!--Common-->
   <string name="channels">Kanały</string>
   <string name="server_add">Dodaj serwer</string>
   <string name="server_password">Hasło (Opcjonalne)</string>

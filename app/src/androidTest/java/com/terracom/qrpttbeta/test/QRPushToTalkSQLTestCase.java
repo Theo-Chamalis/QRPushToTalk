@@ -23,15 +23,9 @@ import com.terracom.qrpttbeta.db.QRPushToTalkSQLiteDatabase;
 
 import java.util.UUID;
 
-/**
- * Test case designed to test operations of QRPushToTalk's database.
- * A new DB is created and destroyed with each test call.
- * Created by andrew on 19/08/14.
- */
 public class QRPushToTalkSQLTestCase extends AndroidTestCase {
-    /** Database name used in the active test. */
+
     private String mDatabaseName;
-    /** Database for the active test. */
     private QRPushToTalkSQLiteDatabase mDatabase;
 
     @Override
@@ -57,7 +51,6 @@ public class QRPushToTalkSQLTestCase extends AndroidTestCase {
         long server = 5;
         int userId = 1;
 
-        // Test ignore duplicate constraint
         for (int i = 0; i < 2; i++) {
             mDatabase.addLocalMutedUser(server, userId);
             mDatabase.addLocalIgnoredUser(server, userId);

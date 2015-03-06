@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.service;
 
 import android.content.Context;
@@ -35,10 +18,6 @@ import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.Settings;
 import com.terracom.qrpttbeta.channel.ChannelAdapter;
 
-/**
- * An onscreen interactive overlay displaying the users in the current channel.
- * Created by andrew on 26/09/13.
- */
 public class QRPushToTalkOverlay {
 
     public static final int DEFAULT_WIDTH = 200;
@@ -70,13 +49,11 @@ public class QRPushToTalkOverlay {
     private ListView mOverlayList;
     private ChannelAdapter mChannelAdapter;
     private ImageView mTalkButton;
-//    private ImageView mToggleButton;
     private ImageView mCloseButton;
     private ImageView mDragButton;
     private View mTitleView;
     private WindowManager.LayoutParams mOverlayParams;
     private boolean mShown = false;
-//    private boolean mShowChat = false;
 
     private QRPushToTalkService mService;
 
@@ -86,7 +63,6 @@ public class QRPushToTalkOverlay {
         mTalkButton = (ImageView) mOverlayView.findViewById(R.id.overlay_talk);
         mDragButton = (ImageView) mOverlayView.findViewById(R.id.overlay_drag);
         mCloseButton = (ImageView) mOverlayView.findViewById(R.id.overlay_close);
-//        mToggleButton = (ImageView) mOverlayView.findViewById(R.id.overlay_mode_toggle);
         mTitleView = mOverlayView.findViewById(R.id.overlay_title);
         mOverlayList = (ListView) mOverlayView.findViewById(R.id.overlay_list);
 
@@ -137,22 +113,6 @@ public class QRPushToTalkOverlay {
                 return false;
             }
         });
-
-        /*
-        mToggleButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mShowChat = !mShowChat;
-                // TODO implement chat
-                if(mShowChat) {
-
-                } else {
-
-                }
-            }
-        });
-        */
 
         mTalkButton.setOnTouchListener(new View.OnTouchListener() {
             @Override

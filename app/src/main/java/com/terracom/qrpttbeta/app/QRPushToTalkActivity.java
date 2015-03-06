@@ -1,23 +1,5 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.app;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -38,7 +20,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -66,16 +47,12 @@ import com.terracom.qrpttbeta.db.QRPushToTalkSQLiteDatabase;
 import com.terracom.qrpttbeta.db.PublicServer;
 import com.terracom.qrpttbeta.preference.QRPushToTalkCertificateGenerateTask;
 import com.terracom.qrpttbeta.preference.Preferences;
-import com.terracom.qrpttbeta.servers.FavouriteServerAdapter;
 import com.terracom.qrpttbeta.servers.FavouriteServerListFragment;
-import com.terracom.qrpttbeta.servers.PublicServerListFragment;
 import com.terracom.qrpttbeta.servers.ServerEditFragment;
 import com.terracom.qrpttbeta.service.QRPushToTalkService;
 import com.terracom.qrpttbeta.util.JumbleServiceFragment;
 import com.terracom.qrpttbeta.util.JumbleServiceProvider;
 import com.terracom.qrpttbeta.util.QRPushToTalkTrustStore;
-
-import org.spongycastle.util.encoders.Hex;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -88,18 +65,12 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
-
-import info.guardianproject.onionkit.ui.OrbotHelper;
-
 
 public class QRPushToTalkActivity extends ActionBarActivity implements ListView.OnItemClickListener,
         FavouriteServerListFragment.ServerConnectHandler, JumbleServiceProvider, DatabaseProvider,
         SharedPreferences.OnSharedPreferenceChangeListener, DrawerAdapter.DrawerDataProvider,
         ServerEditFragment.ServerEditListener {
-    /**
-     * If specified, the provided integer drawer fragment ID is shown when the activity is created.
-     */
+
     public static final String EXTRA_DRAWER_FRAGMENT = "drawer_fragment";
 
     public static final String LastChannelPreference = "lastchannelloggedprefs";
@@ -118,7 +89,6 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     private AlertDialog mErrorDialog;
     private AlertDialog.Builder mDisconnectPromptBuilder;
 
-    /** List of fragments to be notified about service state changes. */
     private List<JumbleServiceFragment> mServiceFragments = new ArrayList<JumbleServiceFragment>();
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -127,18 +97,17 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             mService = (QRPushToTalkService.QRPushToTalkBinder) service;
             try {
                 mService.registerObserver(mObserver);
-                mService.clearChatNotifications(); // Clear chat notifications on resume.
+                mService.clearChatNotifications();
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
             mDrawerAdapter.notifyDataSetChanged();
 
-            for(JumbleServiceFragment fragment : mServiceFragments)
+            for (JumbleServiceFragment fragment : mServiceFragments)
                 fragment.setServiceBound(true);
 
-            // Re-show server list if we're showing a fragment that depends on the service.
             try {
-                if(getSupportFragmentManager().findFragmentById(R.id.content_frame) instanceof JumbleServiceFragment &&
+                if (getSupportFragmentManager().findFragmentById(R.id.content_frame) instanceof JumbleServiceFragment &&
                         mService.getConnectionState() != JumbleService.STATE_CONNECTED) {
                     loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
                 }
@@ -164,15 +133,14 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             updateConnectionState(getService());
         }
 
-    @Override
-    public void onConnecting() throws RemoteException {
-                updateConnectionState(getService());
-            }
+        @Override
+        public void onConnecting() throws RemoteException {
+            updateConnectionState(getService());
+        }
 
         @Override
         public void onDisconnected(JumbleException e) throws RemoteException {
-            // Re-show server list if we're showing a fragment that depends on the service.
-            if(getSupportFragmentManager().findFragmentById(R.id.content_frame) instanceof JumbleServiceFragment) {
+            if (getSupportFragmentManager().findFragmentById(R.id.content_frame) instanceof JumbleServiceFragment) {
                 loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
             }
             mDrawerAdapter.notifyDataSetChanged();
@@ -190,42 +158,14 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
                 final X509Certificate x509 = (X509Certificate) certFactory.generateCertificate(new ByteArrayInputStream(certBytes));
 
-                //AlertDialog.Builder adb = new AlertDialog.Builder(QRPushToTalkActivity.this);
-                //adb.setTitle(R.string.untrusted_certificate);
                 try {
                     MessageDigest digest = MessageDigest.getInstance("SHA-1");
                     byte[] certDigest = digest.digest(x509.getEncoded());
-                    String hexDigest = new String(Hex.encode(certDigest));
 
-                    /*adb.setMessage(getString(R.string.certificate_info,
-                            x509.getSubjectDN().getName(),
-                            x509.getNotBefore().toString(),
-                            x509.getNotAfter().toString(),
-                            hexDigest));*/
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
-                    //adb.setMessage(x509.toString());
                 }
-                /*adb.setPositiveButton(R.string.allow, new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Try to add to trust store
-                        try {
-                            String alias = lastServer.getHost();
-                            KeyStore trustStore = QRPushToTalkTrustStore.getTrustStore(QRPushToTalkActivity.this);
-                            trustStore.setCertificateEntry(alias, x509);
-                            QRPushToTalkTrustStore.saveTrustStore(QRPushToTalkActivity.this, trustStore);
-                            Toast.makeText(QRPushToTalkActivity.this, R.string.trust_added, Toast.LENGTH_LONG).show();
-                            connectToServer(lastServer);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Toast.makeText(QRPushToTalkActivity.this, R.string.trust_add_failed, Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-                adb.setNegativeButton(R.string.wizard_cancel, null);
-                adb.show();*/
                 try {
                     String alias = lastServer.getHost();
                     KeyStore trustStore = QRPushToTalkTrustStore.getTrustStore(QRPushToTalkActivity.this);
@@ -263,7 +203,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.registerOnSharedPreferenceChangeListener(this);
 
-        mDatabase = new QRPushToTalkSQLiteDatabase(this); // TODO add support for cloud storage
+        mDatabase = new QRPushToTalkSQLiteDatabase(this);
         mDatabase.open();
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -282,7 +222,6 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 super.onDrawerStateChanged(newState);
 
                 try {
-                    // Prevent push to talk from getting stuck on when the drawer is opened.
                     if (getService() != null && getService().getConnectionState() == JumbleService.STATE_CONNECTED && getService().isTalking() && !mSettings.isPushToTalkToggle()) {
                         getService().setTalkingState(false);
                     }
@@ -301,8 +240,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        // Tint logo to theme
-        int iconColor = getTheme().obtainStyledAttributes(new int[] { android.R.attr.textColorPrimaryInverse }).getColor(0, -1);
+        int iconColor = getTheme().obtainStyledAttributes(new int[]{android.R.attr.textColorPrimaryInverse}).getColor(0, -1);
         Drawable logo = getResources().getDrawable(R.drawable.ic_home);
         logo.setColorFilter(iconColor, PorterDuff.Mode.MULTIPLY);
         getSupportActionBar().setLogo(logo);
@@ -313,7 +251,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    if(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) mService.disconnect();
+                    if (mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED)
+                        mService.disconnect();
                     loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -323,7 +262,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         dadb.setNegativeButton(android.R.string.cancel, null);
         mDisconnectPromptBuilder = dadb;
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             if (getIntent() != null && getIntent().hasExtra(EXTRA_DRAWER_FRAGMENT)) {
                 loadDrawerFragment(getIntent().getIntExtra(EXTRA_DRAWER_FRAGMENT,
                         DrawerAdapter.ITEM_FAVOURITES));
@@ -332,14 +271,11 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             }
         }
 
-        // If we're given a Mumble URL to show, open up a server edit fragment.
-        if(getIntent() != null &&
+        if (getIntent() != null &&
                 Intent.ACTION_VIEW.equals(getIntent().getAction())) {
             String url = getIntent().getDataString();
             try {
                 Server server = MumbleURLParser.parseURL(url);
-
-                // Open a dialog prompting the user to add the Mumble server.
                 Bundle args = new Bundle();
                 args.putBoolean("save", false);
                 args.putParcelable("server", server);
@@ -350,7 +286,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 e.printStackTrace();
             }
         }
-        if(mSettings.isFirstRun()) showSetupWizard();
+        if (mSettings.isFirstRun()) showSetupWizard();
     }
 
     @Override
@@ -373,9 +309,9 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             mErrorDialog.dismiss();
         if (mConnectingDialog != null)
             mConnectingDialog.dismiss();
-        if(mService != null)
+        if (mService != null)
             try {
-                for(JumbleServiceFragment fragment : mServiceFragments)
+                for (JumbleServiceFragment fragment : mServiceFragments)
                     fragment.setServiceBound(false);
                 mService.unregisterObserver(mObserver);
             } catch (RemoteException e) {
@@ -391,10 +327,10 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         mDatabase.close();
 
 
-        if(!ServerEditFragment.CompanyNameStr.equals("")){
-            SharedPreferences mysettings = getSharedPreferences(LastChannelPreference,0);
+        if (!ServerEditFragment.CompanyNameStr.equals("")) {
+            SharedPreferences mysettings = getSharedPreferences(LastChannelPreference, 0);
             SharedPreferences.Editor myEditor = mysettings.edit();
-            myEditor.putString("LastChannel",ServerEditFragment.CompanyNameStr);
+            myEditor.putString("LastChannel", ServerEditFragment.CompanyNameStr);
             myEditor.commit();
         }
 
@@ -406,19 +342,13 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem disconnectButton = menu.findItem(R.id.action_disconnect);
         disconnectButton.setVisible(false);
-        /*try {
-            disconnectButton.setVisible(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }*/
 
-        // Color the action bar icons to the primary text color of the theme.
         int foregroundColor = getSupportActionBar().getThemedContext()
-                .obtainStyledAttributes(new int[] { android.R.attr.textColor })
+                .obtainStyledAttributes(new int[]{android.R.attr.textColor})
                 .getColor(0, -1);
-        for(int x=0;x<menu.size();x++) {
+        for (int x = 0; x < menu.size(); x++) {
             MenuItem item = menu.getItem(x);
-            if(item.getIcon() != null) {
+            if (item.getIcon() != null) {
                 Drawable icon = item.getIcon().mutate(); // Mutate the icon so that the color filter is exclusive to the action bar
                 icon.setColorFilter(foregroundColor, PorterDuff.Mode.MULTIPLY);
             }
@@ -429,14 +359,13 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.qrptt, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(mDrawerToggle.onOptionsItemSelected(item))
+        if (mDrawerToggle.onOptionsItemSelected(item))
             return true;
 
         switch (item.getItemId()) {
@@ -461,11 +390,11 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         try {
-            if(Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod()) &&
+            if (Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod()) &&
                     keyCode == mSettings.getPushToTalkKey() &&
                     mService != null &&
                     mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
-                if(!mService.isTalking() && !mSettings.isPushToTalkToggle()) {
+                if (!mService.isTalking() && !mSettings.isPushToTalkToggle()) {
                     mService.setTalkingState(true);
                 }
                 return true;
@@ -479,11 +408,11 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         try {
-            if(Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod()) &&
+            if (Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod()) &&
                     keyCode == mSettings.getPushToTalkKey() &&
                     mService != null &&
                     mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
-                if(!mSettings.isPushToTalkToggle() && mService.isTalking()) {
+                if (!mSettings.isPushToTalkToggle() && mService.isTalking()) {
                     mService.setTalkingState(false);
                 } else {
                     mService.setTalkingState(!mService.isTalking());
@@ -496,27 +425,10 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         return super.onKeyUp(keyCode, event);
     }
 
-    /*@Override
-    public void onBackPressed() {
-
-        Log.d("-----------SOUAAAANG------------",getIntent().toString());
-        try {
-
-            if(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
-                //mDisconnectPromptBuilder.show();
-                moveTaskToBack(true);
-                return;
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        super.onBackPressed();
-    }*/
-
     @Override
     public void onBackPressed() {
         try {
-            if(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
+            if (mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
                 moveTaskToBack(true);
                 return;
             }
@@ -532,40 +444,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         loadDrawerFragment((int) id);
     }
 
-    /**
-     * Shows a nice looking setup wizard to guide the user through the app's settings.
-     * Will do nothing if it isn't the first launch.
-     */
-    /*private void showSetupWizard() {
-        // Prompt the user to generate a certificate, FIXME
-        if(mSettings.isUsingCertificate()) return;
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle(R.string.first_run_generate_certificate_title);
-        adb.setMessage(R.string.first_run_generate_certificate);
-        adb.setPositiveButton(R.string.generate, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                QRPushToTalkCertificateGenerateTask generateTask = new QRPushToTalkCertificateGenerateTask(QRPushToTalkActivity.this) {
-                    @Override
-                    protected void onPostExecute(File result) {
-                        super.onPostExecute(result);
-                        if(result != null) mSettings.setCertificatePath(result.getAbsolutePath());
-                    }
-                };
-                generateTask.execute();
-            }
-        });
-        adb.show();
-        mSettings.setFirstRun(false);
-
-        // TODO: finish wizard
-//        Intent intent = new Intent(this, WizardActivity.class);
-//        startActivity(intent);
-    }*/
-
     private void showSetupWizard() {
-        // Prompt the user to generate a certificate, FIXME
-        if(mSettings.isUsingCertificate()) return;
+        if (mSettings.isUsingCertificate()) return;
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle(R.string.first_run_generate_certificate_title);
         adb.setMessage(R.string.first_run_generate_certificate);
@@ -576,7 +456,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                     @Override
                     protected void onPostExecute(File result) {
                         super.onPostExecute(result);
-                        if(result != null) mSettings.setCertificatePath(result.getAbsolutePath());
+                        if (result != null) mSettings.setCertificatePath(result.getAbsolutePath());
                     }
                 };
                 generateTask.execute();
@@ -586,21 +466,13 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             @Override
             protected void onPostExecute(File result) {
                 super.onPostExecute(result);
-                if(result != null) mSettings.setCertificatePath(result.getAbsolutePath());
+                if (result != null) mSettings.setCertificatePath(result.getAbsolutePath());
             }
         };
         generateTask.execute();
-        //adb.show();
         mSettings.setFirstRun(false);
-
-        // TODO: finish wizard
-//        Intent intent = new Intent(this, WizardActivity.class);
-//        startActivity(intent);
     }
 
-    /**
-     * Loads a fragment from the drawer.
-     */
     private void loadDrawerFragment(int fragmentId) {
         Class<? extends Fragment> fragmentClass = null;
         Bundle args = new Bundle();
@@ -613,16 +485,10 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 break;
             case DrawerAdapter.ITEM_ACCESS_TOKENS:
                 try {
-                    //if(getService().isConnected()){
-                    if(mService.getConnectionState() == JumbleService.STATE_CONNECTED){
-                        //getService().disconnect();
+                    if (mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
                         mService.disconnect();
-                        //mDisconnectPromptBuilder.show();
                         loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
-                        /*if(mService.isConnected()){
-                            mService.disconnect();
-                        }*/
-                    }else{
+                    } else {
                         loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
                         Toast.makeText(QRPushToTalkActivity.this, "You are not connected!", Toast.LENGTH_LONG).show();
                     }
@@ -630,16 +496,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                     loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
                     e.printStackTrace();
                 }
-                /*fragmentClass = AccessTokenFragment.class;
-                try {
-                    args.putLong("server", mService.getConnectedServer().getId());
-                    args.putStringArrayList("access_tokens", (ArrayList<String>) mDatabase.getAccessTokens(mService.getConnectedServer().getId()));
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }*/
-                //fragmentClass = PublicServerListFragment.class;
                 fragmentClass = FavouriteServerListFragment.class;
-                //fragmentClass = ChannelFragment.class;
                 break;
             case DrawerAdapter.ITEM_PINNED_CHANNELS:
                 fragmentClass = ChannelFragment.class;
@@ -650,19 +507,13 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 break;
             case DrawerAdapter.ITEM_PUBLIC:
                 try {
-                    //if(getService().isConnected()){
-                    if(mService.getConnectionState() == JumbleService.STATE_CONNECTED){
-                        //getService().disconnect();
+                    if (mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
                         mService.disconnect();
                         finish();
                         fragmentClass = ChannelFragment.class;
-                        //System.exit(0);
-                    }
-                    else{
+                    } else {
                         finish();
                         fragmentClass = FavouriteServerListFragment.class;
-                        //fragmentClass = PublicServerListFragment.class;
-                        //System.exit(0);
                     }
                 } catch (Exception e) {
                     finish();
@@ -680,55 +531,17 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         }
         Fragment fragment = Fragment.instantiate(this, fragmentClass.getName(), args);
         getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_frame, fragment, fragmentClass.getName())
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .commit();
+                .replace(R.id.content_frame, fragment, fragmentClass.getName())
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
         setTitle(mDrawerAdapter.getItemWithId(fragmentId).title);
     }
 
     public void connectToServer(final Server server) {
-        // Check if we're already connected to a server; if so, inform user.
         try {
-            if(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
-                /*AlertDialog.Builder adb = new AlertDialog.Builder(this);
-                adb.setMessage(R.string.reconnect_dialog_message);
-                adb.setPositiveButton(R.string.connect, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            // Register an observer to reconnect to the new server once disconnected.
-                            mService.registerObserver(new JumbleObserver() {
-                                @Override
-                                public void onDisconnected(JumbleException e) throws RemoteException {
-                                    connectToServer(server);
-                                    mService.unregisterObserver(this);
-                                }
-                            });
-                            mService.disconnect();
-                        } catch (RemoteException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                adb.setNegativeButton(android.R.string.cancel, null);
-                adb.show();*/
-                /*try {
-                    // Register an observer to reconnect to the new server once disconnected.
-                    mService.registerObserver(new JumbleObserver() {
-                        @Override
-                        public void onDisconnected(JumbleException e) throws RemoteException {
-                            connectToServer(server);
-                            mService.unregisterObserver(this);
-                        }
-                    });
-                    mService.disconnect();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-                return;*/
-                if(FavouriteServerListFragment.myEditedflag){
+            if (mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
+                if (FavouriteServerListFragment.myEditedflag) {
                     try {
-                        // Register an observer to reconnect to the new server once disconnected.
                         mService.registerObserver(new JumbleObserver() {
                             @Override
                             public void onDisconnected(JumbleException e) throws RemoteException {
@@ -751,18 +564,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             e.printStackTrace();
         }
 
-        /*// Prompt to start Orbot if enabled but not running
-        if (mSettings.isTorEnabled()) {
-            OrbotHelper orbotHelper = new OrbotHelper(this);
-            if (!orbotHelper.isOrbotRunning()) {
-                orbotHelper.requestOrbotStart(this);
-                return;
-            }
-        }*/
-
-
-        SharedPreferences mysettings = getSharedPreferences(LastChannelPreference,0);
-        nameOfSavedLastLoggedChannel = mysettings.getString("LastChannel","");
+        SharedPreferences mysettings = getSharedPreferences(LastChannelPreference, 0);
+        nameOfSavedLastLoggedChannel = mysettings.getString("LastChannel", "");
 
 
         ServerConnectTask connectTask = new ServerConnectTask(this, mDatabase);
@@ -773,11 +576,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
 
         final Settings settings = Settings.getInstance(this);
-
-        // Allow username entry
         final EditText usernameField = new EditText(this);
         usernameField.setHint(settings.getDefaultUsername());
-        //usernameField.setHint("Leave empty, a demo GuardID will be used");
         alertBuilder.setView(usernameField);
 
         alertBuilder.setTitle(R.string.connectToServer);
@@ -786,7 +586,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 PublicServer newServer = server;
-                if(!usernameField.getText().toString().equals(""))
+                if (!usernameField.getText().toString().equals(""))
                     newServer.setUsername(usernameField.getText().toString());
                 else
                     newServer.setUsername(settings.getDefaultUsername());
@@ -805,13 +605,6 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         }
     }
 
-    /**
-     * Updates the activity to represent the connection state of the given service.
-     * Will show reconnecting dialog if reconnecting, dismiss otherwise, etc.
-     * Basically, this service will do catch-up if the activity wasn't bound to receive
-     * connection state updates.
-     * @param service A bound IJumbleService.
-     */
     private void updateConnectionState(IJumbleService service) throws RemoteException {
         if (mConnectingDialog != null)
             mConnectingDialog.dismiss();
@@ -841,7 +634,6 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
                 mConnectingDialog.show();
                 break;
             case JumbleService.STATE_CONNECTION_LOST:
-                // Only bother the user if the error hasn't already been shown.
                 if (!getService().isErrorShown()) {
                     JumbleException error = getService().getConnectionError();
                     AlertDialog.Builder ab = new AlertDialog.Builder(QRPushToTalkActivity.this);
@@ -883,10 +675,6 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
         loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
     }
 
-    /*
-     * HERE BE IMPLEMENTATIONS
-     */
-
     @Override
     public QRPushToTalkService.QRPushToTalkBinder getService() {
         return mService;
@@ -909,9 +697,8 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(Settings.PREF_THEME.equals(key)) {
-            // Recreate activity when theme is changed
-            if(Build.VERSION.SDK_INT >= 11)
+        if (Settings.PREF_THEME.equals(key)) {
+            if (Build.VERSION.SDK_INT >= 11)
                 recreate();
             else {
                 Intent intent = new Intent(this, QRPushToTalkActivity.class);
@@ -936,7 +723,7 @@ public class QRPushToTalkActivity extends ActionBarActivity implements ListView.
     @Override
     public String getConnectedServerName() {
         try {
-            if(mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
+            if (mService != null && mService.getConnectionState() == JumbleService.STATE_CONNECTED) {
                 Server server = mService.getConnectedServer();
                 return server.getName().equals("") ? server.getHost() : server.getName();
             }

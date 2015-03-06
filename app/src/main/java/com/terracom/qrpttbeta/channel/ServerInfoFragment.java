@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.os.Bundle;
@@ -28,7 +11,6 @@ import android.widget.TextView;
 
 import com.terracom.jumble.IJumbleService;
 import com.terracom.jumble.JumbleService;
-import com.terracom.jumble.net.JumbleConnection;
 import com.terracom.jumble.net.JumbleUDPMessageType;
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.util.JumbleServiceFragment;
@@ -37,10 +19,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/**
- * A fragment that displays known information from the remote server.
- * Created by andrew on 28/08/13.
- */
 public class ServerInfoFragment extends JumbleServiceFragment {
 
     private static final int POLL_RATE = 1000;
@@ -71,9 +49,6 @@ public class ServerInfoFragment extends JumbleServiceFragment {
         return view;
     }
 
-    /**
-     * Updates the info from the service.
-     */
     public void updateData() throws RemoteException {
         if(getService() == null || getService().getConnectionState() != JumbleService.STATE_CONNECTED)
             return;
@@ -110,7 +85,6 @@ public class ServerInfoFragment extends JumbleServiceFragment {
 
     @Override
     public void onServiceBound(IJumbleService service) {
-        // wow this is ugly
         mExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

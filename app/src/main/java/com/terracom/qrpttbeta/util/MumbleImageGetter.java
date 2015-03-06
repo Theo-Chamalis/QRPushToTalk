@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.util;
 
 import android.content.Context;
@@ -38,14 +21,9 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Implementation of ImageGetter designed for Mumble MOTDs and messages.
- * Can read base64-embedded images and references. Caches them too.
- * Created by andrew on 07/02/14.
- */
 public class MumbleImageGetter implements Html.ImageGetter {
 
-    /** The maximum image size in bytes to load. */
+
     private static final int MAX_LENGTH = 64000;
 
     private Context mContext;
@@ -57,7 +35,6 @@ public class MumbleImageGetter implements Html.ImageGetter {
         mSettings = Settings.getInstance(context);
         mBitmapCache = new HashMap<String, Drawable>();
 
-        // We have to enable network on the main thread here. FIXME
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
@@ -67,7 +44,7 @@ public class MumbleImageGetter implements Html.ImageGetter {
         Drawable cachedDrawable = mBitmapCache.get(source);
         if(cachedDrawable != null) return cachedDrawable;
 
-        String decodedSource; // Decode from URL encoding
+        String decodedSource;
         try {
             decodedSource = URLDecoder.decode(source, "UTF-8");
         } catch (UnsupportedEncodingException e) {

@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta;
 
 import android.content.Context;
@@ -31,18 +14,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Singleton settings class for universal access to the app's preferences.
- * @author terracom
- */
 public class Settings {
     public static final String PREF_INPUT_METHOD = "audioInputMethod";
     public static final Set<String> ARRAY_INPUT_METHODS;
-    /** Voice activity transmits depending on the amplitude of user input. */
     public static final String ARRAY_INPUT_METHOD_VOICE = "voiceActivity";
-    /** Push to talk transmits on command. */
     public static final String ARRAY_INPUT_METHOD_PTT = "ptt";
-    /** Continuous transmits always. */
     public static final String ARRAY_INPUT_METHOD_CONTINUOUS = "continuous";
 
     public static final String PREF_THRESHOLD = "vadThreshold";
@@ -84,10 +60,6 @@ public class Settings {
     public static final Boolean DEFAULT_AUTO_RECONNECT = true;
 
     public static final String PREF_THEME = "theme";
-    public static final String ARRAY_THEME_LIGHT = "lightDark";
-    public static final String ARRAY_THEME_DARK = "dark";
-    public static final String ARRAY_THEME_SOLARIZED_LIGHT = "solarizedLight";
-    public static final String ARRAY_THEME_SOLARIZED_DARK = "solarizedDark";
 
     public static final String PREF_CERT = "certificatePath";
     public static final String PREF_CERT_PASSWORD = "certificatePassword";
@@ -152,20 +124,13 @@ public class Settings {
     }
 
     public String getInputMethod() {
-        //String method = preferences.getString(PREF_INPUT_METHOD, ARRAY_INPUT_METHOD_VOICE);
         String method = preferences.getString(PREF_INPUT_METHOD,ARRAY_INPUT_METHOD_PTT);
         if(!ARRAY_INPUT_METHODS.contains(method)) {
-            // Set default method for users who used to use handset mode before removal.
-            //method = ARRAY_INPUT_METHOD_VOICE;
             method = ARRAY_INPUT_METHOD_PTT;
         }
         return method;
     }
 
-    /**
-     * Converts the preference input method value to the one used to connect to a server via Jumble.
-     * @return An input method value used to instantiate a Jumble service.
-     */
     public int getJumbleInputMethod() {
         String inputMethod = getInputMethod();
         if (ARRAY_INPUT_METHOD_VOICE.equals(inputMethod)) {
@@ -212,18 +177,10 @@ public class Settings {
         return preferences.getString(PREF_HOT_CORNER_KEY, DEFAULT_HOT_CORNER);
     }
 
-    /**
-     * Returns whether or not the hot corner is enabled.
-     * @return true if a hot corner should be shown.
-     */
     public boolean isHotCornerEnabled() {
         return !ARRAY_HOT_CORNER_NONE.equals(preferences.getString(PREF_HOT_CORNER_KEY, DEFAULT_HOT_CORNER));
     }
 
-    /**
-     * Returns the view gravity of the hot corner, or 0 if hot corner is disabled.
-     * @return A {@link android.view.Gravity} value, or 0 if disabled.
-     */
     public int getHotCornerGravity() {
         String hc = getHotCorner();
         if(ARRAY_HOT_CORNER_BOTTOM_LEFT.equals(hc)) {
@@ -238,32 +195,12 @@ public class Settings {
         return 0;
     }
 
-    /**
-     * @return the resource ID of the user-defined theme.
-     */
-    /*public int getTheme() {
-        String theme = preferences.getString(PREF_THEME, ARRAY_THEME_LIGHT);
-        if(ARRAY_THEME_LIGHT.equals(theme))
-            return R.style.Theme_QRPushToTalk;
-        else if(ARRAY_THEME_DARK.equals(theme))
-            return R.style.Theme_QRPushToTalk_Dark;
-        else if(ARRAY_THEME_SOLARIZED_LIGHT.equals(theme))
-            return R.style.Theme_QRPushToTalk_Solarized_Light;
-        else if(ARRAY_THEME_SOLARIZED_DARK.equals(theme))
-            return R.style.Theme_QRPushToTalk_Solarized_Dark;
-        return -1;
-    }*/
-
     public int getTheme() {
 
         return R.style.Theme_QRPushToTalk_Solarized_Light;
 
     }
 
-    /**
-     * Attempts to read the certificate from the path specified in settings.
-     * @return The parsed bytes of the certificate, or null otherwise.
-     */
     public byte[] getCertificate() {
         try {
             FileInputStream inputStream = new FileInputStream(preferences.getString(PREF_CERT, ""));

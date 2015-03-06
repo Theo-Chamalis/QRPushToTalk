@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.util;
 
 import android.content.Context;
@@ -29,19 +12,12 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
-/**
- * Created by andrew on 05/04/14.
- */
 public class QRPushToTalkTrustStore {
 
     private static final String STORE_FILE = "qrptt-store.bks";
     private static final String STORE_PASS = "";
     private static final String STORE_FORMAT = "BKS";
 
-    /**
-     * Loads the app's trust store of certificates.
-     * @return A loaded KeyStore with the user's trusted certificates.
-     */
     public static KeyStore getTrustStore(Context context) throws CertificateException, NoSuchAlgorithmException, IOException, KeyStoreException {
         KeyStore store = KeyStore.getInstance(STORE_FORMAT);
         try {
@@ -64,10 +40,6 @@ public class QRPushToTalkTrustStore {
         context.deleteFile(STORE_FILE);
     }
 
-    /**
-     * Gets the app's trust store path.
-     * @return null if the store has not yet been initialized, or the absolute path if it has.
-     */
     public static String getTrustStorePath(Context context) {
         File trustPath = new File(context.getFilesDir(), STORE_FILE);
         if(trustPath.exists()) return trustPath.getAbsolutePath();

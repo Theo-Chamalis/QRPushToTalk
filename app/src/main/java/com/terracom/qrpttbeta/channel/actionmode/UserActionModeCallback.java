@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel.actionmode;
 
 import android.app.AlertDialog;
@@ -41,12 +24,6 @@ import com.terracom.qrpttbeta.util.TintedMenuInflater;
 
 import java.util.List;
 
-/**
- * Contextual action mode for users.
- * When the action mode is activated, the user is set to the current chat target.
- * Upon dismissal, the chat target is reset (usually to the channel).
- * Created by andrew on 24/06/14.
- */
 public class UserActionModeCallback extends ChatTargetActionModeCallback {
     private Context mContext;
     private IJumbleService mService;
@@ -78,7 +55,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
         actionMode.setSubtitle(R.string.current_chat_target);
 
         try {
-            // Request permissions update from server, if we don't have channel permissions
             Channel channel = mService.getChannel(mUser.getChannelId());
             if(channel != null && channel.getPermissions() == 0)
                 mService.requestPermissions(mUser.getChannelId());
@@ -92,7 +68,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         try {
-            // Use permission data to determine the actions available.
             boolean self = mUser.getSession() == mService.getSession();
             int perms = mService.getPermissions();
             Channel channel = mService.getChannel(mUser.getChannelId());
@@ -126,10 +101,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
             menu.findItem(R.id.context_local_mute).setVisible(!self);
             menu.findItem(R.id.context_ignore_messages).setVisible(!self);
 
-            // TODO info
-//            informationItem.enabled = (((perms & (Permissions.Write | Permissions.Register))) > 0 || (channelPermissions & (Permissions.Write | Permissions.Enter)) > 0 || (mUser.getSession() == mService.getSession()));
-
-            // Highlight toggles
             menu.findItem(R.id.context_mute).setChecked(mUser.isMuted() || mUser.isSuppressed());
             menu.findItem(R.id.context_deafen).setChecked(mUser.isDeafened());
             menu.findItem(R.id.context_priority).setChecked(mUser.isPrioritySpeaker());
@@ -147,15 +118,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
         try {
             boolean ban = false;
             switch (menuItem.getItemId()) {
-//                case R.id.context_send_message:
-//                    if(mChatTargetProvider.getChatTarget() != null &&
-//                            mChatTargetProvider.getChatTarget().getUser() != null &&
-//                            mChatTargetProvider.getChatTarget().getUser().equals(mUser)) {
-//                        mChatTargetProvider.setChatTarget(null);
-//                    } else {
-//                        mChatTargetProvider.setChatTarget(new ChatTargetProvider.ChatTarget(mUser));
-//                    }
-//                    break;
                 case R.id.context_ban:
                     ban = true;
                 case R.id.context_kick:
@@ -220,8 +182,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
                             .setNegativeButton(android.R.string.cancel, null)
                             .show();
                     break;
-//                case R.id.context_info:
-//                    break;
                 case R.id.context_register:
                     mService.registerUser(mUser.getSession());
                     break;
@@ -230,7 +190,7 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
             e.printStackTrace();
             return false;
         }
-        actionMode.finish(); // FIXME?
+        actionMode.finish();
         return true;
     }
 
@@ -275,12 +235,6 @@ public class UserActionModeCallback extends ChatTargetActionModeCallback {
         adb.show();
     }
 
-    /**
-     * Interface for observers that wish to be notified when the user state needs to be redrawn.
-     * Note that this is only for local changes- server-side state changes will be propagated to
-     * the respective Jumble callbacks.
-     * i.e. if the user becomes local muted.
-     */
     public interface LocalUserUpdateListener {
         public void onLocalUserStateUpdated(User user);
     }

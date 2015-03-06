@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2014 Andrew Comminos
-  ~
-  ~ This program is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ This program is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -54,7 +37,6 @@
                 android:text="@string/server_host"
                 android:textColor="?android:textColorSecondary"
                 android:textSize="24sp" />
-            <!-- light EDWWW-->
 
             <RelativeLayout
                 android:id="@+id/server_row_info"
@@ -71,7 +53,6 @@
                     android:textColor="?android:textColorSecondary"
                     android:text="Version status"
                     android:layout_alignParentLeft="true"/>
-                <!-- light EDWWW-->
 
                 <TextView
                     android:id="@+id/server_row_usercount"
@@ -88,7 +69,6 @@
                     android:layout_toRightOf="@id/server_row_version_status"
                     android:layout_marginLeft="8dp"
                     android:text="15/100" />
-                <!-- light EDWWW-->
 
                 <TextView
                     android:id="@+id/server_row_latency"
@@ -100,7 +80,6 @@
                     android:gravity="center_vertical"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"/>
-                <!-- light EDWWW-->
 
                 <ProgressBar
                     android:id="@+id/server_row_ping_progress"
@@ -154,8 +133,6 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <!-- We can't have a focusable element in a GridView item -->
 
     <ImageView
         android:id="@+id/server_row_more"

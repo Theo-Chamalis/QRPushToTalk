@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.app.Activity;
@@ -73,7 +56,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
             if (user != null && getService().getSessionUser() != null &&
                     user.equals(getService().getSessionUser()) &&
                     mTargetProvider.getChatTarget() == null) {
-                // Update chat target when user changes channels without a target.
                 updateChatTargetText(null);
             }
         }
@@ -184,11 +166,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Adds the passed text to the fragment chat body.
-     * @param message The message to add.
-     * @param scroll Whether to scroll to the bottom after adding the message.
-     */
     public void addChatMessage(Message message, boolean scroll) {
 		if(mChatAdapter == null) return;
 
@@ -205,11 +182,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         }
 	}
 
-    /**
-     * Sends the message currently in {@link com.terracom.qrpttbeta.channel.ChannelChatFragment#mChatTextEdit}
-     * to the remote server. Clears the message box if the message was sent successfully.
-     * @throws RemoteException If the service failed to send the message.
-     */
 	private void sendMessage() throws RemoteException {
         if(mChatTextEdit.length() == 0) return;
         String message = mChatTextEdit.getText().toString();
@@ -226,11 +198,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         mChatTextEdit.setText("");
 	}
 
-    /**
-     * Adds HTML markup to the message, replacing links and newlines.
-     * @param message The message to markup.
-     * @return HTML data.
-     */
     private String markupOutgoingMessage(String message) {
         String formattedBody = message;
         Matcher matcher = LINK_PATTERN.matcher(formattedBody);
@@ -248,9 +215,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         }
     }
 
-	/**
-	 * Updates hint displaying chat target.
-	 */
 	public void updateChatTargetText(ChatTargetProvider.ChatTarget target) throws RemoteException {
         if(getService() == null) return;
 
@@ -263,7 +227,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
             hint = getString(R.string.messageToChannel, target.getChannel().getName());
         }
         mChatTextEdit.setHint(hint);
-        mChatTextEdit.requestLayout(); // Needed to update bounds after hint change.
+        mChatTextEdit.requestLayout();
 	}
 
 
@@ -368,7 +332,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
 
         @Override
         public boolean isEnabled(int position) {
-            return false; // Makes links clickable.
+            return false;
         }
     }
 }

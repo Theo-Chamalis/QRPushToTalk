@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
-  ~ Copyright (C) 2014 Andrew Comminos
-  ~
-  ~ This program is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ This program is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <resources>
-    <!-- Drawer pane -->
     <string name="drawer_open">Open Drawer</string>
     <string name="drawer_close">Close Drawer</string>
     <string name="drawer_not_connected">Not Connected</string>
@@ -31,12 +12,10 @@
     <string name="drawer_lan">LAN</string>
     <string name="drawer_public">Exit</string>
 
-    <!-- Chat formatting -->
     <string name="chat_message_tree">(Tree)</string>
     <string name="chat_message_channel">(Channel)</string>
     <string name="chat_message_to">%1$s → %2$s</string>
 
-    <!-- User menu -->
     <string name="user_menu_admin">Admin</string>
     <string name="user_menu_kick">Kick</string>
     <string name="user_menu_ban">Ban</string>
@@ -54,15 +33,12 @@
     <string name="user_menu_register">Register</string>
     <string name="user_menu_registered">Registered</string>
 
-    <!-- Channel menu -->
     <string name="channel_menu_pin">Pin</string>
 
-    <!-- Comment Fragment -->
     <string name="comment_view">DISPLAY</string>
     <string name="comment_edit_source">EDIT SOURCE</string>
     <string name="comment_view_source">VIEW SOURCE</string>
     
-    <!-- Server Info Fragment -->
     <string name="control_channel">Control channel</string>
     <string name="tcp_encryption_mode">Encrypted with 256 bit AES256-SHA</string>
     <string name="voice_channel">Voice channel</string>
@@ -76,7 +52,6 @@
     <string name="server_info_max_bandwidth">Maximum %.1f kbit/s</string>
     <string name="server_info_current_bandwidth">Current %.1f kbit/s</string>
 
-    <!-- Server matching -->
     <string name="server_match">Find Server</string>
     <string name="server_match_progress">Finding a server…</string>
     <string name="server_match_found">Server found</string>
@@ -85,12 +60,11 @@
     <string name="server_match_info">Name: %1$s\nHost: %2$s:%3$d\nUsers: %4$d / %5$d\nVersion: %6$s \nCountry: %7$s \nLatency: %8$d ms</string>
     <string name="server_match_description">QRPushToTalk can automatically find you an empty server, optimizing based on the server\'s location, version, and latency.</string>
 
-    <!-- Common -->
     <string name="channels">Channels</string>
     <string name="no_servers">No servers added.\nPress the \'\u002B\' button on the bar to add one.</string>
     <string name="server_add">Add Server</string>
-    <string name="server_password">Guard PIN (if exists)</string>
-    <string name="server_username">Guard ID</string>
+    <string name="server_password">User PIN (if exists)</string>
+    <string name="server_username">User ID</string>
     <string name="server_port">Port</string>
     <string name="server_host">IP Address and Port</string>
     <string name="server_label">Company Name (Optional)</string>

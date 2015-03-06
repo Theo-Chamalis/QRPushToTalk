@@ -1,31 +1,10 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.app.Activity;
 import android.app.SearchManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.CursorWrapper;
-import android.graphics.PorterDuff;
-import android.media.AudioManager;
+import android.graphics.PorterDuff;;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v4.view.MenuItemCompat;
@@ -114,14 +93,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         }
 	};
 
-    /*private BroadcastReceiver mBluetoothReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(getActivity() != null)
-                getActivity().supportInvalidateOptionsMenu(); // Update bluetooth menu item
-        }
-    };*/
-
 	private RecyclerView mChannelView;
 	private ChannelListAdapter mChannelListAdapter;
     private ChatTargetProvider mTargetProvider;
@@ -163,14 +134,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         registerForContextMenu(mChannelView);
-        //getActivity().registerReceiver(mBluetoothReceiver, new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_CHANGED));
     }
-
-    /*@Override
-    public void onDetach() {
-        getActivity().unregisterReceiver(mBluetoothReceiver);
-        super.onDetach();
-    }*/
 
     @Override
     public IJumbleObserver getServiceObserver() {
@@ -199,7 +163,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
 
         try {
             if(getService() != null && getService().getConnectionState() == JumbleService.STATE_CONNECTED && getService().getSessionUser() != null) {
-                // Color the action bar icons to the primary text color of the theme, TODO move this elsewhere
                 int foregroundColor = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.textColorPrimaryInverse}).getColor(0, -1);
 
                 User self = getService().getSessionUser();
@@ -211,15 +174,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
-        /*try {
-            if(getService() != null) {
-                MenuItem bluetoothItem = menu.findItem(R.id.menu_bluetooth);
-                bluetoothItem.setChecked(getService().isBluetoothAvailable());
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override
@@ -274,7 +228,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
 
                     boolean muted = !self.isSelfMuted();
                     boolean deafened = self.isSelfDeafened();
-                    deafened &= muted; // Undeafen if mute is off
+                    deafened &= muted;
                     self.setSelfMuted(muted);
                     self.setSelfDeafened(deafened);
                     getService().setSelfMuteDeafState(self.isSelfMuted(), self.isSelfDeafened());
@@ -300,14 +254,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
                 return true;
             case R.id.menu_search:
                 return false;
-            /*case R.id.menu_bluetooth:
-                item.setChecked(!item.isChecked());
-                try {
-                    getService().setBluetoothEnabled(item.isChecked());
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-                return true;*/
         }
 
         return super.onOptionsItemSelected(item);
@@ -321,16 +267,11 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         mChannelListAdapter.notifyDataSetChanged();
 	}
 
-	/**
-	 * Scrolls to the passed channel.
-	 */
 	public void scrollToChannel(int channelId) {
 		int channelPosition = mChannelListAdapter.getChannelPosition(channelId);
         mChannelView.smoothScrollToPosition(channelPosition);
     }
-	/**
-	 * Scrolls to the passed user.
-	 */
+
 	public void scrollToUser(int userId) {
 		int userPosition = mChannelListAdapter.getUserPosition(userId);
 		mChannelView.smoothScrollToPosition(userPosition);
@@ -344,8 +285,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
     public void onLocalUserStateUpdated(final User user) {
         try {
             mChannelListAdapter.notifyDataSetChanged();
-
-            // Add or remove registered user from local mute history
             final QRPushToTalkDatabase database = mDatabaseProvider.getDatabase();
             final Server server = getService().getConnectedServer();
 
@@ -376,7 +315,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         if (mTargetProvider.getChatTarget() != null &&
                 channel.equals(mTargetProvider.getChatTarget().getChannel()) &&
                 mActionMode != null) {
-            // Dismiss action mode if double pressed. FIXME: use list view selection instead?
             mActionMode.finish();
         } else {
             ActionMode.Callback cb = new ChannelActionModeCallback(getActivity(),
@@ -397,7 +335,6 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         if (mTargetProvider.getChatTarget() != null &&
                 user.equals(mTargetProvider.getChatTarget().getUser()) &&
                 mActionMode != null) {
-            // Dismiss action mode if double pressed. FIXME: use list view selection instead?
             mActionMode.finish();
         } else {
             ActionMode.Callback cb = new UserActionModeCallback(getActivity(), getService(), user, mTargetProvider, getChildFragmentManager(), this) {
