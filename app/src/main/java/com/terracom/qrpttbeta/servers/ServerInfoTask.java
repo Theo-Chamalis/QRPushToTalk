@@ -13,6 +13,7 @@ import java.nio.ByteBuffer;
 
 public class ServerInfoTask extends AsyncTask<Server, Void, ServerInfoResponse> {
 
+<<<<<<< HEAD
     private Server server;
 
     @Override
@@ -29,10 +30,29 @@ public class ServerInfoTask extends AsyncTask<Server, Void, ServerInfoResponse> 
             DatagramSocket socket = new DatagramSocket();
             socket.setSoTimeout(1000);
             socket.setReceiveBufferSize(1024);
+=======
+	private Server server;
+	
+	@Override
+	protected ServerInfoResponse doInBackground(Server... params) {
+		server = params[0];
+		try {
+			InetAddress host = InetAddress.getByName(server.getHost());
+
+			ByteBuffer buffer = ByteBuffer.allocate(12);
+			buffer.putInt(0);
+			buffer.putLong(server.getId());
+			DatagramPacket requestPacket = new DatagramPacket(buffer.array(), 12, host, server.getPort());
+
+			DatagramSocket socket = new DatagramSocket();
+			socket.setSoTimeout(1000);
+			socket.setReceiveBufferSize(1024);
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
             long startTime = System.nanoTime();
 
             socket.send(requestPacket);
+<<<<<<< HEAD
 
             byte[] responseBuffer = new byte[24];
             DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length);
@@ -52,4 +72,25 @@ public class ServerInfoTask extends AsyncTask<Server, Void, ServerInfoResponse> 
         return new ServerInfoResponse();
     }
 
+=======
+			
+			byte[] responseBuffer = new byte[24];
+			DatagramPacket responsePacket = new DatagramPacket(responseBuffer, responseBuffer.length);
+			socket.receive(responsePacket);
+
+            int latencyInMs = (int) ((System.nanoTime()-startTime)/1000000);
+			
+			ServerInfoResponse response = new ServerInfoResponse(server, responseBuffer, latencyInMs);
+							
+			Log.i(Constants.TAG, "DEBUG: Server version: "+response.getVersionString()+"\nUsers: "+response.getCurrentUsers()+"/"+response.getMaximumUsers());
+			
+			return response;
+			
+		} catch (Exception e) {
+		}
+
+		return new ServerInfoResponse();
+	}
+	
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 }

@@ -106,11 +106,19 @@ public class Preferences extends PreferenceActivity {
                         .putString(Settings.PREF_CERT_PASSWORD, "")
                         .commit();
 
+<<<<<<< HEAD
                 if ("".equals(newValue)) return true;
                 File cert = new File((String) newValue);
                 try {
                     boolean needsPassword = QRPushToTalkCertificateManager.isPasswordRequired(cert);
                     if (!needsPassword) return true;
+=======
+                if("".equals(newValue)) return true;
+                File cert = new File((String)newValue);
+                try {
+                    boolean needsPassword = QRPushToTalkCertificateManager.isPasswordRequired(cert);
+                    if(!needsPassword) return true;
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                     promptCertificatePassword(preference.getContext(), (ListPreference) preference, cert);
 
                 } catch (Exception e) {

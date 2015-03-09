@@ -93,8 +93,13 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         }
     };
 
+<<<<<<< HEAD
     private RecyclerView mChannelView;
     private ChannelListAdapter mChannelListAdapter;
+=======
+	private RecyclerView mChannelView;
+	private ChannelListAdapter mChannelListAdapter;
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
     private ChatTargetProvider mTargetProvider;
     private DatabaseProvider mDatabaseProvider;
     private ActionMode mActionMode;
@@ -162,7 +167,11 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         MenuItem deafenItem = menu.findItem(R.id.menu_deafen_button);
 
         try {
+<<<<<<< HEAD
             if (getService() != null && getService().getConnectionState() == JumbleService.STATE_CONNECTED && getService().getSessionUser() != null) {
+=======
+            if(getService() != null && getService().getConnectionState() == JumbleService.STATE_CONNECTED && getService().getSessionUser() != null) {
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                 int foregroundColor = getActivity().getTheme().obtainStyledAttributes(new int[]{android.R.attr.textColorPrimaryInverse}).getColor(0, -1);
 
                 User self = getService().getSessionUser();
@@ -267,6 +276,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         mChannelListAdapter.notifyDataSetChanged();
     }
 
+<<<<<<< HEAD
     public void scrollToChannel(int channelId) {
         int channelPosition = mChannelListAdapter.getChannelPosition(channelId);
         mChannelView.smoothScrollToPosition(channelPosition);
@@ -276,6 +286,17 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
         int userPosition = mChannelListAdapter.getUserPosition(userId);
         mChannelView.smoothScrollToPosition(userPosition);
     }
+=======
+	public void scrollToChannel(int channelId) {
+		int channelPosition = mChannelListAdapter.getChannelPosition(channelId);
+        mChannelView.smoothScrollToPosition(channelPosition);
+    }
+
+	public void scrollToUser(int userId) {
+		int userPosition = mChannelListAdapter.getUserPosition(userId);
+		mChannelView.smoothScrollToPosition(userPosition);
+	}
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     private boolean isShowingPinnedChannels() {
         return getArguments().getBoolean("pinned");

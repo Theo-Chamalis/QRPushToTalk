@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +20,10 @@ import com.terracom.qrpttbeta.db.DatabaseProvider;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+<<<<<<< HEAD
+=======
+import java.net.InetAddress;
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 import java.util.Random;
 
 

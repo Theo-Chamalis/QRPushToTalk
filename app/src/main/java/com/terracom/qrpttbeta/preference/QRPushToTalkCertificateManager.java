@@ -39,6 +39,7 @@ public class QRPushToTalkCertificateManager {
         return certificateFile;
     }
 
+<<<<<<< HEAD
     public static List<File> getAvailableCertificates() throws IOException {
         File certificateDirectory = getCertificateDirectory();
 
@@ -52,6 +53,21 @@ public class QRPushToTalkCertificateManager {
 
         return Arrays.asList(p12Files);
     }
+=======
+	public static List<File> getAvailableCertificates() throws IOException {
+		File certificateDirectory = getCertificateDirectory();
+		
+		File[] p12Files = certificateDirectory.listFiles(new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				return pathname.getName().endsWith("pfx") ||
+                       pathname.getName().endsWith("p12");
+			}
+		});
+		
+		return Arrays.asList(p12Files);
+	}
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     public static boolean isPasswordRequired(File certificateFile) throws KeyStoreException, IOException, NoSuchAlgorithmException {
         KeyStore p12store = KeyStore.getInstance("PKCS12");
@@ -80,8 +96,13 @@ public class QRPushToTalkCertificateManager {
         }
     }
 
+<<<<<<< HEAD
     public static File getCertificateDirectory() throws IOException {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+=======
+	public static File getCertificateDirectory() throws IOException {
+		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             File certificateDirectory = new File(Environment.getExternalStorageDirectory(), CERTIFICATE_FOLDER);
             if (!certificateDirectory.exists())
                 certificateDirectory.mkdir();

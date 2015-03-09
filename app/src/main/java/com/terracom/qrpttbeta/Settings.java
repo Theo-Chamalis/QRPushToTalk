@@ -124,8 +124,13 @@ public class Settings {
     }
 
     public String getInputMethod() {
+<<<<<<< HEAD
         String method = preferences.getString(PREF_INPUT_METHOD, ARRAY_INPUT_METHOD_PTT);
         if (!ARRAY_INPUT_METHODS.contains(method)) {
+=======
+        String method = preferences.getString(PREF_INPUT_METHOD,ARRAY_INPUT_METHOD_PTT);
+        if(!ARRAY_INPUT_METHODS.contains(method)) {
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             method = ARRAY_INPUT_METHOD_PTT;
         }
         return method;

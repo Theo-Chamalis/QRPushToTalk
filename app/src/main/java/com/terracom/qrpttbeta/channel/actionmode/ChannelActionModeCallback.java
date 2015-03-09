@@ -54,7 +54,11 @@ public class ChannelActionModeCallback extends ChatTargetActionModeCallback {
         actionMode.setSubtitle(R.string.current_chat_target);
 
         try {
+<<<<<<< HEAD
             if (mChannel.getPermissions() == 0)
+=======
+            if(mChannel.getPermissions() == 0)
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                 mService.requestPermissions(mChannel.getId());
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -73,7 +77,11 @@ public class ChannelActionModeCallback extends ChatTargetActionModeCallback {
 
         try {
             Server server = mService.getConnectedServer();
+<<<<<<< HEAD
             if (server != null) {
+=======
+            if(server != null) {
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             }
         } catch (RemoteException e) {
             e.printStackTrace();

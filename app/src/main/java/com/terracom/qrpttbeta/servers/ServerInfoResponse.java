@@ -14,6 +14,7 @@ public class ServerInfoResponse {
     private int mLatency;
     private Server mServer;
 
+<<<<<<< HEAD
     private boolean mDummy = false;
 
     public ServerInfoResponse(Server server, byte[] response, int latency) {
@@ -23,13 +24,30 @@ public class ServerInfoResponse {
         mCurrentUsers = buffer.getInt();
         mMaximumUsers = buffer.getInt();
         mAllowedBandwidth = buffer.getInt();
+=======
+	private boolean mDummy = false;
+
+	public ServerInfoResponse(Server server, byte[] response, int latency) {
+		ByteBuffer buffer = ByteBuffer.wrap(response);
+		mVersion = buffer.getInt();
+		mIdentifier = buffer.getLong();
+		mCurrentUsers = buffer.getInt();
+		mMaximumUsers = buffer.getInt();
+		mAllowedBandwidth = buffer.getInt();
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
         mLatency = latency;
         mServer = server;
     }
 
+<<<<<<< HEAD
     public ServerInfoResponse() {
         this.mDummy = true;
     }
+=======
+	public ServerInfoResponse() {
+		this.mDummy = true;
+	}
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     public int getVersion() {
         return mVersion;
@@ -44,10 +62,13 @@ public class ServerInfoResponse {
         return mCurrentUsers;
     }
 
+<<<<<<< HEAD
     public int getMaximumUsers() {
         return mMaximumUsers;
     }
 
+=======
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
     public int getLatency() {
         return mLatency;
     }

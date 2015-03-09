@@ -120,7 +120,11 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         preferences.registerOnSharedPreferenceChangeListener(this);
 
+<<<<<<< HEAD
         if (mViewPager != null) {
+=======
+        if(mViewPager != null) {
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             ChannelFragmentPagerAdapter pagerAdapter = new ChannelFragmentPagerAdapter(getChildFragmentManager());
             mViewPager.setAdapter(pagerAdapter);
         } else {

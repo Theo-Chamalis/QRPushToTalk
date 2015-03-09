@@ -39,6 +39,7 @@ public class ChannelSearchProvider extends ContentProvider {
             synchronized (mServiceLock) {
                 mServiceLock.notify();
             }
+<<<<<<< HEAD
         }
 
         @Override
@@ -75,6 +76,44 @@ public class ChannelSearchProvider extends ContentProvider {
         if (mService == null) {
             Intent serviceIntent = new Intent(getContext(), QRPushToTalkService.class);
             getContext().bindService(serviceIntent, mConn, 0);
+=======
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			mService = null;
+		}
+	};
+	
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		return 0;
+	}
+
+	@Override
+	public String getType(Uri uri) {
+		return null;
+	}
+
+	@Override
+	public Uri insert(Uri uri, ContentValues values) {
+		return null;
+	}
+
+	@Override
+	public boolean onCreate() {
+		return true;
+	}
+	
+
+	@Override
+	public Cursor query(Uri uri, String[] projection, String selection,
+			String[] selectionArgs, String sortOrder) {	
+
+		if(mService == null) {
+			Intent serviceIntent = new Intent(getContext(), QRPushToTalkService.class);
+			getContext().bindService(serviceIntent, mConn, 0);
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
             synchronized (mServiceLock) {
                 try {
@@ -111,6 +150,7 @@ public class ChannelSearchProvider extends ContentProvider {
             return cursor;
         }
 
+<<<<<<< HEAD
         for (int x = 0; x < channels.size(); x++) {
             Channel channel = channels.get(x);
             cursor.addRow(new Object[]{x, INTENT_DATA_CHANNEL, channel.getName(), R.drawable.ic_action_channels, getContext().getString(R.string.search_channel_users, channel.getSubchannelUserCount()), channel.getId()});
@@ -123,6 +163,20 @@ public class ChannelSearchProvider extends ContentProvider {
 
         return cursor;
     }
+=======
+        for(int x=0;x<channels.size();x++) {
+			Channel channel = channels.get(x);
+            cursor.addRow(new Object[] { x, INTENT_DATA_CHANNEL, channel.getName(), R.drawable.ic_action_channels, getContext().getString(R.string.search_channel_users, channel.getSubchannelUserCount()), channel.getId() });
+		}
+
+		for(int x=0;x<users.size();x++) {
+			User user = users.get(x);
+            cursor.addRow(new Object[] { x, INTENT_DATA_USER, user.getName(), R.drawable.ic_action_user_dark, getContext().getString(R.string.user), user.getSession() });
+		}
+		
+		return cursor;
+	}
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     private List<User> userSearch(Channel root, String str) throws RemoteException {
         List<User> list = new LinkedList<User>();
@@ -168,10 +222,18 @@ public class ChannelSearchProvider extends ContentProvider {
         }
     }
 
+<<<<<<< HEAD
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
         return 0;
     }
+=======
+	@Override
+	public int update(Uri uri, ContentValues values, String selection,
+			String[] selectionArgs) {
+		return 0;
+	}
+>>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
 }
