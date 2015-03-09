@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
+
   <string name="drawer_open">Ouvrir Drawer</string>
   <string name="drawer_close">Fermer Drawer</string>
   <string name="drawer_not_connected">Pas connecté</string>
@@ -12,11 +12,11 @@
   <string name="drawer_favorites">Favoris</string>
   <string name="drawer_lan">LAN</string>
   <string name="drawer_public">Serveurs publiques</string>
-  <!--Chat formatting-->
+
   <string name="chat_message_tree">(Arborescence)</string>
   <string name="chat_message_channel">(Canal)</string>
   <string name="chat_message_to">%1$s → %2$s</string>
-  <!--User menu-->
+
   <string name="user_menu_admin">Admin</string>
   <string name="user_menu_kick">Expulser</string>
   <string name="user_menu_ban">Bannir</string>
@@ -33,13 +33,13 @@
   <string name="user_menu_information">Information</string>
   <string name="user_menu_register">Enregistrer</string>
   <string name="user_menu_registered">Enregistré</string>
-  <!--Channel menu-->
+
   <string name="channel_menu_pin">Épingle</string>
-  <!--Comment Fragment-->
+
   <string name="comment_view">AFFICHAGE</string>
   <string name="comment_edit_source">ÉDITER LA SOURCE</string>
   <string name="comment_view_source">VOIR LA SOURCE</string>
-  <!--Server Info Fragment-->
+
   <string name="control_channel">Canal de contrôle</string>
   <string name="tcp_encryption_mode">Chiffré en AES256-SHA 256 bit</string>
   <string name="voice_channel">Canal de voix</string>
@@ -52,14 +52,14 @@
   <string name="server_info_codec">Codec : %s</string>
   <string name="server_info_max_bandwidth">Maximum %.1f kbit/s</string>
   <string name="server_info_current_bandwidth">Actuel %.1f kbit/s</string>
-  <!--Server matching-->
+
   <string name="server_match">Trouver un serveur</string>
   <string name="server_match_progress">Recherche un serveur...</string>
   <string name="server_match_found">Serveur trouvé</string>
   <string name="server_match_not_found">Impossible de trouver le serveur</string>
   <string name="server_match_expand_country">Impossible de trouver aucun serveur optimal dans votre pays. Étendre la recherche au monde entier ?</string>
   <string name="server_match_description">QRPushToTalk peut vous trouver automatiquement un serveur vide, en optimisant en se basant sur la position du serveur, sa version, et sa latence.</string>
-  <!--Common-->
+
   <string name="channels">Canaux</string>
   <string name="server_add">Ajouter un serveur</string>
   <string name="server_password">Mot de passe</string>

@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.servers;
 
 import android.app.Activity;
@@ -40,11 +23,6 @@ import com.terracom.qrpttbeta.db.PublicServer;
 
 import java.util.List;
 
-/**
- * Displays a list of servers, and allows the user to connect and edit them.
- * @author terracom
- *
- */
 public class FavouriteServerListFragment extends Fragment implements OnItemClickListener, FavouriteServerAdapter.FavouriteServerAdapterMenuListener {
 
     private ServerConnectHandler mConnectHandler;
@@ -64,10 +42,10 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
         super.onAttach(activity);
 
         try {
-            mConnectHandler = (ServerConnectHandler)activity;
+            mConnectHandler = (ServerConnectHandler) activity;
             mDatabaseProvider = (DatabaseProvider) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()+" must implement ServerConnectHandler!");
+            throw new ClassCastException(activity.toString() + " must implement ServerConnectHandler!");
         }
     }
 
@@ -78,17 +56,6 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
         mServerGrid = (GridView) view.findViewById(R.id.server_list_grid);
         mServerGrid.setOnItemClickListener(this);
         mServerGrid.setEmptyView(view.findViewById(R.id.server_list_grid_empty));
-
-        /*TextView donateText = (TextView) view.findViewById(R.id.donate_box);
-        donateText.setVisibility(BuildConfig.DONATE_NAG ? View.VISIBLE : View.GONE);
-        donateText.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent playIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.terracom.qrpttbeta"));
-                startActivity(playIntent);
-            }
-        });*/
-
         registerForContextMenu(mServerGrid);
         return view;
     }
@@ -107,7 +74,7 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.menu_add_server_item) {
+        if (item.getItemId() == R.id.menu_add_server_item) {
             addServer();
             return true;
         }
@@ -128,19 +95,8 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
         setEditedUsernameFlag(true);
     }
 
-    public static void setEditedUsernameFlag(boolean myflag){
+    public static void setEditedUsernameFlag(boolean myflag) {
         myEditedflag = myflag;
-    }
-
-    public void shareServer(Server server) {
-        // Build Mumble server URL
-        String serverUrl = "mumble://"+server.getHost()+":"+server.getPort()+"/";
-
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.shareMessage, serverUrl));
-        intent.setType("text/plain");
-        startActivity(intent);
     }
 
     public void deleteServer(final Server server) {
@@ -163,8 +119,6 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
         mServerGrid.setAdapter(mServerAdapter);
     }
 
-
-
     public List<Server> getServers() {
         List<Server> servers = mDatabaseProvider.getDatabase().getServers();
         return servers;
@@ -177,6 +131,7 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
 
     public static interface ServerConnectHandler {
         public void connectToServer(Server server);
+
         public void connectToPublicServer(PublicServer server);
     }
 }

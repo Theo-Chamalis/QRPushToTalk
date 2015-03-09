@@ -1,44 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2014 Andrew Comminos
-  ~
-  ~ This program is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ This program is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <resources>
     <string name="inputMethodVoice">Voice Activity</string>
     <string name="inputMethodPtt">Push to Talk</string>
     <string name="inputMethodContinuous">Continuous</string>
 
-    <!-- Theme names -->
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_solarized_light">Solarized Light</string>
     <string name="theme_solarized_dark">Solarized Dark</string>
 
-    <!-- Call modes -->
     <string name="call_mode_speakerphone">Speakerphone</string>
     <string name="call_mode_voice_call">Voice Call</string>
 
-    <!-- Hot corner -->
     <string name="hot_corner_none">None</string>
     <string name="hot_corner_top_left">Top Left</string>
     <string name="hot_corner_bottom_left">Bottom Left</string>
     <string name="hot_corner_top_right">Top Right</string>
     <string name="hot_corner_bottom_right">Bottom Right</string>
 
-    <!-- About -->
     <string name="about">About</string>
     <string name="aboutSum">Legal and contact information</string>
     <string name="acknowledgements">Contact Info</string>

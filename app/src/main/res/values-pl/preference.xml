@@ -1,9 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <!--Theme names-->
-    <!--Call modes-->
-    <!--Hot corner-->
-  <!--About-->
   <string name="authentication">Uwierzytelnianie</string>
   <string name="certificateFile">Plik certyfikatu</string>
   <string name="certificateFileSum">Wybór certyfikatu P12, znajdującego się w katalogu \"QRPushToTalk\" w pamięci zewnętrznej.</string>

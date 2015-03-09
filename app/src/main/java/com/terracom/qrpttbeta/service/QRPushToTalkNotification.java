@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.service;
 
 import android.app.Notification;
@@ -33,10 +16,6 @@ import com.terracom.qrpttbeta.app.QRPushToTalkActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Wrapper to create QRPushToTalk notifications.
- * Created by andrew on 08/08/14.
- */
 public class QRPushToTalkNotification {
     private static final int NOTIFICATION_ID = 1;
     private static final String BROADCAST_MUTE = "b_mute";
@@ -58,26 +37,19 @@ public class QRPushToTalkNotification {
             } else if (BROADCAST_DEAFEN.equals(intent.getAction())) {
                 mListener.onDeafenToggled();
             } else if (BROADCAST_OVERLAY.equals(intent.getAction())) {
-//                mListener.onOverlayToggled();
             }
         }
     };
 
-    /**
-     * Creates a foreground QRPushToTalk notification for the given service.
-     * @param service The service to register a foreground notification for.
-     * @param listener An listener for notification actions.
-     * @return A new QRPushToTalkNotification instance.
-     */
     public static QRPushToTalkNotification showForeground(Service service, String ticker, String contentText,
-                                                     OnActionListener listener) {
+                                                          OnActionListener listener) {
         QRPushToTalkNotification notification = new QRPushToTalkNotification(service, ticker, contentText, listener);
         notification.show();
         return notification;
     }
 
     private QRPushToTalkNotification(Service service, String ticker, String contentText,
-                                OnActionListener listener) {
+                                     OnActionListener listener) {
         mService = service;
         mListener = listener;
         mMessages = new ArrayList<String>();
@@ -100,11 +72,6 @@ public class QRPushToTalkNotification {
         mActionsShown = actionsShown;
     }
 
-    /**
-     * Updates the notification with the given message.
-     * Sets the ticker to the current message as well.
-     * @param message The message to notify.
-     */
     public void addMessage(String message) {
         mMessages.add(message);
         mCustomTicker = message;
@@ -116,41 +83,29 @@ public class QRPushToTalkNotification {
         createNotification();
     }
 
-    /**
-     * Shows the notification and registers the notification action button receiver.
-     */
     public void show() {
         createNotification();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(BROADCAST_DEAFEN);
         filter.addAction(BROADCAST_MUTE);
-//        filter.addAction(BROADCAST_OVERLAY);
 
         try {
             mService.registerReceiver(mNotificationReceiver, filter);
         } catch (IllegalArgumentException e) {
-            // Thrown if receiver is already registered.
             e.printStackTrace();
         }
     }
 
-    /**
-     * Hides the notification and unregisters the action receiver.
-     */
     public void hide() {
         try {
             mService.unregisterReceiver(mNotificationReceiver);
         } catch (IllegalArgumentException e) {
-            // Thrown if receiver is not registered.
             e.printStackTrace();
         }
         mService.stopForeground(true);
     }
 
-    /**
-     * Called to update/create the service's foreground QRPushToTalk notification.
-     */
     private Notification createNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mService);
         builder.setSmallIcon(R.drawable.ic_stat_notify);
@@ -161,23 +116,16 @@ public class QRPushToTalkNotification {
         builder.setOngoing(true);
 
         if (mActionsShown) {
-            // Add notification triggers
             Intent muteIntent = new Intent(BROADCAST_MUTE);
             Intent deafenIntent = new Intent(BROADCAST_DEAFEN);
-//            Intent overlayIntent = new Intent(BROADCAST_OVERLAY);
-
             builder.addAction(R.drawable.ic_action_microphone,
                     mService.getString(R.string.mute), PendingIntent.getBroadcast(mService, 1,
                             muteIntent, PendingIntent.FLAG_CANCEL_CURRENT));
             builder.addAction(R.drawable.ic_action_audio,
                     mService.getString(R.string.deafen), PendingIntent.getBroadcast(mService, 1,
                             deafenIntent, PendingIntent.FLAG_CANCEL_CURRENT));
-/*            builder.addAction(R.drawable.ic_action_channels,
-                    mService.getString(R.string.overlay), PendingIntent.getBroadcast(mService, 2,
-                            overlayIntent, PendingIntent.FLAG_CANCEL_CURRENT));*/
         }
 
-        // Show unread messages
         if (mMessages.size() > 0) {
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
             for (String message : mMessages) {
@@ -188,7 +136,6 @@ public class QRPushToTalkNotification {
 
         Intent channelListIntent = new Intent(mService, QRPushToTalkActivity.class);
         channelListIntent.putExtra(QRPushToTalkActivity.EXTRA_DRAWER_FRAGMENT, DrawerAdapter.ITEM_SERVER);
-        // FLAG_CANCEL_CURRENT ensures that the extra always gets sent.
         PendingIntent pendingIntent = PendingIntent.getActivity(mService, 0, channelListIntent, PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(pendingIntent);
 
@@ -199,7 +146,7 @@ public class QRPushToTalkNotification {
 
     public interface OnActionListener {
         public void onMuteToggled();
+
         public void onDeafenToggled();
-        public void onOverlayToggled();
     }
 }

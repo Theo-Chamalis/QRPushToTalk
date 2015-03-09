@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.servers;
 
 import android.content.Context;
@@ -37,9 +20,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * Created by andrew on 05/05/14.
- */
 public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
     private static final int MAX_ACTIVE_PINGS = 50;
 
@@ -61,7 +41,7 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
     public View getView(int position, View v, ViewGroup parent) {
         View view = v;
 
-        if(v == null) {
+        if (v == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(mViewResource, parent, false);
         }
@@ -69,21 +49,18 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
         final E server = getItem(position);
 
         ServerInfoResponse infoResponse = mInfoResponses.get(server);
-        // If there is a null value for the server info (rather than none at all), the request must have failed.
         boolean requestExists = infoResponse != null;
         boolean requestFailure = infoResponse != null && infoResponse.isDummy();
 
         TextView nameText = (TextView) view.findViewById(R.id.server_row_name);
         TextView userText = (TextView) view.findViewById(R.id.server_row_user);
-        TextView addressText = (TextView) view.findViewById(R.id.server_row_address);
 
         nameText.setText(server.getName());
 
-        if(userText != null) userText.setText(server.getUsername());
-        //if(addressText != null) addressText.setText(server.getHost()+":"+server.getPort());
+        if (userText != null) userText.setText(server.getUsername());
 
         final ImageView moreButton = (ImageView) view.findViewById(R.id.server_row_more);
-        if(moreButton != null) {
+        if (moreButton != null) {
             moreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -99,23 +76,19 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
 
         serverVersionText.setVisibility(!requestExists ? View.INVISIBLE : View.VISIBLE);
         serverUsersText.setVisibility(!requestExists ? View.INVISIBLE : View.VISIBLE);
-        //serverLatencyText.setVisibility(!requestExists ? View.INVISIBLE : View.VISIBLE);
         serverInfoProgressBar.setVisibility(!requestExists ? View.VISIBLE : View.INVISIBLE);
 
-        if(infoResponse != null && !requestFailure) {
-            //serverVersionText.setText(getContext().getString(R.string.online)+" ("+infoResponse.getVersionString()+")");
-            serverVersionText.setText("Status: "+getContext().getString(R.string.online)+"  ");
-            serverUsersText.setText("Users: "+infoResponse.getCurrentUsers()+"/"+infoResponse.getMaximumUsers());
-            serverLatencyText.setText(infoResponse.getLatency()+"ms");
-        } else if(requestFailure) {
-            // serverVersionText.setText("Status: "+"Offline "); h +getContext().getString(R.string.offline)
+        if (infoResponse != null && !requestFailure) {
+            serverVersionText.setText("Status: " + getContext().getString(R.string.online) + "  ");
+            serverUsersText.setText("Users: " + infoResponse.getCurrentUsers() + "/" + infoResponse.getMaximumUsers());
+            serverLatencyText.setText(infoResponse.getLatency() + "ms");
+        } else if (requestFailure) {
             serverVersionText.setText("Status: Offline");
             serverUsersText.setText("");
             serverLatencyText.setText("");
         }
 
-        // Ping server if available
-        if(infoResponse == null) {
+        if (infoResponse == null) {
             ServerInfoTask task = new ServerInfoTask() {
                 protected void onPostExecute(ServerInfoResponse result) {
                     super.onPostExecute(result);
@@ -124,8 +97,7 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
                 }
             };
 
-            // Execute on parallel threads if API >= 11.
-            if(Build.VERSION.SDK_INT >= 11) {
+            if (Build.VERSION.SDK_INT >= 11) {
                 task.executeOnExecutor(mPingExecutor, server);
             } else {
                 task.execute(server);
@@ -148,5 +120,6 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
     }
 
     public abstract int getPopupMenuResource();
+
     public abstract boolean onPopupItemClick(Server server, MenuItem menuItem);
 }

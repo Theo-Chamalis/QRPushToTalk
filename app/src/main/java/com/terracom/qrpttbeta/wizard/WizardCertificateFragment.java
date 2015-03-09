@@ -45,7 +45,7 @@ public class WizardCertificateFragment extends Fragment {
         try {
             mNavigation = (WizardNavigation) activity;
         } catch (ClassCastException e) {
-            throw new RuntimeException(activity.getClass().getName()+" must implement WizardNavigation!");
+            throw new RuntimeException(activity.getClass().getName() + " must implement WizardNavigation!");
         }
     }
 

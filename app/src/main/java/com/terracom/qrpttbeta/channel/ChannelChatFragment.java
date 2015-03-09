@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.app.Activity;
@@ -61,7 +44,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
     private static final Pattern LINK_PATTERN = Pattern.compile("(https?://\\S+)");
     private static final String CHAT_DATE_FORMAT = "%I:%M %p";
 
-	private IJumbleObserver mServiceObserver = new JumbleObserver() {
+    private IJumbleObserver mServiceObserver = new JumbleObserver() {
 
         @Override
         public void onMessageLogged(Message message) throws RemoteException {
@@ -73,7 +56,6 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
             if (user != null && getService().getSessionUser() != null &&
                     user.equals(getService().getSessionUser()) &&
                     mTargetProvider.getChatTarget() == null) {
-                // Update chat target when user changes channels without a target.
                 updateChatTargetText(null);
             }
         }
@@ -81,8 +63,8 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
 
     private ListView mChatList;
     private ChannelChatAdapter mChatAdapter;
-	private EditText mChatTextEdit;
-	private ImageButton mSendButton;
+    private EditText mChatTextEdit;
+    private ImageButton mSendButton;
     private ChatTargetProvider mTargetProvider;
 
     @Override
@@ -97,7 +79,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         try {
             mTargetProvider = (ChatTargetProvider) getParentFragment();
         } catch (ClassCastException e) {
-            throw new ClassCastException(getParentFragment().toString()+" must implement ChatTargetProvider");
+            throw new ClassCastException(getParentFragment().toString() + " must implement ChatTargetProvider");
         }
     }
 
@@ -114,14 +96,14 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
     }
 
     @Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_chat, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_chat, container, false);
         mChatList = (ListView) view.findViewById(R.id.chat_list);
-		mChatTextEdit = (EditText) view.findViewById(R.id.chatTextEdit);
-		
-		mSendButton = (ImageButton) view.findViewById(R.id.chatTextSend);
-		mSendButton.setOnClickListener(new OnClickListener() {
+        mChatTextEdit = (EditText) view.findViewById(R.id.chatTextEdit);
+
+        mSendButton = (ImageButton) view.findViewById(R.id.chatTextSend);
+        mSendButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -131,8 +113,8 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
                 }
             }
         });
-		
-		mChatTextEdit.setOnEditorActionListener(new OnEditorActionListener() {
+
+        mChatTextEdit.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 try {
@@ -143,8 +125,8 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
                 return true;
             }
         });
-		
-		mChatTextEdit.addTextChangedListener(new TextWatcher() {
+
+        mChatTextEdit.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -167,7 +149,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
             e.printStackTrace();
         }
         return view;
-	}
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -184,17 +166,12 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Adds the passed text to the fragment chat body.
-     * @param message The message to add.
-     * @param scroll Whether to scroll to the bottom after adding the message.
-     */
     public void addChatMessage(Message message, boolean scroll) {
-		if(mChatAdapter == null) return;
+        if (mChatAdapter == null) return;
 
         mChatAdapter.add(message);
 
-        if(scroll) {
+        if (scroll) {
             mChatList.post(new Runnable() {
 
                 @Override
@@ -203,34 +180,24 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
                 }
             });
         }
-	}
+    }
 
-    /**
-     * Sends the message currently in {@link com.terracom.qrpttbeta.channel.ChannelChatFragment#mChatTextEdit}
-     * to the remote server. Clears the message box if the message was sent successfully.
-     * @throws RemoteException If the service failed to send the message.
-     */
-	private void sendMessage() throws RemoteException {
-        if(mChatTextEdit.length() == 0) return;
+    private void sendMessage() throws RemoteException {
+        if (mChatTextEdit.length() == 0) return;
         String message = mChatTextEdit.getText().toString();
         String formattedMessage = markupOutgoingMessage(message);
         ChatTargetProvider.ChatTarget target = mTargetProvider.getChatTarget();
         Message responseMessage = null;
-        if(target == null)
+        if (target == null)
             responseMessage = getService().sendChannelTextMessage(getService().getSessionChannel().getId(), formattedMessage, false);
-        else if(target.getUser() != null)
+        else if (target.getUser() != null)
             responseMessage = getService().sendUserTextMessage(target.getUser().getSession(), formattedMessage);
-        else if(target.getChannel() != null)
+        else if (target.getChannel() != null)
             responseMessage = getService().sendChannelTextMessage(target.getChannel().getId(), formattedMessage, false);
         addChatMessage(responseMessage, true);
         mChatTextEdit.setText("");
-	}
+    }
 
-    /**
-     * Adds HTML markup to the message, replacing links and newlines.
-     * @param message The message to markup.
-     * @return HTML data.
-     */
     private String markupOutgoingMessage(String message) {
         String formattedBody = message;
         Matcher matcher = LINK_PATTERN.matcher(formattedBody);
@@ -238,8 +205,8 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
                 .replaceAll("\n", "<br>");
         return formattedBody;
     }
-	
-	public void clear() {
+
+    public void clear() {
         mChatAdapter.clear();
         try {
             getService().clearMessageLog();
@@ -248,23 +215,20 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         }
     }
 
-	/**
-	 * Updates hint displaying chat target.
-	 */
-	public void updateChatTargetText(ChatTargetProvider.ChatTarget target) throws RemoteException {
-        if(getService() == null) return;
+    public void updateChatTargetText(ChatTargetProvider.ChatTarget target) throws RemoteException {
+        if (getService() == null) return;
 
         String hint = null;
-        if(target == null && getService().getSessionChannel() != null) {
+        if (target == null && getService().getSessionChannel() != null) {
             hint = getString(R.string.messageToChannel, getService().getSessionChannel().getName());
-        } else if(target != null && target.getUser() != null) {
+        } else if (target != null && target.getUser() != null) {
             hint = getString(R.string.messageToUser, target.getUser().getName());
-        } else if(target != null && target.getChannel() != null) {
+        } else if (target != null && target.getChannel() != null) {
             hint = getString(R.string.messageToChannel, target.getChannel().getName());
         }
         mChatTextEdit.setHint(hint);
-        mChatTextEdit.requestLayout(); // Needed to update bounds after hint change.
-	}
+        mChatTextEdit.requestLayout();
+    }
 
 
     @Override
@@ -311,7 +275,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
-            if(v == null) {
+            if (v == null) {
                 v = LayoutInflater.from(getContext()).inflate(R.layout.list_chat_item, parent, false);
             }
 
@@ -368,7 +332,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
 
         @Override
         public boolean isEnabled(int position) {
-            return false; // Makes links clickable.
+            return false;
         }
     }
 }

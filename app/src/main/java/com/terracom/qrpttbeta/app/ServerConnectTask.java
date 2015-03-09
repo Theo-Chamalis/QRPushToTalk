@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.app;
 
 import android.content.Context;
@@ -34,10 +17,6 @@ import com.terracom.qrpttbeta.util.QRPushToTalkTrustStore;
 
 import java.util.ArrayList;
 
-/**
- * Constructs an intent for connection to a QRPushToTalkService and executes it.
- * Created by andrew on 20/08/14.
- */
 public class ServerConnectTask extends AsyncTask<Server, Void, Intent> {
     private Context mContext;
     private QRPushToTalkDatabase mDatabase;
@@ -52,8 +31,6 @@ public class ServerConnectTask extends AsyncTask<Server, Void, Intent> {
     @Override
     protected Intent doInBackground(Server... params) {
         Server server = params[0];
-
-        /* Convert input method defined in settings to an integer format used by Jumble. */
         int inputMethod = mSettings.getJumbleInputMethod();
 
         int audioSource = mSettings.isHandsetMode() ?
@@ -70,7 +47,7 @@ public class ServerConnectTask extends AsyncTask<Server, Void, Intent> {
 
         Intent connectIntent = new Intent(mContext, QRPushToTalkService.class);
         connectIntent.putExtra(JumbleService.EXTRAS_SERVER, server);
-        connectIntent.putExtra(JumbleService.EXTRAS_CLIENT_NAME, mContext.getString(R.string.app_name)+" "+applicationVersion);
+        connectIntent.putExtra(JumbleService.EXTRAS_CLIENT_NAME, mContext.getString(R.string.app_name) + " " + applicationVersion);
         connectIntent.putExtra(JumbleService.EXTRAS_TRANSMIT_MODE, inputMethod);
         connectIntent.putExtra(JumbleService.EXTRAS_DETECTION_THRESHOLD, mSettings.getDetectionThreshold());
         connectIntent.putExtra(JumbleService.EXTRAS_AMPLITUDE_BOOST, mSettings.getAmplitudeBoostMultiplier());

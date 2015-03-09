@@ -1,15 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
+
     <string name="drawer_server">Сервер</string>
     <string name="drawer_header_servers">Сервер</string>
-  <!--Chat formatting-->
-  <!--User menu-->
-  <!--Channel menu-->
-  <!--Comment Fragment-->
-  <!--Server Info Fragment-->
-  <!--Server matching-->
-  <!--Common-->
+
     <string name="generateCert">Создать сертификат</string>
     <string name="server">Сервер</string>
     <string name="chat_notify_moved">%1$s перемещен(а) %3$s из %2$s.</string>

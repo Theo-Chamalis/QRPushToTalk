@@ -125,15 +125,15 @@ public class WizardActivity extends ActionBarActivity implements WizardNavigatio
 
     @Override
     public void back() {
-        if(mViewPager.getCurrentItem() == 0)
+        if (mViewPager.getCurrentItem() == 0)
             showConfirmQuitDialog(); // If cancel is pressed at the beginning of the pager, prompt the user to quit.
         else
-            mViewPager.setCurrentItem(mViewPager.getCurrentItem()-1, true);
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1, true);
     }
 
     private class WizardPagerAdapter extends FragmentPagerAdapter {
 
-        private final Class<? extends Fragment> WIZARD_FRAGMENTS[] = new Class[] {
+        private final Class<? extends Fragment> WIZARD_FRAGMENTS[] = new Class[]{
                 WizardWelcomeFragment.class,
                 WizardCertificateFragment.class,
                 WizardAudioFragment.class,

@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel.comment;
 
 import android.app.Activity;
@@ -34,10 +17,6 @@ import com.terracom.jumble.IJumbleService;
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.util.JumbleServiceProvider;
 
-/**
- * Fragment to change your comment using basic WYSIWYG tools.
- * Created by andrew on 10/08/13.
- */
 public abstract class AbstractCommentFragment extends DialogFragment {
 
     private TabHost mTabHost;
@@ -74,7 +53,7 @@ public abstract class AbstractCommentFragment extends DialogFragment {
         mTabHost = (TabHost) view.findViewById(R.id.comment_tabhost);
         mTabHost.setup();
 
-        if(mComment == null) {
+        if (mComment == null) {
             mCommentView.loadData("Loading...", null, null);
             try {
                 requestComment(mProvider.getService());
@@ -99,11 +78,9 @@ public abstract class AbstractCommentFragment extends DialogFragment {
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if("View".equals(tabId)) {
-                    // When switching back to view tab, update with user's HTML changes.
+                if ("View".equals(tabId)) {
                     mCommentView.loadData(mCommentEdit.getText().toString(), "text/html", "UTF-8");
-                } else if("Edit".equals(tabId) && "".equals(mCommentEdit.getText().toString())) {
-                    // Load edittext content for the first time when the tab is selected, to improve performance with long messages.
+                } else if ("Edit".equals(tabId) && "".equals(mCommentEdit.getText().toString())) {
                     mCommentEdit.setText(mComment);
                 }
             }
@@ -130,7 +107,7 @@ public abstract class AbstractCommentFragment extends DialogFragment {
     }
 
     protected void loadComment(String comment) {
-        if(mCommentView == null) return;
+        if (mCommentView == null) return;
         mCommentView.loadData(comment, "text/html", "UTF-8");
         mComment = comment;
     }
@@ -139,17 +116,7 @@ public abstract class AbstractCommentFragment extends DialogFragment {
         return getArguments().getBoolean("editing");
     }
 
-    /**
-     * Requests a comment from the service. Will not be called if we already have a comment provided.
-     * This method is expected to set a callback that will call {@link com.terracom.qrpttbeta.channel.comment.AbstractCommentFragment#loadComment(String comment)}.
-     * @param service The bound Jumble service to use for remote calls.
-     */
     public abstract void requestComment(IJumbleService service) throws RemoteException;
 
-    /**
-     * Asks the service to replace the comment.
-     * @param service The bound Jumble service to use for remote calls.
-     * @param comment The comment the user has defined.
-     */
     public abstract void editComment(IJumbleService service, String comment) throws RemoteException;
 }

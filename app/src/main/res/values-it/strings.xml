@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
+
   <string name="drawer_not_connected">Non connesso</string>
   <string name="drawer_server">Server</string>
   <string name="drawer_info">Informazioni</string>
@@ -8,9 +8,9 @@
   <string name="drawer_favorites">Favoriti</string>
   <string name="drawer_lan">LAN</string>
   <string name="drawer_public">Server pubblici</string>
-  <!--Chat formatting-->
+
   <string name="chat_message_to">%1$s → %2$s</string>
-  <!--User menu-->
+
   <string name="user_menu_admin">Admin</string>
   <string name="user_menu_ignore_messages">Ignora messaggi</string>
   <string name="user_menu_change_comment">Cambia commento</string>
@@ -19,20 +19,20 @@
   <string name="user_menu_information">Informazioni</string>
   <string name="user_menu_register">Registra</string>
   <string name="user_menu_registered">Registrato</string>
-  <!--Channel menu-->
+
   <string name="channel_menu_pin">Pin</string>
-  <!--Comment Fragment-->
+
   <string name="comment_edit_source">MODIFICA SORGENTE</string>
   <string name="comment_view_source">MOSTRA SORGENTE</string>
-  <!--Server Info Fragment-->
+
   <string name="server_info_protocol">Protocollo %s.</string>
   <string name="server_info_version">%1$s (%2$s)</string>
   <string name="server_info_codec">Codec: %s</string>
-  <!--Server matching-->
+
   <string name="server_match">Cerca server</string>
   <string name="server_match_found">Server trovato</string>
   <string name="server_match_not_found">Impossibile trovare server</string>
-  <!--Common-->
+
   <string name="channels">Canali</string>
   <string name="server_add">Aggiungi server</string>
   <string name="server_password">Password</string>

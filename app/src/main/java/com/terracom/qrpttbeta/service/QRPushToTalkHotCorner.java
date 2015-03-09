@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.service;
 
 import android.content.Context;
@@ -26,10 +9,6 @@ import android.view.WindowManager;
 
 import com.terracom.qrpttbeta.R;
 
-/**
- * A hot corner in an area of the screen specified by {@link QRPushToTalkHotCorner#getGravity()}.
- * Created by andrew on 07/06/14.
- */
 public class QRPushToTalkHotCorner implements View.OnTouchListener {
     private WindowManager mWindowManager;
     private Context mContext;
@@ -40,7 +19,7 @@ public class QRPushToTalkHotCorner implements View.OnTouchListener {
     private WindowManager.LayoutParams mParams;
 
     public QRPushToTalkHotCorner(Context context, int gravity, QRPushToTalkHotCornerListener listener) {
-        if(listener == null) {
+        if (listener == null) {
             throw new NullPointerException("A QRPushToTalkHotCornerListener must be assigned.");
         }
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -58,12 +37,8 @@ public class QRPushToTalkHotCorner implements View.OnTouchListener {
         mHighlightColour = mContext.getResources().getColor(R.color.holo_blue_bright);
     }
 
-    /**
-     * Updates the hot corner with any new settings applied, recalculating the layout parameters.
-     * Does nothing if the hot corner is not shown.
-     */
     private void updateLayout() {
-        if(!isShown()) return;
+        if (!isShown()) return;
         mWindowManager.updateViewLayout(mView, mParams);
     }
 
@@ -84,8 +59,8 @@ public class QRPushToTalkHotCorner implements View.OnTouchListener {
     }
 
     public void setShown(boolean shown) {
-        if(shown == mShown) return;
-        if(shown) {
+        if (shown == mShown) return;
+        if (shown) {
             mWindowManager.addView(mView, mParams);
         } else {
             mWindowManager.removeView(mView);
@@ -108,6 +83,7 @@ public class QRPushToTalkHotCorner implements View.OnTouchListener {
 
     public static interface QRPushToTalkHotCornerListener {
         public void onHotCornerDown();
+
         public void onHotCornerUp();
     }
 }

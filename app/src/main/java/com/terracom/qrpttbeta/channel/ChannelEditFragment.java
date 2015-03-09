@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.app.Activity;
@@ -34,9 +17,6 @@ import com.terracom.jumble.net.Permissions;
 import com.terracom.qrpttbeta.R;
 import com.terracom.qrpttbeta.util.JumbleServiceProvider;
 
-/**
- * Created by andrew on 23/11/13.
- */
 public class ChannelEditFragment extends DialogFragment {
 
     private JumbleServiceProvider mServiceProvider;
@@ -66,7 +46,6 @@ public class ChannelEditFragment extends DialogFragment {
         mTemporaryBox = (CheckBox) view.findViewById(R.id.channel_edit_temporary);
 
         try {
-            // If we can only make temporary channels, remove the option.
             Channel parentChannel = mServiceProvider.getService().getChannel(getParent());
             int combinedPermissions = mServiceProvider.getService().getPermissions() | parentChannel.getPermissions();
             boolean canMakeChannel = (combinedPermissions & Permissions.MakeChannel) > 0;
@@ -85,7 +64,7 @@ public class ChannelEditFragment extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         try {
-                            if(isAdding()) {
+                            if (isAdding()) {
                                 mServiceProvider.getService().createChannel(getParent(),
                                         mNameField.getText().toString(),
                                         mDescriptionField.getText().toString(),
@@ -103,22 +82,14 @@ public class ChannelEditFragment extends DialogFragment {
                 .create();
     }
 
-    /**
-     * @return true if the user is adding a new channel.
-     */
     public boolean isAdding() {
         return getArguments().getBoolean("adding");
     }
 
-    /**
-     * @return the parent channel that the new channel will be a child of.
-     */
     public int getParent() {
         return getArguments().getInt("parent");
     }
-    /**
-     * @return the channel being updated.
-     */
+
     public int getChannel() {
         return getArguments().getInt("channel");
     }

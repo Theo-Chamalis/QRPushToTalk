@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.content.Context;
@@ -31,10 +14,6 @@ import com.terracom.jumble.model.Channel;
 import com.terracom.jumble.model.User;
 import com.terracom.qrpttbeta.R;
 
-/**
- * Simple adapter to display the users in a single channel.
- * Created by andrew on 24/11/13.
- */
 public class ChannelAdapter extends BaseAdapter {
 
     private Context mContext;
@@ -70,7 +49,7 @@ public class ChannelAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        if(v == null) {
+        if (v == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             v = layoutInflater.inflate(R.layout.overlay_user_row, parent, false);
         }
@@ -89,8 +68,7 @@ public class ChannelAdapter extends BaseAdapter {
             state.setImageResource(R.drawable.ic_server_muted);
         else if (user.isSuppressed())
             state.setImageResource(R.drawable.ic_suppressed);
-        else
-        if (user.getTalkState() == User.TalkState.TALKING)
+        else if (user.getTalkState() == User.TalkState.TALKING)
             state.setImageResource(R.drawable.ic_talking_on);
         else
             state.setImageResource(R.drawable.ic_talking_off);

@@ -74,7 +74,7 @@ public class WizardAudioFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
-            if(view == null) {
+            if (view == null) {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 view = inflater.inflate(android.R.layout.simple_spinner_item, parent, false);
             }
@@ -86,7 +86,7 @@ public class WizardAudioFragment extends Fragment {
         @Override
         public View getDropDownView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
-            if(view == null) {
+            if (view == null) {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 view = inflater.inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
             }

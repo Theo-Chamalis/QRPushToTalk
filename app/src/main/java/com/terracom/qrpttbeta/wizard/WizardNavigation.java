@@ -22,5 +22,6 @@ package com.terracom.qrpttbeta.wizard;
  */
 public interface WizardNavigation {
     public void back();
+
     public void next();
 }

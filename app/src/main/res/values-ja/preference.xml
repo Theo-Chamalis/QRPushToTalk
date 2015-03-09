@@ -3,21 +3,21 @@
   <string name="inputMethodVoice">音声機能</string>
   <string name="inputMethodPtt">プッシュ トゥ トーク</string>
   <string name="inputMethodContinuous">連続</string>
-  <!--Theme names-->
+
   <string name="theme_light">ライト</string>
   <string name="theme_dark">ダーク</string>
   <string name="theme_solarized_light">ソラライズ ライト</string>
   <string name="theme_solarized_dark">ソラライズ ダーク</string>
-  <!--Call modes-->
+
   <string name="call_mode_speakerphone">スピーカーフォン</string>
   <string name="call_mode_voice_call">音声通話</string>
-  <!--Hot corner-->
+
   <string name="hot_corner_none">なし</string>
   <string name="hot_corner_top_left">左上</string>
   <string name="hot_corner_bottom_left">左下</string>
   <string name="hot_corner_top_right">右上</string>
   <string name="hot_corner_bottom_right">右下</string>
-  <!--About-->
+
   <string name="about">アプリについて</string>
   <string name="aboutSum">法律と謝辞</string>
   <string name="acknowledgements">謝辞</string>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
+
   <string name="drawer_open">Open Luik</string>
   <string name="drawer_close">Sluit Luik</string>
   <string name="drawer_not_connected">Niet Verbonden</string>
@@ -12,11 +12,11 @@
   <string name="drawer_favorites">Favorieten</string>
   <string name="drawer_lan">LAN</string>
   <string name="drawer_public">Openbare Servers</string>
-  <!--Chat formatting-->
+
   <string name="chat_message_tree">(Vertakt)</string>
   <string name="chat_message_channel">(Kanaal)</string>
   <string name="chat_message_to">%1$s → %2$s</string>
-  <!--User menu-->
+
   <string name="user_menu_admin">Admin</string>
   <string name="user_menu_kick">Kick</string>
   <string name="user_menu_ban">Verban</string>
@@ -33,13 +33,13 @@
   <string name="user_menu_information">Informatie</string>
   <string name="user_menu_register">Registreer</string>
   <string name="user_menu_registered">Geregistreerd</string>
-  <!--Channel menu-->
+
   <string name="channel_menu_pin">Prik op</string>
-  <!--Comment Fragment-->
+
   <string name="comment_view">WEERGEVEN</string>
   <string name="comment_edit_source">BEWERK BRON</string>
   <string name="comment_view_source">BEKIJK BRON</string>
-  <!--Server Info Fragment-->
+
   <string name="control_channel">Controle Kanaal</string>
   <string name="tcp_encryption_mode">Versleuteld met 256 bit AES256-SHA</string>
   <string name="voice_channel">Stem Kanaal</string>
@@ -52,14 +52,14 @@
   <string name="server_info_codec">Codec: %s</string>
   <string name="server_info_max_bandwidth">Maximum %.1f kbit/s</string>
   <string name="server_info_current_bandwidth">Huidig %.1f kbit/s</string>
-  <!--Server matching-->
+
   <string name="server_match">Zoek Server</string>
   <string name="server_match_progress">Server zoeken...</string>
   <string name="server_match_found">Server gevonden</string>
   <string name="server_match_not_found">Server niet gevonden</string>
   <string name="server_match_expand_country">Kon geen optimale servers in uw land vinden. Zoekopdracht wereldwijd uitbreiden?</string>
   <string name="server_match_description">QRPushToTalk kan automatisch een lege server zoeken, geoptimaliseerd aan de hand van locatie, versie en latency.</string>
-  <!--Common-->
+
   <string name="channels">Kanalen</string>
   <string name="server_add">Server toevoegen</string>
   <string name="server_password">Wachtwoord</string>

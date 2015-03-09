@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.drawable;
 
 import android.content.res.Resources;
@@ -32,10 +15,6 @@ import android.util.TypedValue;
 
 import com.terracom.qrpttbeta.R;
 
-/**
- * A drawable containing a circular bitmap in the style of @drawable/outline_circle_talking_off.
- * Created by andrew on 19/10/14.
- */
 public class CircleDrawable extends Drawable {
     public static final int STROKE_WIDTH_DP = 1;
     private Resources mResources;
@@ -89,9 +68,8 @@ public class CircleDrawable extends Drawable {
     public void draw(Canvas canvas) {
         RectF imageRect = new RectF(getBounds());
         RectF strokeRect = new RectF(getBounds());
-        // Default stroke drawing is both inset and outset.
-        strokeRect.inset(mStrokePaint.getStrokeWidth()/2,
-                         mStrokePaint.getStrokeWidth()/2);
+        strokeRect.inset(mStrokePaint.getStrokeWidth() / 2,
+                mStrokePaint.getStrokeWidth() / 2);
 
         canvas.drawOval(imageRect, mPaint);
         canvas.drawOval(strokeRect, mStrokePaint);

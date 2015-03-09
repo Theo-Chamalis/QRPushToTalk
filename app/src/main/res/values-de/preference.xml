@@ -3,21 +3,21 @@
   <string name="inputMethodVoice">Sprachaktivierung</string>
   <string name="inputMethodPtt">Push-To-Talk</string>
   <string name="inputMethodContinuous">Kontinuierlich</string>
-    <!--Theme names-->
+
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>
     <string name="theme_solarized_light">Solarized Light</string>
     <string name="theme_solarized_dark">Solarized Dark</string>
-    <!--Call modes-->
+
     <string name="call_mode_speakerphone">Lautsprecher</string>
     <string name="call_mode_voice_call">Telefongespräch</string>
-    <!--Hot corner-->
+
     <string name="hot_corner_none">Keine</string>
     <string name="hot_corner_top_left">Oben links</string>
     <string name="hot_corner_bottom_left">Unten links</string>
     <string name="hot_corner_top_right">Oben rechts</string>
     <string name="hot_corner_bottom_right">Unten rechts</string>
-  <!--About-->
+
   <string name="about">Über</string>
   <string name="aboutSum">Rechtliches und Danksagungen</string>
   <string name="acknowledgements">Danksagungen</string>

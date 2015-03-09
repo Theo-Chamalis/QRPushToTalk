@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.content.Context;
@@ -48,18 +31,11 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by andrew on 31/07/13.
- */
 public class ChannelListAdapter extends RecyclerView.Adapter {
-    // Set particular bits to make the integer-based model item ids unique.
     public static final long CHANNEL_ID_MASK = (0x1L << 32);
     public static final long USER_ID_MASK = (0x1L << 33);
     String nameOfChannel = QRPushToTalkActivity.nameOfSavedLastLoggedChannel;
 
-    /**
-     * Time (in ms) to run the flip animation for.
-     */
     private static final long FLIP_DURATION = 350;
 
     private Context mContext;
@@ -67,10 +43,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     private QRPushToTalkDatabase mDatabase;
     private List<Integer> mRootChannels;
     private List<Node> mNodes;
-    /**
-     * A mapping of user-set channel expansions.
-     * If a key is not mapped, default to hiding empty channels.
-     */
     private HashMap<Integer, Boolean> mExpandedChannels;
     private OnUserClickListener mUserClickListener;
     private OnChannelClickListener mChannelClickListener;
@@ -82,13 +54,12 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         mDatabase = database;
 
         mRootChannels = new ArrayList<Integer>();
-        if(showPinnedOnly) {
+        if (showPinnedOnly) {
             mRootChannels = mDatabase.getPinnedChannels(mService.getConnectedServer().getId());
         } else {
             mRootChannels.add(0);
         }
 
-        // Construct channel tree
         mNodes = new LinkedList<Node>();
         mExpandedChannels = new HashMap<Integer, Boolean>();
         updateChannels();
@@ -111,8 +82,8 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         final Node node = mNodes.get(position);
 
-        if(!nameOfChannel.equals("")){
-            if(node.isChannel() && !node.getChannel().getName().equals(nameOfChannel) && !node.getChannel().getName().equals("QR-PushToTalk Server")){
+        if (!nameOfChannel.equals("")) {
+            if (node.isChannel() && !node.getChannel().getName().equals(nameOfChannel) && !node.getChannel().getName().equals("QR-PushToTalk Server")) {
 
                 try {
                     updateChannels(); // FIXME: very inefficient.
@@ -133,7 +104,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                     e.printStackTrace();
                 }
 
-            } else if(node.isUser() && !node.getParent().getChannel().getName().equals(nameOfChannel)){
+            } else if (node.isUser() && !node.getParent().getChannel().getName().equals(nameOfChannel)) {
 
                 try {
                     updateChannels(); // FIXME: very inefficient.
@@ -148,18 +119,16 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                 uvh.mUserHolder.setVisibility(View.GONE);
                 uvh.itemView.setVisibility(View.GONE);
 
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
-                uvh.mUserHolder.setPadding((int) margin,0,uvh.mUserHolder.getPaddingRight(),0);
+                uvh.mUserHolder.setPadding((int) margin, 0, uvh.mUserHolder.getPaddingRight(), 0);
 
                 try {
                     updateChannels(); // FIXME: very inefficient.
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-            }
-            else if (node.isChannel() ) {
+            } else if (node.isChannel()) {
                 final Channel channel = node.getChannel();
                 ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
                 cvh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -188,20 +157,18 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                         notifyDataSetChanged();
                     }
                 });
-                // Dim channel expand toggle when no subchannels exist
                 cvh.mChannelExpandToggle.setEnabled(expandUsable);
                 cvh.mChannelExpandToggle.setVisibility(expandUsable ? View.VISIBLE : View.INVISIBLE);
 
                 cvh.mChannelName.setText(channel.getName());
 
                 int userCount = channel.getSubchannelUserCount();
-                if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                if (node.getChannel().getName().equals("QR-PushToTalk Server"))
                     cvh.mChannelUserCount.setText("");
-                else{
+                else {
                     cvh.mChannelUserCount.setText(String.format("%d", userCount));
                 }
 
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = node.getDepth() * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
                 cvh.mChannelHolder.setPadding((int) margin,
@@ -239,7 +206,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
 
                 uvh.mUserTalkHighlight.setImageDrawable(getTalkStateDrawable(user));
 
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
                 uvh.mUserHolder.setPadding((int) margin,
@@ -252,8 +218,8 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                     e.printStackTrace();
                 }
             }
-        }else{
-            if(node.isChannel() && !node.getChannel().getName().equals("Demo Channel") && !node.getChannel().getName().equals("QR-PushToTalk Server")){
+        } else {
+            if (node.isChannel() && !node.getChannel().getName().equals("Demo Channel") && !node.getChannel().getName().equals("QR-PushToTalk Server")) {
                 ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
                 cvh.mChannelExpandToggle.setVisibility(View.GONE);
                 cvh.mChannelName.setText("");
@@ -268,7 +234,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                     e.printStackTrace();
                 }
 
-            } else if(node.isUser() && !node.getParent().getChannel().getName().equals("Demo Channel")){
+            } else if (node.isUser() && !node.getParent().getChannel().getName().equals("Demo Channel")) {
                 UserViewHolder uvh = (UserViewHolder) viewHolder;
                 uvh.mUserName.setText("");
                 uvh.mUserName.setVisibility(View.GONE);
@@ -277,7 +243,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                 uvh.mUserHolder.setVisibility(View.GONE);
                 uvh.itemView.setVisibility(View.GONE);
 
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
                 uvh.mUserHolder.setPadding((int) margin,
@@ -289,8 +254,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-            }
-            else if (node.isChannel()) {
+            } else if (node.isChannel()) {
                 final Channel channel = node.getChannel();
                 ChannelViewHolder cvh = (ChannelViewHolder) viewHolder;
                 cvh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -319,21 +283,19 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                         notifyDataSetChanged();
                     }
                 });
-                // Dim channel expand toggle when no subchannels exist
+
                 cvh.mChannelExpandToggle.setEnabled(expandUsable);
                 cvh.mChannelExpandToggle.setVisibility(expandUsable ? View.VISIBLE : View.INVISIBLE);
 
                 cvh.mChannelName.setText(channel.getName());
 
                 int userCount = channel.getSubchannelUserCount();
-                if(node.getChannel().getName().equals("QR-PushToTalk Server"))
+                if (node.getChannel().getName().equals("QR-PushToTalk Server"))
                     cvh.mChannelUserCount.setText("");
-                else{
+                else {
                     cvh.mChannelUserCount.setText(String.format("%d", userCount));
                 }
 
-
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = node.getDepth() * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
                 cvh.mChannelHolder.setPadding((int) margin,
@@ -345,7 +307,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-            } else if (node.isUser() ) {
+            } else if (node.isUser()) {
                 final User user = node.getUser();
                 UserViewHolder uvh = (UserViewHolder) viewHolder;
                 uvh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -366,7 +328,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
 
                 uvh.mUserTalkHighlight.setImageDrawable(getTalkStateDrawable(user));
 
-                // Pad the view depending on channel's nested level.
                 DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
                 float margin = (node.getDepth() + 1) * TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, metrics);
                 uvh.mUserHolder.setPadding((int) margin,
@@ -407,10 +368,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         return mNodes.get(position).getId();
     }
 
-    /**
-     * Updates the channel tree model.
-     * To be used after any channel tree modifications.
-     */
     public void updateChannels() throws RemoteException {
         mNodes.clear();
         for (int cid : mRootChannels) {
@@ -421,11 +378,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    /**
-     * Updates the user's state icon with a nice animation.
-     * @param user The user to update.
-     * @param view The view containing this adapter.
-     */
     public void animateUserStateUpdate(User user, RecyclerView view) {
         long itemId = user.getSession() | USER_ID_MASK;
         UserViewHolder uvh = (UserViewHolder) view.findViewHolderForItemId(itemId);
@@ -435,12 +387,10 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
 
             if (!newState.getConstantState().equals(oldState.getConstantState())) {
                 if (Build.VERSION.SDK_INT >= 12) {
-                    // "Flip" in new talking state.
                     FlipDrawable drawable = new FlipDrawable(oldState, newState);
                     uvh.mUserTalkHighlight.setImageDrawable(drawable);
                     drawable.start(FLIP_DURATION);
                 } else {
-                    // If we're on a platform without ValueAnimator, simply set the state image.
                     uvh.mUserTalkHighlight.setImageDrawable(newState);
                 }
             }
@@ -465,7 +415,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
             // TODO: add whisper and shouting resources
             return resources.getDrawable(R.drawable.outline_circle_talking_on);
         } else {
-            // Passive drawables
             if (user.getTexture() != null) {
                 return new CircleDrawable(mContext.getResources(), user.getTexture());
             } else {
@@ -504,13 +453,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         mChannelClickListener = listener;
     }
 
-    /**
-     * Recursively creates a list of {@link Node}s representing the channel hierarchy.
-     * @param parent The parent node to propagate under.
-     * @param channel The parent channel.
-     * @param depth The current depth of the subtree.
-     * @param nodes An accumulator to store generated nodes into.
-     */
     private void constructNodes(Node parent, Channel channel, int depth,
                                 List<Node> nodes) throws RemoteException {
         Node channelNode = new Node(parent, depth, channel);
@@ -520,7 +462,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         if ((expandSetting == null && channel.getSubchannelUserCount() == 0)
                 || (expandSetting != null && !expandSetting)) {
             channelNode.setExpanded(false);
-            return; // Skip adding children of contracted/empty channels.
+            return;
         }
 
         for (int uid : channel.getUsers()) {
@@ -536,11 +478,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    /**
-     * Changes the service backing the adapter. Updates the list as well.
-     * @param service The new service to retrieve channels from.
-     * @throws RemoteException
-     */
     public void setService(IJumbleService service) throws RemoteException {
         mService = service;
         updateChannels();
@@ -551,7 +488,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         public LinearLayout mUserHolder;
         public TextView mUserName;
         public FrameLayout mPicofMic;
-//        public ImageView mUserAvatar;
         public ImageView mUserTalkHighlight;
 
         public UserViewHolder(View itemView) {
@@ -579,10 +515,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    /**
-     * An arbitrary node in the channel-user hierarchy.
-     * Can be either a channel or user.
-     */
     private static class Node {
         private Node mParent;
         private Channel mChannel;
@@ -616,7 +548,7 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
 
         public Channel getChannel() {
-                return mChannel;
+            return mChannel;
         }
 
         public User getUser() {
@@ -624,7 +556,6 @@ public class ChannelListAdapter extends RecyclerView.Adapter {
         }
 
         public Long getId() {
-            // Apply flags to differentiate integer-length identifiers
             if (isChannel()) {
                 return CHANNEL_ID_MASK | mChannel.getId();
             } else if (isUser()) {

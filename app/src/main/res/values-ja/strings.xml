@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-  <!--Drawer pane-->
+
   <string name="drawer_open">ドロワーを開く</string>
   <string name="drawer_close">ドロワーを閉じる</string>
   <string name="drawer_not_connected">接続されていませｎ</string>
@@ -12,11 +12,11 @@
   <string name="drawer_favorites">お気に入り</string>
   <string name="drawer_lan">LAN</string>
   <string name="drawer_public">公開サーバー</string>
-  <!--Chat formatting-->
+
   <string name="chat_message_tree">(ツリー)</string>
   <string name="chat_message_channel">(チャンネル)</string>
   <string name="chat_message_to">%1$s → %2$s</string>
-  <!--User menu-->
+
   <string name="user_menu_admin">管理</string>
   <string name="user_menu_kick">キック</string>
   <string name="user_menu_ban">禁止</string>
@@ -33,13 +33,13 @@
   <string name="user_menu_information">情報</string>
   <string name="user_menu_register">登録</string>
   <string name="user_menu_registered">登録済</string>
-  <!--Channel menu-->
+
   <string name="channel_menu_pin">Pin</string>
-  <!--Comment Fragment-->
+
   <string name="comment_view">表示</string>
   <string name="comment_edit_source">ソースを編集</string>
   <string name="comment_view_source">ソースを表示</string>
-  <!--Server Info Fragment-->
+
   <string name="control_channel">制御チャンネル</string>
   <string name="tcp_encryption_mode">256 ビット AES256-SHA で暗号化</string>
   <string name="voice_channel">音声チャンネル</string>
@@ -52,7 +52,7 @@
   <string name="server_info_codec">コーデック: %s</string>
   <string name="server_info_max_bandwidth">最高 %.1f kbit/s</string>
   <string name="server_info_current_bandwidth">現在 %.1f kbit/s</string>
-  <!--Server matching-->
+
   <string name="server_match">サーバーを検索</string>
   <string name="server_match_progress">サーバーを検索中…</string>
   <string name="server_match_found">サーバーが見つかりました</string>
@@ -60,7 +60,7 @@
   <string name="server_match_expand_country">あなたの国で最適なサーバーを見つけることができませんでした。ワールドワイドに検索を展開しますか?</string>
   <string name="server_match_info">名前: %1$s\nホスト: %2$s:%3$d\nユーザー: %4$d / %5$d\nバージョン: %6$s \n国: %7$s \n遅延時間: %8$d ms</string>
   <string name="server_match_description">QRPushToTalk は、サーバの場所、バージョン、および遅延時間に基づいて最適な空のサーバーを自動的に見つけることができます。</string>
-  <!--Common-->
+
   <string name="channels">チャンネル</string>
   <string name="no_servers">サーバーが追加されていません。\nアクションバーにある \'追加\' ボタンを押して開始ししてください。</string>
   <string name="server_add">サーバーを追加</string>

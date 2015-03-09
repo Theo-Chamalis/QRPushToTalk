@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2014 Andrew Comminos
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package com.terracom.qrpttbeta.channel;
 
 import android.content.SharedPreferences;
@@ -47,10 +30,6 @@ import com.terracom.qrpttbeta.util.JumbleServiceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Class to encapsulate both a ChannelListFragment and ChannelChatFragment.
- * Created by andrew on 02/08/13.
- */
 public class ChannelFragment extends JumbleServiceFragment implements SharedPreferences.OnSharedPreferenceChangeListener, ChatTargetProvider {
 
     private ViewPager mViewPager;
@@ -59,7 +38,6 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
     private View mTalkView;
 
     private ChatTarget mChatTarget;
-    /** Chat target listeners, notified when the chat target is changed. */
     private List<OnChatTargetSelectedListener> mChatTargetListeners = new ArrayList<OnChatTargetSelectedListener>();
     private boolean mTogglePTT;
 
@@ -67,8 +45,6 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
         @Override
         public void onUserTalkStateUpdated(User user) throws RemoteException {
             if (user != null && user.getSession() == getService().getSession()) {
-                // Manually set button selection colour when we receive a talk state update.
-                // This allows representation of talk state when using hot corners and PTT toggle.
                 switch (user.getTalkState()) {
                     case TALKING:
                     case SHOUTING:
@@ -94,8 +70,8 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
         View view = inflater.inflate(R.layout.fragment_channel, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.channel_view_pager);
         mTabStrip = (PagerTabStrip) view.findViewById(R.id.channel_tab_strip);
-        if(mTabStrip != null) {
-            int[] attrs = new int[] { R.attr.colorPrimary, android.R.attr.textColorPrimaryInverse };
+        if (mTabStrip != null) {
+            int[] attrs = new int[]{R.attr.colorPrimary, android.R.attr.textColorPrimaryInverse};
             TypedArray a = getActivity().obtainStyledAttributes(attrs);
             int titleStripBackground = a.getColor(0, -1);
             int titleStripColor = a.getColor(1, -1);
@@ -144,10 +120,10 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         preferences.registerOnSharedPreferenceChangeListener(this);
 
-        if(mViewPager != null) { // Phone
+        if (mViewPager != null) {
             ChannelFragmentPagerAdapter pagerAdapter = new ChannelFragmentPagerAdapter(getChildFragmentManager());
             mViewPager.setAdapter(pagerAdapter);
-        } else { // Tablet
+        } else {
             ChannelListFragment listFragment = new ChannelListFragment();
             Bundle listArgs = new Bundle();
             listArgs.putBoolean("pinned", isShowingPinnedChannels());
@@ -164,7 +140,6 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.channel_menu, menu);
     }
 
     @Override
@@ -196,17 +171,11 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
         return mObserver;
     }
 
-    /**
-     * @return true if the channel fragment is set to display only the user's pinned channels.
-     */
     private boolean isShowingPinnedChannels() {
         return getArguments() != null &&
-               getArguments().getBoolean("pinned");
+                getArguments().getBoolean("pinned");
     }
 
-    /**
-     * Configures the fragment in accordance with the user's interface preferences.
-     */
     private void configureInput() {
         Settings settings = Settings.getInstance(getActivity());
         boolean showPttButton = settings.isPushToTalkButtonShown() && settings.getInputMethod().equals(Settings.ARRAY_INPUT_METHOD_PTT);
@@ -216,7 +185,7 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if(Settings.PREF_INPUT_METHOD.equals(key) ||
+        if (Settings.PREF_INPUT_METHOD.equals(key) ||
                 Settings.PREF_PUSH_BUTTON_HIDE_KEY.equals(key) ||
                 Settings.PREF_PTT_TOGGLE.equals(key))
             configureInput();
@@ -230,7 +199,7 @@ public class ChannelFragment extends JumbleServiceFragment implements SharedPref
     @Override
     public void setChatTarget(ChatTarget target) {
         mChatTarget = target;
-        for(OnChatTargetSelectedListener listener : mChatTargetListeners)
+        for (OnChatTargetSelectedListener listener : mChatTargetListeners)
             listener.onChatTargetSelected(target);
     }
 
