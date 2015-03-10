@@ -15,14 +15,10 @@ public interface QRPushToTalkDatabase {
 
     public void updateServer(Server server);
 
-<<<<<<< HEAD
     public void removeServer(Server server);
 
     public List<Integer> getPinnedChannels(long serverId);
 
-=======
-    public List<Integer> getPinnedChannels(long serverId);
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
     public List<String> getAccessTokens(long serverId);
 
     public List<Integer> getLocalMutedUsers(long serverId);

@@ -5,10 +5,7 @@ import android.view.MenuItem;
 
 import com.terracom.jumble.model.Server;
 import com.terracom.qrpttbeta.R;
-<<<<<<< HEAD
 
-=======
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 import java.util.List;
 
 /**
@@ -45,10 +42,7 @@ public class FavouriteServerAdapter extends ServerAdapter<Server> {
 
     public static interface FavouriteServerAdapterMenuListener {
         public void editServer(Server server);
-<<<<<<< HEAD
 
-=======
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
         public void deleteServer(Server server);
     }
 }

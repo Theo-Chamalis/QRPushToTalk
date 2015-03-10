@@ -37,11 +37,7 @@ public class QRPushToTalkService extends JumbleService implements
     private QRPushToTalkOverlay mChannelOverlay;
     private PowerManager.WakeLock mProximityLock;
     private boolean mPTTSoundEnabled;
-<<<<<<< HEAD
     private boolean mErrorShown;
-=======
-            private boolean mErrorShown;
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     private TextToSpeech mTTS;
     private TextToSpeech.OnInitListener mTTSInitListener = new TextToSpeech.OnInitListener() {
@@ -127,15 +123,9 @@ public class QRPushToTalkService extends JumbleService implements
 
         @Override
         public void onUserStateUpdated(User user) throws RemoteException {
-<<<<<<< HEAD
             if (user.getSession() == mBinder.getSession()) {
                 mSettings.setMutedAndDeafened(user.isSelfMuted(), user.isSelfDeafened());
                 if (mNotification != null) {
-=======
-            if(user.getSession() == mBinder.getSession()) {
-                mSettings.setMutedAndDeafened(user.isSelfMuted(), user.isSelfDeafened());
-                if(mNotification != null) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                     String contentText;
                     if (user.isSelfMuted() && user.isSelfDeafened())
                         contentText = getString(R.string.status_notify_muted_and_deafened);
@@ -158,11 +148,7 @@ public class QRPushToTalkService extends JumbleService implements
         public void onMessageLogged(Message message) throws RemoteException {
             String strippedMessage = message.getMessage().replaceAll("<[^>]*>", "");
 
-<<<<<<< HEAD
             if (message.getType() == Message.Type.TEXT_MESSAGE) {
-=======
-            if(message.getType() == Message.Type.TEXT_MESSAGE) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                 String formattedMessage = getString(R.string.notification_message,
                         message.getActorName(), strippedMessage);
 
@@ -171,11 +157,7 @@ public class QRPushToTalkService extends JumbleService implements
                     mNotification.show();
                 }
 
-<<<<<<< HEAD
                 if (mSettings.isTextToSpeechEnabled() &&
-=======
-                if(mSettings.isTextToSpeechEnabled() &&
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                         mTTS != null &&
                         message.getType() == Message.Type.TEXT_MESSAGE &&
                         strippedMessage.length() <= TTS_THRESHOLD &&
@@ -226,11 +208,7 @@ public class QRPushToTalkService extends JumbleService implements
         mChannelOverlay = new QRPushToTalkOverlay(this);
         mHotCorner = new QRPushToTalkHotCorner(this, mSettings.getHotCornerGravity(), mHotCornerListener);
 
-<<<<<<< HEAD
         if (mSettings.isTextToSpeechEnabled())
-=======
-        if(mSettings.isTextToSpeechEnabled())
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             mTTS = new TextToSpeech(this, mTTSInitListener);
 
         mTalkReceiver = new TalkBroadcastReceiver(getBinder());
@@ -266,11 +244,7 @@ public class QRPushToTalkService extends JumbleService implements
     @Override
     public void onConnectionEstablished() {
         super.onConnectionEstablished();
-<<<<<<< HEAD
         if (mSettings.isMuted() || mSettings.isDeafened()) {
-=======
-        if(mSettings.isMuted() || mSettings.isDeafened()) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             try {
                 getBinder().setSelfMuteDeafState(mSettings.isMuted(), mSettings.isDeafened());
             } catch (RemoteException e) {

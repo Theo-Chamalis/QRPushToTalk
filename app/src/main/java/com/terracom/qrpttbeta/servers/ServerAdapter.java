@@ -57,11 +57,7 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
 
         nameText.setText(server.getName());
 
-<<<<<<< HEAD
         if (userText != null) userText.setText(server.getUsername());
-=======
-        if(userText != null) userText.setText(server.getUsername());
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
         final ImageView moreButton = (ImageView) view.findViewById(R.id.server_row_more);
         if (moreButton != null) {
@@ -82,29 +78,17 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
         serverUsersText.setVisibility(!requestExists ? View.INVISIBLE : View.VISIBLE);
         serverInfoProgressBar.setVisibility(!requestExists ? View.VISIBLE : View.INVISIBLE);
 
-<<<<<<< HEAD
         if (infoResponse != null && !requestFailure) {
             serverVersionText.setText("Status: " + getContext().getString(R.string.online) + "  ");
             serverUsersText.setText("Users: " + infoResponse.getCurrentUsers() + "/" + infoResponse.getMaximumUsers());
             serverLatencyText.setText(infoResponse.getLatency() + "ms");
         } else if (requestFailure) {
-=======
-        if(infoResponse != null && !requestFailure) {
-            serverVersionText.setText("Status: "+getContext().getString(R.string.online)+"  ");
-            serverUsersText.setText("Users: "+infoResponse.getCurrentUsers()+"/"+infoResponse.getMaximumUsers());
-            serverLatencyText.setText(infoResponse.getLatency()+"ms");
-        } else if(requestFailure) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             serverVersionText.setText("Status: Offline");
             serverUsersText.setText("");
             serverLatencyText.setText("");
         }
 
-<<<<<<< HEAD
         if (infoResponse == null) {
-=======
-        if(infoResponse == null) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
             ServerInfoTask task = new ServerInfoTask() {
                 protected void onPostExecute(ServerInfoResponse result) {
                     super.onPostExecute(result);
@@ -113,11 +97,7 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
                 }
             };
 
-<<<<<<< HEAD
             if (Build.VERSION.SDK_INT >= 11) {
-=======
-            if(Build.VERSION.SDK_INT >= 11) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                 task.executeOnExecutor(mPingExecutor, server);
             } else {
                 task.execute(server);

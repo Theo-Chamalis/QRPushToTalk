@@ -68,13 +68,8 @@ public class CircleDrawable extends Drawable {
     public void draw(Canvas canvas) {
         RectF imageRect = new RectF(getBounds());
         RectF strokeRect = new RectF(getBounds());
-<<<<<<< HEAD
         strokeRect.inset(mStrokePaint.getStrokeWidth() / 2,
                 mStrokePaint.getStrokeWidth() / 2);
-=======
-        strokeRect.inset(mStrokePaint.getStrokeWidth()/2,
-                         mStrokePaint.getStrokeWidth()/2);
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
         canvas.drawOval(imageRect, mPaint);
         canvas.drawOval(strokeRect, mStrokePaint);

@@ -78,15 +78,9 @@ public abstract class AbstractCommentFragment extends DialogFragment {
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-<<<<<<< HEAD
                 if ("View".equals(tabId)) {
                     mCommentView.loadData(mCommentEdit.getText().toString(), "text/html", "UTF-8");
                 } else if ("Edit".equals(tabId) && "".equals(mCommentEdit.getText().toString())) {
-=======
-                if("View".equals(tabId)) {
-                    mCommentView.loadData(mCommentEdit.getText().toString(), "text/html", "UTF-8");
-                } else if("Edit".equals(tabId) && "".equals(mCommentEdit.getText().toString())) {
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
                     mCommentEdit.setText(mComment);
                 }
             }

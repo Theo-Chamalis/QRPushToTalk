@@ -197,11 +197,9 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
     @Override
     public void removeServer(Server server) {
         getWritableDatabase().delete(TABLE_SERVER, SERVER_ID + "=?",
-<<<<<<< HEAD
+
                 new String[]{String.valueOf(server.getId())});
-=======
-                new String[] { String.valueOf(server.getId()) });
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
+
         getWritableDatabase().delete(TABLE_FAVOURITES, FAVOURITES_SERVER + "=?",
                 new String[]{String.valueOf(server.getId())});
         getWritableDatabase().delete(TABLE_TOKENS, TOKENS_SERVER + "=?",
@@ -307,10 +305,8 @@ public class QRPushToTalkSQLiteDatabase extends SQLiteOpenHelper implements QRPu
     public void removeLocalIgnoredUser(long serverId, int userId) {
         getWritableDatabase().delete(TABLE_LOCAL_IGNORE,
                 LOCAL_IGNORE_SERVER + "=? AND " + LOCAL_IGNORE_USER + "=?",
-<<<<<<< HEAD
+
                 new String[]{String.valueOf(serverId), String.valueOf(userId)});
-=======
-                new String[] { String.valueOf(serverId), String.valueOf(userId) });
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
+
     }
 }

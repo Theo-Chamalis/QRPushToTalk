@@ -180,17 +180,11 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
                 }
             });
         }
-<<<<<<< HEAD
     }
+
 
     private void sendMessage() throws RemoteException {
         if (mChatTextEdit.length() == 0) return;
-=======
-	}
-
-	private void sendMessage() throws RemoteException {
-        if(mChatTextEdit.length() == 0) return;
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
         String message = mChatTextEdit.getText().toString();
         String formattedMessage = markupOutgoingMessage(message);
         ChatTargetProvider.ChatTarget target = mTargetProvider.getChatTarget();
@@ -222,13 +216,8 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         }
     }
 
-<<<<<<< HEAD
     public void updateChatTargetText(ChatTargetProvider.ChatTarget target) throws RemoteException {
         if (getService() == null) return;
-=======
-	public void updateChatTargetText(ChatTargetProvider.ChatTarget target) throws RemoteException {
-        if(getService() == null) return;
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
         String hint = null;
         if (target == null && getService().getSessionChannel() != null) {
@@ -240,12 +229,7 @@ public class ChannelChatFragment extends JumbleServiceFragment implements ChatTa
         }
         mChatTextEdit.setHint(hint);
         mChatTextEdit.requestLayout();
-<<<<<<< HEAD
     }
-=======
-	}
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
-
 
     @Override
     public void onServiceBound(IJumbleService service) {

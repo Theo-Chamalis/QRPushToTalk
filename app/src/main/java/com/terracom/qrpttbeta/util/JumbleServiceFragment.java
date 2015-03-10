@@ -42,12 +42,8 @@ public abstract class JumbleServiceFragment extends Fragment {
         super.onDestroy();
     }
 
-<<<<<<< HEAD
     public void onServiceBound(IJumbleService service) {
     }
-=======
-    public void onServiceBound(IJumbleService service) { }
->>>>>>> 07bc5cde7e6dce7050a44aecffed1740735184c0
 
     public IJumbleObserver getServiceObserver() {
         return null;
