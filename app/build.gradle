@@ -30,19 +30,16 @@ def signingFile = file 'signing.gradle';
 if (signingFile.exists()) apply from: 'signing.gradle'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 22
         applicationId "com.terracom.qrpttbeta"
 
-        versionCode 82
-        versionName "1.0.0"
-
-        versionCode 81
-        versionName "0.9.1"
+        versionCode 83
+        versionName "1.1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }

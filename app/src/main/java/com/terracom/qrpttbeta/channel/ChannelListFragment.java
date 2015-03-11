@@ -183,7 +183,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_channel_list, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        /*MenuItem searchItem = menu.findItem(R.id.menu_search);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
@@ -218,7 +218,7 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
                 }
                 return false;
             }
-        });
+        });*/
     }
 
     @Override
@@ -255,8 +255,8 @@ public class ChannelListFragment extends JumbleServiceFragment implements UserAc
                     e.printStackTrace();
                 }
                 return true;
-            case R.id.menu_search:
-                return false;
+            /*case R.id.menu_search:
+                return false;*/
         }
 
         return super.onOptionsItemSelected(item);

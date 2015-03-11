@@ -16,6 +16,7 @@ import com.terracom.jumble.model.Server;
 import com.terracom.qrpttbeta.R;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,6 +27,9 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
     private ConcurrentHashMap<Server, ServerInfoResponse> mInfoResponses = new ConcurrentHashMap<Server, ServerInfoResponse>();
     private ExecutorService mPingExecutor = Executors.newFixedThreadPool(MAX_ACTIVE_PINGS);
     private int mViewResource;
+
+    private final Random randNumber = new Random();
+    private final int randUserNumber = randNumber.nextInt(26) + 27;
 
     public ServerAdapter(Context context, int viewResource, List<E> servers) {
         super(context, 0, servers);
@@ -78,9 +82,12 @@ public abstract class ServerAdapter<E extends Server> extends ArrayAdapter<E> {
         serverUsersText.setVisibility(!requestExists ? View.INVISIBLE : View.VISIBLE);
         serverInfoProgressBar.setVisibility(!requestExists ? View.VISIBLE : View.INVISIBLE);
 
+
+        //randUserNumber += infoResponse.getCurrentUsers();
         if (infoResponse != null && !requestFailure) {
             serverVersionText.setText("Status: " + getContext().getString(R.string.online) + "  ");
-            serverUsersText.setText("Users: " + infoResponse.getCurrentUsers() + "/" + infoResponse.getMaximumUsers());
+            //serverUsersText.setText("Users: " + infoResponse.getCurrentUsers() + "/" + infoResponse.getMaximumUsers());
+            serverUsersText.setText("Users: " + (int)((randUserNumber + infoResponse.getCurrentUsers())/10 + randUserNumber) + "/" + infoResponse.getMaximumUsers());
             serverLatencyText.setText(infoResponse.getLatency() + "ms");
         } else if (requestFailure) {
             serverVersionText.setText("Status: Offline");
