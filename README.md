@@ -24,7 +24,7 @@ Its main features are:
 - Automatic channel assignment
 - QR-PTT stays active in background so you can use any other app of the phone and 
 listen to your Workers in real time
-- It can be used alongside with Kerveros QR-Patrol guard tour app which tracks your guards or Lone Workers patrols in real time 
+- It can be used alongside with QR-Patrol guard tour app which tracks your guards or Lone Workers patrols in real time 
 
 Downloads
 ---------------------
@@ -46,7 +46,7 @@ Downloads
 
 <br/>
 
-<strong>Kerveros QR-Patrol guard tour on Google Play</strong><br/>
+<strong>QR-Patrol guard tour on Google Play</strong><br/>
 
 <a href="https://play.google.com/store/apps/details?id=com.terracom.gr.kerverosqrpatrol">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
