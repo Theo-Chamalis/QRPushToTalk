@@ -40,7 +40,7 @@ Downloads
 
 <strong>QR-PTT PushToTalk on Dropbox </strong>
 
-<a href="https://dl.dropboxusercontent.com/u/25024443/QRPushToTalk.apk">
+<a href="https://dl.dropboxusercontent.com/u/25024443/QR-PTT PushToTalk.apk">
   <img alt="Get it from my personal Dropbox" src="https://cf.dropboxstatic.com/static/images/index/logo-vflme-Gvg.png" />
 </a>
 
