@@ -15,7 +15,6 @@ Its main features are:
 - View text comments/description for each user or channel
 - Local mute users
 - Chat notifications
-- Fast user search
 - Automatic in app certificate generation for the server connection
 - Opus codec support
 - Private messaging
