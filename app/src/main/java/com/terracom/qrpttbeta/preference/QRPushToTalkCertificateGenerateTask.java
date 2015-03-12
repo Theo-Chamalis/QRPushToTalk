@@ -27,14 +27,15 @@ public class QRPushToTalkCertificateGenerateTask extends AsyncTask<Void, Void, F
         loadingDialog = new ProgressDialog(context);
         loadingDialog.setIndeterminate(true);
         loadingDialog.setMessage(context.getString(R.string.generateCertProgress));
-        loadingDialog.setOnCancelListener(new OnCancelListener() {
+
+        /*loadingDialog.setOnCancelListener(new OnCancelListener() {
 
             @Override
             public void onCancel(DialogInterface arg0) {
                 cancel(true);
 
             }
-        });
+        });*/
         loadingDialog.show();
     }
 
