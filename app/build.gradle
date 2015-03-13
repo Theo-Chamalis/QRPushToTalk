@@ -38,8 +38,8 @@ android {
         targetSdkVersion 22
         applicationId "com.terracom.qrpttbeta"
 
-        versionCode 84
-        versionName "1.2"
+        versionCode 85
+        versionName "1.3"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "boolean", "DONATE_NAG", "false"
     }

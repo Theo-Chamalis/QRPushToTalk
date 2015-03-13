@@ -18,7 +18,33 @@
             android:layout_gravity="top"/>
     </android.support.v4.view.ViewPager>
 
+
     <LinearLayout
+        android:id="@+id/pushtotalk_view"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_weight="0.07"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/pushtotalk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/ptt"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:elevation="6dip"
+            android:background="@drawable/mybutton"/>
+</LinearLayout>
+
+</LinearLayout>
+
+<!--
+        <LinearLayout
         android:id="@+id/pushtotalk_view"
         android:layout_width="260dp"
         android:layout_height="50dp"
@@ -40,4 +66,5 @@
             android:background="?attr/selectableItemBackground"/>
 </LinearLayout>
 
-</LinearLayout>
+
+-->
