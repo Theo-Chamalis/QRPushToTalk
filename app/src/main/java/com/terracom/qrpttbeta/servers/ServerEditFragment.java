@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -84,6 +85,17 @@ public class ServerEditFragment extends DialogFragment {
                         JSONObject myjson = new JSONObject(resultFromWebService);
                         errorResultFromJsonStr = myjson.get("result").toString();
                         errorMessageFromJsonStr = myjson.get("Message").toString();
+                        Log.d("","");
+                        Log.d("","");
+                        Log.d("+++++++++++++","+++++++++++++++++");
+                        Log.d("+++++++++++++","+++++++++++++++++");
+                        Log.d("","");
+                        Log.d("TO JSON EXEI",myjson.toString());
+                        Log.d("","");
+                        Log.d("+++++++++++++","+++++++++++++++++");
+                        Log.d("+++++++++++++","+++++++++++++++++");
+                        Log.d("","");
+                        Log.d("","");
                         if (myjson.get("result").toString().equals("0")) {
                             JSONObject myjsondata = myjson.getJSONObject("data");
                             CompanyNameStr = myjsondata.get("CompanyName").toString().replaceAll("\\s", "").trim();
