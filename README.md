@@ -62,8 +62,10 @@ Downloads
 <br/>
 Partnership & Services
 ---------------------
-If you are interested in using this application or a customized version based on your company's needs feel free to contact me at theofxam@gmail.com
-<br/><br/>
+If you are interested in using this application or a customized version of it based on your company's needs, feel free to contact me at <b>theofxam@gmail.com</b> for more information.
+<br/>
+<br/>
+<br/>
 
 
 Building on GNU/Linux
