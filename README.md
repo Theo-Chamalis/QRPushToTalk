@@ -1,12 +1,13 @@
 QR-PTT PushToTalk
 =======
 
-QR-PTT PushToTalk is an easy to use ptt over IP (VoIP) Android client for voice and text communication that uses the [Jumble] (https://github.com/Morlunk/Jumble) protocol implementation and has a GPLv3 license. It can be used by companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication or by sending a text message within the app. It can be used by security companies, cleaning companies, police officers, fire department employees and any other company that needs continuous communication with their employees or customers!
+QR-PTT PushToTalk is an easy to use ptt over IP (VoIP) Android client for voice and text communication that uses the [Jumble] (https://github.com/Morlunk/Jumble) protocol implementation and has a GPLv3 license. It can be used by companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication or by sending a text message within the app. It's low cost compared to other competitors like Zello PTT makes it ideal for security companies, cleaning companies, police officers, fire department employees and any other company that needs continuous communication with their employees or customers!
 
 <br/>To try it for free enter "demo" as User ID and leave User PIN field empty.*
 
 Its main features are:
 - Very Easy to use
+- Lowest cost than the rest PTT applications
 - Fast and low latency real time voice communication
 - Superior voice compression using CODECS like SILK which is used from Skype
 - Works over 2G, 3G, 4G mobile data or Wifi
@@ -59,6 +60,12 @@ Downloads
 
 
 <br/>
+Partnership & Services
+---------------------
+If you are interested in using this application or a customized version based on your company's needs feel free to contact me at theofxam@gmail.com
+
+
+
 Building on GNU/Linux
 ---------------------
 
@@ -81,6 +88,6 @@ Contributing
 Coding
 ------
 
-Standard FOSS project procedure applies; fork and submit a PR or just write me a pm!
+Standard FOSS project procedure applies; fork and submit a PR or just email me at theofxam@gmail.com !
 
 Please use Transifex for translations, not pull requests.
