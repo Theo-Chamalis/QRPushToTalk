@@ -27,9 +27,9 @@ Its main features are:
 
 Screenshots
 ---------------------
-![Alt text](https://lh3.googleusercontent.com/nwebABvFzlRV1xIDKBEeVnnSbZD_dFUfcLice1J3HSJBJ1MXyYTS3GEF_c-_XIiTXFU=h900-rw "Optional title1") ![Alt text](https://lh3.googleusercontent.com/BzedgAWLHVwCtFyB8QI94XLFDq9Ip4RlGJGcBhbZ64U9tH1uWbV0pS14QR1bNvuD3Baf=h900-rw "Optional title2") 
-![Alt text](https://lh3.googleusercontent.com/VnlCirO71n56qk9oqKdIHU9145zY00vCVKeGnhuA9x48NeG_LRqwly6eKEWvhFR4g3F0=h900-rw "Optional title3") ![Alt text](https://lh3.googleusercontent.com/Yf2u-e4LhKOoFL0msajz6BLq31Twdi0vODvkl0rZ4NZ7Pj--o95H_42_jfeuaYAI7NQ=h900-rw "Optional title4")
-![Alt text](https://lh3.googleusercontent.com/HMOqNl-MK1hNUbYjCtBR-h2nCtyckvcSTa10h6bY3vjZMmvhHQKHncl0Jtv4AMs8meQ=h900-rw "Optional title5")
+![Alt text](https://lh3.googleusercontent.com/nwebABvFzlRV1xIDKBEeVnnSbZD_dFUfcLice1J3HSJBJ1MXyYTS3GEF_c-_XIiTXFU=h400-rw "Optional title1") ![Alt text](https://lh3.googleusercontent.com/BzedgAWLHVwCtFyB8QI94XLFDq9Ip4RlGJGcBhbZ64U9tH1uWbV0pS14QR1bNvuD3Baf=h400-rw "Optional title2") 
+![Alt text](https://lh3.googleusercontent.com/VnlCirO71n56qk9oqKdIHU9145zY00vCVKeGnhuA9x48NeG_LRqwly6eKEWvhFR4g3F0=h400-rw "Optional title3") ![Alt text](https://lh3.googleusercontent.com/Yf2u-e4LhKOoFL0msajz6BLq31Twdi0vODvkl0rZ4NZ7Pj--o95H_42_jfeuaYAI7NQ=h400-rw "Optional title4")
+![Alt text](https://lh3.googleusercontent.com/HMOqNl-MK1hNUbYjCtBR-h2nCtyckvcSTa10h6bY3vjZMmvhHQKHncl0Jtv4AMs8meQ=h400-rw "Optional title5")
 
 
 
