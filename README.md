@@ -63,7 +63,7 @@ Downloads
 Partnership & Services
 ---------------------
 If you are interested in using this application or a customized version based on your company's needs feel free to contact me at theofxam@gmail.com
-
+<br/><br/>
 
 
 Building on GNU/Linux
