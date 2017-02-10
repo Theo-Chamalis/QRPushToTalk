@@ -25,7 +25,7 @@ Its main features are:
 - Capacity of 5000 simultaneous users on server and 1000 on each channel
 - Automatic channel assignment
 - QR-PTT stays active in background so you can use any other app of the phone and listen to your Workers in real time
-</br>
+<br />
 
 
 Screenshots
@@ -49,7 +49,6 @@ Downloads
 
 <br />
 
-
 <strong>QR-PTT PushToTalk on Dropbox </strong>
 
 <a href="https://dl.dropboxusercontent.com/u/25024443/QR-PTT PushToTalk.apk">
@@ -57,7 +56,6 @@ Downloads
 </a>
 
 <br/>
-
 *Keep in mind that any communication through the demo channel is public. 
 
 
