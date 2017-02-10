@@ -9,7 +9,7 @@ Its main features are:
 - Very Easy to use
 - Lowest cost than the rest PTT applications
 - Fast and low latency real time voice communication
-- Superior voice compression using CODECS like SILK which is used from Skype
+- Superior voice compression using CODECS like Skype's SILK and CELT
 - Works over 2G, 3G, 4G mobile data or Wifi
 - Auto-reconnect feature when Internet connection is lost
 - Dual-pane channel and chat with swipe left and right gestures
