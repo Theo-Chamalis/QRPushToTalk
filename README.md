@@ -42,7 +42,7 @@ Downloads
 ---------------------
 <br />
 <strong>QR-PTT PushToTalk on Google Play</strong>
-
+<br />
 <a href="https://play.google.com/store/apps/details?id=com.terracom.qrpttbeta.free&hl=en">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>
@@ -58,7 +58,7 @@ Downloads
 <br/>
 *Keep in mind that any communication through the demo channel is public. 
 
-
+<br/><br/>
 <br/>
 Partnership & Services
 ---------------------
