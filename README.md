@@ -42,20 +42,20 @@ Downloads
 ---------------------
 <br />
 <strong>QR-PTT PushToTalk on Google Play</strong>
-<br />
+<br /><br />
 <a href="https://play.google.com/store/apps/details?id=com.terracom.qrpttbeta.free&hl=en">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>
 
-<br />
+<br /><br />
 
-<strong>QR-PTT PushToTalk on Dropbox </strong>
+<strong>QR-PTT PushToTalk on Dropbox </strong><br />
 
 <a href="https://dl.dropboxusercontent.com/u/25024443/QR-PTT PushToTalk.apk">
   <img alt="Get it from my personal Dropbox" src="https://cf.dropboxstatic.com/static/images/index/logo-vflme-Gvg.png" />
 </a>
 
-<br/>
+<br/><br/>
 *Keep in mind that any communication through the demo channel is public. 
 
 <br/><br/>
