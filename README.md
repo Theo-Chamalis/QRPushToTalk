@@ -48,7 +48,7 @@ Screenshots
 
 
 
-
+<br />
 Downloads
 ---------------------
 <br />
@@ -61,7 +61,7 @@ Downloads
 <br/><br/>
 *Keep in mind that any communication through the demo channel is public. 
 
-<br/><br/>
+<br/>
 <br/>
 Partnership & Services
 ---------------------
