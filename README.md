@@ -59,8 +59,7 @@ Downloads
 </a>
 
 <br/><br/>
-*Keep in mind that any communication through the demo channel is public.
-*\*For a data consumption benchmark comparison of EVO PTT with our competitors click <a href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0" target="_blank"> HERE </a>
+*Keep in mind that any communication through the demo channel is public.<br/>*\*For a data consumption benchmark comparison of EVO PTT with our competitors click <a href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0" target="_blank"> HERE </a>
 
 <br/><br/>
 Partnership & Services
