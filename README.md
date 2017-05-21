@@ -61,10 +61,9 @@ Downloads
 <br/><br/>
 *Keep in mind that any communication through the demo channel is public. 
 
-<br/>
 <br/><br/>
 Partnership & Services
----------------------
+-----------------------
 If you are interested in using this application or a customized version of it based on your company's needs, feel free to contact me at <b>theofxam@gmail.com</b> for more information.
 <br/>
 <br/>
