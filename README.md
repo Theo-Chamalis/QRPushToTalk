@@ -35,7 +35,7 @@ EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android ap
 - 256 bit encryption
 - Compatible with the latest version of Android 7.1.1 Nugat
 - Capacity of 5000 simultaneous users on server and 1000 on each channel
-- EVO PTT stays active in background so you can use other apps while listening other users in real time
+- EVO PTT stays active in background so you can use other apps while listening your users in real time
 <br />
 
 
