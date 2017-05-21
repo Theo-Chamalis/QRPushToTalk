@@ -8,7 +8,7 @@ EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android ap
 <br/>To try it for free enter any Username and ente "demo" as the password.*
 
 
-Its main features are:
+<br/>Its main features are:
 - Very Easy to use
 - Lowest cost than the rest PTT applications
 - Fast and low latency real time voice communication 
