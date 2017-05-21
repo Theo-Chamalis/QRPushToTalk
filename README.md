@@ -38,12 +38,12 @@ Its main features are:
 
 Screenshots
 ---------------------
-![Alt text](https://lh3.googleusercontent.com/Y6MHbEta2KJGCu55hPDnROV8WPLU8xQ6DE7w2ApKvhWkoJiD0H3Jm9iRDuBfHz0RAw=h900-rw "Login Screen") ![Alt text](https://lh3.googleusercontent.com/pbWTFvjpTW6RYKsCPURtUHH7x0CvyejuDd3pPTJE2A15xU-xNoFQDVE5RM4fs2NK2w=h900-rw "Server Screen") 
-![Alt text](https://lh3.googleusercontent.com/a-WRsl_Rt7ccWa-yco9W7-X8EbYLDRWMHn5OikSTAn_mdDtbKhoE0efRPbbQ0Uh5ErLU=h900-rw "Chat message") ![Alt text](https://lh3.googleusercontent.com/_Sw7q4nVN1nFnD7O48eQdsMI2sff7ErL2FExfsdiJ0T7sDgYCCqNAgy8j7pAqduhZA=h900-rw "SOS Function")
-![Alt text](https://lh3.googleusercontent.com/jnHH8rFJACwj5rm_p0R8LmdLP2RBKaza1W_I2brY63vMlAWqFlPtXWdDpEch6wTAJNc=h900-rw "Side Menu")
-![Alt text](https://lh3.googleusercontent.com/G0yoXMKCHgPJJF_U44ye5i2WER4SbFRew9JHjI1hPajtfLqmtNbOwUSUicVyrsmt8dgq=h900-rw "General Settings")
-![Alt text](https://lh3.googleusercontent.com/QOroqhL8IWU57Ldd-pdWEF0VjcfcuAVknlFNIfMWdkl6la51JAVV-OL5xDs3KdomL-26=h900-rw "Audio Settings")
-![Alt text](https://lh3.googleusercontent.com/VVONnN-ZYBtILuRNIZzjpdjeQeld2Is7i4ku6-2d09uDZo-ucDjvdlfz9nBWZ_o7hQ=h900-rw "Appearance Settings")
+![Alt text](https://lh3.googleusercontent.com/Y6MHbEta2KJGCu55hPDnROV8WPLU8xQ6DE7w2ApKvhWkoJiD0H3Jm9iRDuBfHz0RAw=h360-rw "Login Screen") ![Alt text](https://lh3.googleusercontent.com/pbWTFvjpTW6RYKsCPURtUHH7x0CvyejuDd3pPTJE2A15xU-xNoFQDVE5RM4fs2NK2w=h360-rw "Server Screen") 
+![Alt text](https://lh3.googleusercontent.com/a-WRsl_Rt7ccWa-yco9W7-X8EbYLDRWMHn5OikSTAn_mdDtbKhoE0efRPbbQ0Uh5ErLU=h360-rw "Chat message") ![Alt text](https://lh3.googleusercontent.com/_Sw7q4nVN1nFnD7O48eQdsMI2sff7ErL2FExfsdiJ0T7sDgYCCqNAgy8j7pAqduhZA=h360-rw "SOS Function")
+![Alt text](https://lh3.googleusercontent.com/jnHH8rFJACwj5rm_p0R8LmdLP2RBKaza1W_I2brY63vMlAWqFlPtXWdDpEch6wTAJNc=h360-rw "Side Menu")
+![Alt text](https://lh3.googleusercontent.com/G0yoXMKCHgPJJF_U44ye5i2WER4SbFRew9JHjI1hPajtfLqmtNbOwUSUicVyrsmt8dgq=h360-rw "General Settings")
+![Alt text](https://lh3.googleusercontent.com/QOroqhL8IWU57Ldd-pdWEF0VjcfcuAVknlFNIfMWdkl6la51JAVV-OL5xDs3KdomL-26=h360-rw "Audio Settings")
+![Alt text](https://lh3.googleusercontent.com/VVONnN-ZYBtILuRNIZzjpdjeQeld2Is7i4ku6-2d09uDZo-ucDjvdlfz9nBWZ_o7hQ=h360-rw "Appearance Settings")
 
 
 
