@@ -1,6 +1,8 @@
 EVO PTT - The Evolution in PTT communication
 =============================================
 
+<img alt="Get it on Google Play" src="https://photos-6.dropbox.com/t/2/AAAlguiqbRq3miAinqJSVyZ6R-Thc3XPQ1sZEV6Igvu2xg/12/25024443/png/32x32/1/_/1/2/EVO%20PTT-feature-graphic.png/ELj96hIY3aMEIAIoAg/pZCEYB39MiJkYwfTHPB-su6I5ByS9q8Ih9ntiJwKND0?size=1600x1200&size_mode=3" />
+
 EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies wordlwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. It's low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to scale up makes it the best option in the market for small companies to large organizations!
 
 <br/>To try it for free enter any Username and ente "demo" as the password.*
@@ -61,7 +63,7 @@ Downloads
 <br/><br/>
 *Keep in mind that any communication through the demo channel is public.
 
-*\*For a data consumption benchmark comparison of EVO PTT with our competitors click <a href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0" target="_blank"> HERE </a>
+*\*For a data consumption comparison of EVO PTT with our competitors click <a href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0" target="_blank"> HERE </a>
 
 <br/><br/>
 Partnership & Services
