@@ -48,7 +48,7 @@ Screenshots
 
 
 
-<br />
+
 Downloads
 ---------------------
 <br />
