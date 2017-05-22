@@ -41,7 +41,7 @@ EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android ap
 
 Screenshots
 ---------------------
-![Alt text](https://lh3.googleusercontent.com/Y6MHbEta2KJGCu55hPDnROV8WPLU8xQ6DE7w2ApKvhWkoJiD0H3Jm9iRDuBfHz0RAw=h380-rw "Login Screen") ![Alt text](https://lh3.googleusercontent.com/pbWTFvjpTW6RYKsCPURtUHH7x0CvyejuDd3pPTJE2A15xU-xNoFQDVE5RM4fs2NK2w=h360-rw "Server Screen") 
+![Alt text](https://lh3.googleusercontent.com/Y6MHbEta2KJGCu55hPDnROV8WPLU8xQ6DE7w2ApKvhWkoJiD0H3Jm9iRDuBfHz0RAw=h380-rw "Login Screen") ![Alt text](https://lh3.googleusercontent.com/pbWTFvjpTW6RYKsCPURtUHH7x0CvyejuDd3pPTJE2A15xU-xNoFQDVE5RM4fs2NK2w=h380-rw "Server Screen") 
 ![Alt text](https://lh3.googleusercontent.com/a-WRsl_Rt7ccWa-yco9W7-X8EbYLDRWMHn5OikSTAn_mdDtbKhoE0efRPbbQ0Uh5ErLU=h380-rw "Chat message") ![Alt text](https://lh3.googleusercontent.com/_Sw7q4nVN1nFnD7O48eQdsMI2sff7ErL2FExfsdiJ0T7sDgYCCqNAgy8j7pAqduhZA=h380-rw "SOS Function")
 ![Alt text](https://lh3.googleusercontent.com/jnHH8rFJACwj5rm_p0R8LmdLP2RBKaza1W_I2brY63vMlAWqFlPtXWdDpEch6wTAJNc=h380-rw "Side Menu")
 ![Alt text](https://lh3.googleusercontent.com/G0yoXMKCHgPJJF_U44ye5i2WER4SbFRew9JHjI1hPajtfLqmtNbOwUSUicVyrsmt8dgq=h380-rw "General Settings")
