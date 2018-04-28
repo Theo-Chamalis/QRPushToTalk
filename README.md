@@ -3,7 +3,7 @@
 <h1 align="center">EVO PTT - The Evolution in PTT communication</h1>
 <br/>
 
-EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies wordlwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. It's low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to scale up makes it the best option in the market, from small businesses to large organizations!
+EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies worldwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. Its low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to rebrand it and adapt it into existing systems makes it the best option in the market, from small businesses to large organizations!
 
 <br/>To try it for free enter any Username and "demo" for password.*
 
@@ -33,7 +33,8 @@ EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android ap
 - Opus CODEC support
 - Private messaging
 - 256 bit encryption
-- Compatible with the latest version of Android 7.1.1 Nugat
+- Compatible with the latest version of Android 8.0 Oreo
+- Compatible with the newest Android Studio IDE
 - Capacity of 5000 simultaneous users on server and 1000 on each channel
 - EVO PTT stays active in background so you can use other apps while listening your users in real time
 <br />
@@ -67,9 +68,9 @@ Downloads
 *\*For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
 
 <br/><br/>
-Partnership & Services
+Partnership, Services & Pricing
 -----------------------
-If you are interested in using this application or a customized version of it based on your company's needs, feel free to contact me at <b>theofxam@gmail.com</b> for more information.
+Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistributing and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>theofxam@gmail.com</b> for more information.
 <br/>
 <br/>
 <br/>
@@ -88,7 +89,8 @@ ant, awk, make, git, the Android SDK and the Android NDK. Then fork or download 
 This is necessary in order to download the libraries that the initial application uses.
 Keep in mind that throughout the proccess you should use chmod command on the whole project file
 to give it the right permissions. Finally, download the files of my project and overwrite the old
-ones. If you encounter any problem throughout the procedure feel free to contact me.
+ones. If you encounter any problem throughout the procedure feel free to contact 
+.
 
 
 Contributing	
@@ -97,6 +99,6 @@ Contributing
 Coding
 ------
 
-Standard FOSS project procedure applies; fork and submit a PR or just email me at theofxam@gmail.com !
+Standard FOSS project procedure applies; fork and submit a PR or just email us at theofxam@gmail.com !
 
 Please use Transifex for translations, not pull requests.
