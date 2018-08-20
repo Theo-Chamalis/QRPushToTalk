@@ -5,38 +5,36 @@
 
 EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies worldwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. Its low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to rebrand it and adapt it into existing systems makes it the best option in the market, from small businesses to large organizations!
 
-<br/>To try it for free enter any Username and "demo" for password.*
+<br/> To try EVO PTT for free enter any Username of your choice and "demo" as Password.* 
+To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and enter the Email: "demo@demo.com"  and "demo" as Password.**
 
-
-<br/>Its main features are:
-- Very Easy to use
-- Lowest cost than the rest PTT applications
-- Fast and low latency real time voice communication 
+<br/>Main features:
+- Easy to understand and use
+- Fast and low latency real time voice communication
+- Lowest data consumption PTT application
 - Superior voice compression using CODECS like Skype's SILK and CELT
+- Opus codec support
 - Clever mobile data management resulting in lowest data consumption (see comparison with the competition)*\* 
-- Works over all network conditions (2G, 3G, 4G or Wifi)
-- Auto-reconnect feature when Internet connection is lost
-- SOS button function
+- Works over any network condition (2G, 3G, 4G or Wifi)
+- High security voice encryption
 - Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
 - Ability to work with screen off in Android Walkie Talkie devices
+- SOS button function with location reporting
+- Auto location reporting of workers to EVO PTT Admin Web Panel**
 - Start on boot feature
-- Stay Awake feature to keep the screen on
 - Remember Login Credentials
+- Auto-login
+- Auto-reconnect feature when Internet connection is lost
+- Stay Awake feature to keep the screen on
 - Distinctive sounds for voice, text and SOS
-- Dual-pane channel and chat with swipe left and right gestures
-- Channel tree view
 - Hide or adjust PTT button height in lower resolution screens
-- View text comments/description for each user or channel
-- Local mute users
 - Chat notifications
-- Automatic in app secure certificate generation for the server connection
-- Opus CODEC support
 - Private messaging
-- 256 bit encryption
-- Compatible with the latest version of Android 8.0 Oreo
-- Compatible with the newest Android Studio IDE
-- Capacity of 5000 simultaneous users on server and 1000 on each channel
-- EVO PTT stays active in background so you can use other apps while listening your users in real time
+- Compatible with the latest version of Android 9 (Pie)
+- Compatible with the latest version of the Android Studio IDE and Gradle
+- EVO PTT stays active in background so you can use other apps while listening other users in real time
+- Competitive subscription and one off pay pricing plans
+- Ability for source code purchase and app rebranding
 <br />
 
 
@@ -63,7 +61,8 @@ Downloads
 </a>
 
 <br/><br/>
-*Keep in mind that any communication through the demo channel is public.
+*  Any communication through the demo channel is public.
+** The free version of EVO PTT Admin Web Panel does not provide geolocation tracking and personal data of test users for privacy reasons
 
 *\*For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
 
