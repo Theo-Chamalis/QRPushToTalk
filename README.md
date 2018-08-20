@@ -5,14 +5,19 @@
 
 EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies worldwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. Its low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to rebrand it and adapt it into existing systems makes it the best option in the market, from small businesses to large organizations!
 
+
+Demo testing
+---------------------
 <br/>~ To try EVO PTT for free enter any Username of your choice and "demo" as Password. * 
 <br/>~ To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and enter the Email: "demo@demo.com"  and "demo" as Password. *\*
 
-<br/>Main features:
+
+Main Features
+---------------------
 - Easy to understand and use
 - Fast and low latency real time voice communication
 - Lowest data consumption PTT application
-- Superior voice compression using CODECS like Skype's SILK and CELT
+- Superior voice compression including Skype's SILK and CELT CODECS
 - Opus codec support
 - Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*\* 
 - Works over any network condition (2G, 3G, 4G or Wifi)
