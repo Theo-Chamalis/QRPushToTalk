@@ -6,7 +6,7 @@
 EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies worldwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. Its low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to rebrand it and adapt it into existing systems makes it the best option in the market, from small businesses to large organizations!
 
 <br/> To try EVO PTT for free enter any Username of your choice and "demo" as Password.* 
-To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and enter the Email: "demo@demo.com"  and "demo" as Password.**
+<br/> To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and enter the Email: "demo@demo.com"  and "demo" as Password.*\*
 
 <br/>Main features:
 - Easy to understand and use
@@ -14,13 +14,13 @@ To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and en
 - Lowest data consumption PTT application
 - Superior voice compression using CODECS like Skype's SILK and CELT
 - Opus codec support
-- Clever mobile data management resulting in lowest data consumption (see comparison with the competition)*\* 
+- Clever mobile data management resulting in lowest data consumption (see comparison with the competition)*\*\* 
 - Works over any network condition (2G, 3G, 4G or Wifi)
 - High security voice encryption
 - Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
 - Ability to work with screen off in Android Walkie Talkie devices
 - SOS button function with location reporting
-- Auto location reporting of workers to EVO PTT Admin Web Panel**
+- Auto location reporting of workers to EVO PTT Admin Web Panel*\*
 - Start on boot feature
 - Remember Login Credentials
 - Auto-login
@@ -62,9 +62,9 @@ Downloads
 
 <br/><br/>
 *  Any communication through the demo channel is public.
-** The free version of EVO PTT Admin Web Panel does not provide geolocation tracking and personal data of test users for privacy reasons
+*\* The free version of EVO PTT Admin Web Panel does not provide geolocation tracking and personal data of test users for privacy reasons
 
-*\*For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
+*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
 
 <br/><br/>
 Partnership, Services & Pricing
