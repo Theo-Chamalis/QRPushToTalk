@@ -10,7 +10,7 @@ Demo testing
 ---------------------
 <br/>~ To try EVO PTT for free enter any Username of your choice and "demo" as Password. 
 <br/>~ To try the EVO PTT Admin Web Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
-       Email ID: "demo@demo.com",  Password: "demo".
+       &nbsp;&nbsp;&nbsp;Email ID: "demo@demo.com",  Password: "demo".
 
 
 Main Features
