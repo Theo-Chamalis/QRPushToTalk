@@ -9,7 +9,7 @@ EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android ap
 Demo testing
 ---------------------
 <br/>~ To try EVO PTT for free enter any Username of your choice and "demo" as Password. * 
-<br/>~ To try the EVO PTT Admin Web Panel for free, go to http://evoptt.ddns.net and enter:<br/> 
+<br/>~ To try the EVO PTT Admin Web Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
        Email ID: "demo@demo.com",  Password: "demo". *\*
 
 
