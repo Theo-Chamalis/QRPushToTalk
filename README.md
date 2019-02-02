@@ -3,12 +3,12 @@
 <h1 align="center">EVO PTT - The Evolution in PTT communication</h1>
 <br/>
 
-EVO PTT is the evolution of the highly successful QR-PTT Push To Talk android application that is used by a wide range of security and other companies worldwide. Designed to be a substantial upgrade over the old application, we listened to our customers needs and suggestions to improve EVO PTT in key areas and provide new innovative features. It is ideal for companies that need to be in constant communication with their employees (Lone Workers), to give instructions, make comments, report incidents in real time by voice communication, by sending a text message within the app or for responding quick in emergency situations. With the new EVO PTT Admin Web Panel, an admin user (employer/supervisor), can register new users (employees/workers) to use the service, monitor their location and see the current system status. The low cost and flexible pricing compared to other competitors like Zello PTT as well as it's ability to rebrand the system and adapt it into existing systems makes it the best option in the market, from small businesses to large organizations!
+Designed for professional lone workers, EVO PTT is the Evolution in Push to Talk over IP communication. Based on the highly successful QR-PTT Push To Talk android application, we listened to our customers needs and suggestions and we have redesigned EVO PTT to offer a better user experience, new innovative features and improved performance. It is easy to understand and use and it is ideal for companies that need to be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocalization monitoring, you are always aware of other user's location via the EVO PTT Android App or via the EVO PTT Admin Web Panel where you can also register new EVO PTT users and check their current status. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as it's rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
 
 
 Demo testing
 ---------------------
-<br/>~ To try EVO PTT for free enter any Username of your choice and "demo" as Password. 
+<br/>~ To try EVO PTT Android App for free enter any Username of your choice and "demo" as Password. 
 <br/>~ To try the EVO PTT Admin Web Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
        &nbsp;&nbsp;&nbsp;Email ID: "demo@demo.com",  Password: "demo".
 
@@ -18,6 +18,7 @@ Main Features
 - Easy to understand and use
 - Fast and low latency real time voice communication
 - Lowest data consumption PTT application
+- Seamless geolocalization monitoring of user's location
 - Superior voice compression including Skype's SILK and CELT CODECS
 - Opus codec support
 - Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*\* 
@@ -69,7 +70,7 @@ Downloads
 <br/><br/>
 \*  Any communication through the demo channel is public.
 <br/>
-*\* The free version of EVO PTT Admin Web Panel does not provide geolocation tracking and personal data of test users for privacy reasons
+*\* The free version of EVO PTT geolocalization monitoring is not based on real user location, in order to ensure the privacy and protect the personal data of our test users.
 <br/>
 *\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
 
