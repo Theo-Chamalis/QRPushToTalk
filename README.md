@@ -3,14 +3,14 @@
 <h1 align="center">EVO PTT - The Evolution in PTT communication</h1>
 <br/>
 
-Designed for professional lone workers, EVO PTT is the Evolution in Push to Talk over IP communication. Based on the highly successful QR-PTT Push To Talk android application, we listened to our customers needs and suggestions and we have redesigned EVO PTT to offer a better user experience, new innovative features and improved performance. It is easy to understand and use and it is ideal for companies that need to be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocalization monitoring, you are always aware of other user's location via the EVO PTT Android App or via the EVO PTT Admin Web Panel where you can also register new EVO PTT users and check their current status. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as it's rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
+Designed for professional lone workers, EVO PTT is the Evolution in Push to Talk over IP communication. Based on the highly successful QR-PTT Push To Talk android application, we listened to our customers needs and suggestions and we have redesigned EVO PTT to offer a better user experience, new innovative features and improved performance. It is easy to understand and use and it is ideal for companies that need to be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocation monitoring, you are always aware of the EVO PTT users location through the EVO PTT Android App or the EVO PTT User Management Panel where you can also register new EVO PTT users and check their current status. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as it's rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
 
 
 Demo testing
 ---------------------
 <br/>~ To try EVO PTT Android App for free enter any Username of your choice and "demo" as Password. 
-<br/>~ To try the EVO PTT Admin Web Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
-       &nbsp;&nbsp;&nbsp;Email ID: "demo@demo.com",  Password: "demo".
+<br/>~ To try the EVO PTT User Management Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
+       &nbsp;&nbsp;&nbsp;Email: "demo@demo.com",  Password: "demo".
 
 
 Main Features
@@ -18,7 +18,7 @@ Main Features
 - Easy to understand and use
 - Fast and low latency real time voice communication
 - Lowest data consumption PTT application
-- Seamless geolocalization monitoring of user's location
+- Seamless geolocation monitoring of EVO PTT users location
 - Superior voice compression including Skype's SILK and CELT CODECS
 - Opus codec support
 - Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*\* 
@@ -27,7 +27,8 @@ Main Features
 - Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
 - Ability to work with screen off in Android Walkie Talkie devices
 - SOS button function with location reporting
-- Auto location reporting of workers to EVO PTT Admin Web Panel *\*
+- Auto location reporting of users to EVO PTT User Management Panel *\*
+- Easy user management through the EVO PTT User Management Panel
 - Start on boot feature
 - Remember Login Credentials
 - Auto-login
@@ -76,7 +77,7 @@ Downloads
 <br/><br/>
 Partnership, Services & Pricing
 -----------------------
-Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistributing and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>theofxam@gmail.com</b> for more information.
+Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistribution and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>theofxam@gmail.com</b> for more information.
 <br/>
 <br/>
 <br/>
