@@ -72,7 +72,8 @@ Downloads
 <br/>
 *\* The free version of EVO PTT geolocalization monitoring is not based on real user location, in order to ensure the privacy and protect the personal data of our test users.
 <br/>
-*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>.
+*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE</a>.
+<br/>
 *\*\* Applications that do not occupy the voice recording channel.
 
 <br/><br/>
