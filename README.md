@@ -40,7 +40,7 @@ Main Features
 - Private messaging
 - Compatible with the latest version of Android 9 (Pie)
 - Compatible with the latest version of the Android Studio IDE and Gradle
-- EVO PTT stays active in background so you can use other apps while listening other users in real time
+- EVO PTT stays active in background so you can use other apps*\*\*\* while listening other users in real time
 - Competitive subscription and one off pay pricing plans
 - Ability for source code purchase and app rebranding
 <br />
@@ -72,7 +72,8 @@ Downloads
 <br/>
 *\* The free version of EVO PTT geolocalization monitoring is not based on real user location, in order to ensure the privacy and protect the personal data of our test users.
 <br/>
-*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>
+*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE </a>.
+*\*\* Applications that do not occupy the voice recording channel.
 
 <br/><br/>
 Partnership, Services & Pricing
