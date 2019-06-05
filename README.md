@@ -19,16 +19,19 @@ Main Features
 - Fast and low latency real time voice communication
 - Lowest data consumption PTT application
 - Seamless geolocation monitoring of EVO PTT users location
-- Superior voice compression including Skype's SILK and CELT CODECS
-- Opus codec support
+- Superior voice compression including Skype's SILK and CELT codecs (on x32 & x64 devices)
+- Opus codec support (on x32 & x64 devices)
 - Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*\* 
 - Works over any network condition (2G, 3G, 4G or Wifi)
+- Network Type Switching mode to switch seamlessly between Data and WiFi without disconnecting
 - High security voice encryption
 - Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
 - Ability to work with screen off in Android Walkie Talkie devices
 - SOS button function with location reporting
 - Auto location reporting of users to EVO PTT User Management Panel *\*
 - Easy user management through the EVO PTT User Management Panel
+- EVO PTT users log in on a per-company basis for better user isolation and security (using secure docker containers)
+- Busy Channel Lockout option to prevent users from talking in a busy channel
 - Start on boot feature
 - Remember Login Credentials
 - Auto-login
