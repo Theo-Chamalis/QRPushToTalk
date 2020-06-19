@@ -3,14 +3,13 @@
 <h1 align="center">EVO PTT - The Evolution in PTT communication</h1>
 <br/>
 
-Designed for professional lone workers, EVO PTT is the Evolution in Push to Talk over IP communication. Based on the highly successful QR-PTT Push To Talk android application, we listened to our customers needs and suggestions and we have redesigned EVO PTT to offer a better user experience, new innovative features and improved performance. It is easy to understand and use and it is ideal for companies that need to be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocation monitoring, you are always aware of the EVO PTT users location through the EVO PTT Android App or the EVO PTT User Management Panel where you can also register new EVO PTT users and check their current status. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as it's rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
+Designed for professional lone worker teams, EVO PTT is the Evolution in Push to Talk over IP communication. It is easy to understand and use and it is ideal for companies that need to manage and be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocation monitoring, Company Managers are always aware of the Mobile Users' location via the EVO PTT Android App or the EVO PTT User Management Panel. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as the rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
 
 
 Demo testing
 ---------------------
-<br/>~ To try EVO PTT Android App for free enter any Username of your choice and "demo" as Password. 
-<br/>~ To try the EVO PTT User Management Panel for free, go to https://evoptt.ddns.net and enter:<br/> 
-       &nbsp;&nbsp;&nbsp;Email: "demo@demo.com",  Password: "demo".
+<br/>• To try the EVO PTT Android App as a User for free, open the Android Application, accept the required permissions and tap on the DEMO LOGIN button! 
+<br/>~ To try the EVO PTT User Management Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
 
 
 Main Features
