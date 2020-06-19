@@ -59,10 +59,7 @@ Downloads
 
 <br/>
 
-\*  Any communication through the demo channel is public.
-
-<br/>
-
+\*  Any communication through the demo channel is public. <br/>
 *\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE</a>.
 
 <br/><br/>
