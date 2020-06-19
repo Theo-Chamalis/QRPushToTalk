@@ -8,8 +8,8 @@ Designed for professional lone worker teams, EVO PTT is the Evolution in Push to
 
 Demo testing
 ---------------------
-<br/>• To try the EVO PTT Android App as a User for free, open the Android Application, accept the required permissions and tap on the DEMO LOGIN button! 
-<br/>~ To try the EVO PTT User Management Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
+• To try the EVO PTT Android App as a User for free, open the Android Application, accept the required permissions and tap on the DEMO LOGIN button! 
+<br/>• To try the EVO PTT User Management Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
 
 
 Main Features
