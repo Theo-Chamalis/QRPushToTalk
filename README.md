@@ -16,33 +16,21 @@ Main Features
 ---------------------
 - Easy to understand and use
 - Fast and low latency real time voice communication
-- Lowest data consumption PTT application
-- Seamless geolocation monitoring of EVO PTT users location
-- Superior voice compression including Skype's SILK and CELT codecs (on x32 & x64 devices)
-- Opus codec support (on x32 & x64 devices)
-- Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*\* 
-- Works over any network condition (2G, 3G, 4G or Wifi)
-- Network Type Switching mode to switch seamlessly between Data and WiFi without disconnecting
+- Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*
+- Seamless geolocation monitoring of EVO PTT Users location
+- Superior voice compression CODECs
 - High security voice encryption
+- Works over any network condition (2G, 3G, 4G or Wifi) with Network Type Switching mode to switch seamlessly between Data and WiFi without disconnecting
 - Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
 - Ability to work with screen off in Android Walkie Talkie devices
 - SOS button function with location reporting
-- Auto location reporting of users to EVO PTT User Management Panel *\*
-- Easy user management through the EVO PTT User Management Panel
-- EVO PTT users log in on a per-company basis for better user isolation and security (using secure docker containers)
-- Busy Channel Lockout option to prevent users from talking in a busy channel
-- Start on boot feature
-- Remember Login Credentials
-- Auto-login
-- Auto-reconnect feature when Internet connection is lost
-- Stay Awake feature to keep the screen on
-- Distinctive sounds for voice, text and SOS
-- Hide or adjust PTT button height in lower resolution screens
-- Chat notifications
-- Private messaging
-- Compatible with the latest version of Android 9 (Pie)
-- Compatible with the latest version of the Android Studio IDE and Gradle
-- EVO PTT stays active in background so you can use other apps*\*\*\* while listening other users in real time
+- Real time location tracking of Mobile Users to the EVO PTT Android App and the EVO PTT User Management Panel
+- Easy User management through the EVO PTT User Management Panel
+- Mobile Users log in on a per-company basis for better user isolation and security (using secure docker containers)
+- Start on boot, Auto-login, Remember Login Credentials and Auto-reconnect when Internet connection is lost
+- Stay Awake mode to keep the screen on
+- EVO PTT stays active in background so you can use other apps while listening other Users in real time
+- Compatible with the latest version of Android 10, Android Studio IDE and Gradle
 - Competitive subscription and one off pay pricing plans
 - Ability for source code purchase and app rebranding
 <br />
@@ -72,11 +60,7 @@ Downloads
 <br/><br/>
 \*  Any communication through the demo channel is public.
 <br/>
-*\* The free version of EVO PTT geolocalization monitoring is not based on real user location, in order to ensure the privacy and protect the personal data of our test users.
-<br/>
-*\*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE</a>.
-<br/>
-*\*\* Applications that do not occupy the voice recording channel.
+*\* For a data consumption comparison of EVO PTT with our competitors click <a target="_blank" href="https://www.dropbox.com/s/39qpqhx88bqj5nl/EVO%20PTT%20Benchmark.pdf?dl=0"> HERE</a>.
 
 <br/><br/>
 Partnership, Services & Pricing
