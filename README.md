@@ -38,8 +38,10 @@ Main Features
 
 Screenshots
 ---------------------
-![Alt text](https://lh3.googleusercontent.com/QSwd7eHGxs6FcQ5vR8dkBnkMHtriAKHo5punNTWTFbxDNKzLZuqNrqpAyYNHrI3L1NAM=w720-h380-rw "Login Screen") ![Alt text](https://lh3.googleusercontent.com/jPr6XrHdUqLu-cHzY_Dx4Rx1y7EyP2j-VIMmVrLAYwCVcMu8icfUCZI4-ebSyZIl11U=w720-h380-rw "Server Screen") 
-![Alt text](https://lh3.googleusercontent.com/WP132tAw0IAZslRDpLWl0uk-SGBWgOpQMnuFRwJ4vHNdaKctEXzc-Q2yOgKbfb78BA=w720-h380-rw "Mapview Screen") ![Alt text](https://lh3.googleusercontent.com/K5ey4JjmU2UO9Vph4RSq7qnqSWjkw9zt0Cg9S8-wRQjmGXVLg2IRvzN8LgcKLS5oh1lu=w720-h380-rw "Chat Screen")
+![Alt text](https://lh3.googleusercontent.com/QHKcGjB1coyKFnoMMlMDKFZsxb5b2QIPDGkVRa7l2B1iYPpyqAqKp7EwNM47eivWmtQ=w720-h380-rw "Login Screen") 
+![Alt text](https://lh3.googleusercontent.com/jPr6XrHdUqLu-cHzY_Dx4Rx1y7EyP2j-VIMmVrLAYwCVcMu8icfUCZI4-ebSyZIl11U=w720-h380-rw "Server Screen") 
+![Alt text](https://lh3.googleusercontent.com/p_BwjT4Qvb3m_a8J7jW8HLPeI4jSLh84FT5__dJQUP6oIiObLpujtze7YMP9B-QOHwA=w720-h380-rw "Mapview Screen") 
+![Alt text](https://lh3.googleusercontent.com/K5ey4JjmU2UO9Vph4RSq7qnqSWjkw9zt0Cg9S8-wRQjmGXVLg2IRvzN8LgcKLS5oh1lu=w720-h380-rw "Chat Screen")
 ![Alt text](https://lh3.googleusercontent.com/GEb4GqhKVz7NjIKZygA6qggeA-WA_7B-_ESqHLKJohQA7YZoTD--JAkXrQeQPR0JU5I=w720-h380-rw "Side Menu")
 ![Alt text](https://lh3.googleusercontent.com/Xp-WIpbpKCMPK6vYzgBwXYDGJ5w9-wMfikgopJXRl26KfXUaeK5d9a2LEgk6z1rqjhH6=w720-h380-rw "General Settings")
 ![Alt text](https://lh3.googleusercontent.com/UH4IizfoTs5-GmJkqnJaASVTWIDOCAydbu007FH27y2RhjYlRtBQGlzMqJGDDJZFAtY=w720-h380-rw "Audio Settings")
