@@ -1,6 +1,8 @@
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/EVO%20PTT-feature-graphic.png "EVO PTT - The Evolution in PTT communication")
-
 <h1 align="center">EVO PTT - Walkie Talkie Solution for Businesses</h1>
+<br/>
+
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/EVO%20PTT-feature-graphic.png "EVO PTT - The Evolution in PTT communication")
+<br/>
 <br/>
 
 Designed with Businesses in mind, EVO PTT is a complete Walkie Talkie (Push To Talk) solution that provides:
@@ -9,6 +11,7 @@ Designed with Businesses in mind, EVO PTT is a complete Walkie Talkie (Push To T
 <br/>
 ► Easy administration and management of users and companies with the EVO PTT Web Panel.
 <br/>
+<br/>
 
 
 Demo testing
@@ -16,6 +19,7 @@ Demo testing
 • To try the EVO PTT Android App as a User for free, open the Android Application, accept the required permissions and tap on the DEMO LOGIN button! 
 <br/>
 • To try the EVO PTT Web Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
+<br/>
 <br/>
 
 
@@ -28,6 +32,7 @@ EVO PTT Android App Screenshots
 ![Alt text](https://lh3.googleusercontent.com/GEb4GqhKVz7NjIKZygA6qggeA-WA_7B-_ESqHLKJohQA7YZoTD--JAkXrQeQPR0JU5I=w720-h380-rw "Side Menu")
 ![Alt text](https://lh3.googleusercontent.com/Xp-WIpbpKCMPK6vYzgBwXYDGJ5w9-wMfikgopJXRl26KfXUaeK5d9a2LEgk6z1rqjhH6=w720-h380-rw "General Settings")
 ![Alt text](https://lh3.googleusercontent.com/UH4IizfoTs5-GmJkqnJaASVTWIDOCAydbu007FH27y2RhjYlRtBQGlzMqJGDDJZFAtY=w720-h380-rw "Audio Settings")
+<br/>
 <br/>
 
 
@@ -52,9 +57,10 @@ Main Features
 - Ideal for security companies, cleaning companies, taxi drivers, police or fire departments, lorry drivers and more!
 - Competitive subscription and one off pay pricing plans!
 - Ability for source code purchase and app rebranding!
-<br />
+<br/>
+<br/>
 
-<br/><br/>
+
 Downloads
 ---------------------
 
