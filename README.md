@@ -1,43 +1,26 @@
 ![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/EVO%20PTT-feature-graphic.png "EVO PTT - The Evolution in PTT communication")
 
-<h1 align="center">EVO PTT - The Evolution in PTT communication</h1>
+<h1 align="center">EVO PTT - Walkie Talkie Solution for Businesses</h1>
 <br/>
 
-Designed for professional lone worker teams, EVO PTT is the Evolution in Push to Talk over IP communication. It is easy to understand and use and it is ideal for companies that need to manage and be in continuous real time communication with their employees or customers via voice or text messaging! Using seamless geolocation monitoring, Company Managers are always aware of the Mobile Users' location via the EVO PTT Android App or the EVO PTT User Management Panel. Our customers include security companies, cleaning companies, taxi drivers, police & fire departments, lorry drivers and more and the low cost and flexible pricing of our service compared to other competitors like Zello PTT as well as the rebranding options and adaption into existing systems make it the best solution in the market, from small businesses to large organizations!
+Designed with Businesses in mind, EVO PTT is a complete Walkie Talkie (Push To Talk) solution that provides:
+
+► Safe communication of users and supervisors with the EVO PTT Android App.
+<br/>
+► Easy administration and management of users and companies with the EVO PTT Web Panel.
+<br/>
 
 
 Demo testing
 ---------------------
 • To try the EVO PTT Android App as a User for free, open the Android Application, accept the required permissions and tap on the DEMO LOGIN button! 
-<br/>• To try the EVO PTT User Management Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
+<br/>
+• To try the EVO PTT Web Panel as a Company Manager for free, go to https://evoptt.ddns.net and click on the DEMO LOGIN button!
+<br/>
 
 
-Main Features
----------------------
-- Easy to understand and use
-- Fast and low latency real time voice communication
-- Clever mobile data management resulting in lowest data consumption (see comparison with the competition) *\*
-- Seamless geolocation monitoring of EVO PTT Users location
-- Superior voice compression CODECs
-- High security voice encryption
-- Works over any network condition (2G, 3G, 4G or Wifi) with Network Type Switching mode to switch seamlessly between Data and WiFi without disconnecting
-- Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more)
-- Ability to work with screen off in Android Walkie Talkie devices
-- SOS button function with location reporting
-- Real time location tracking of Mobile Users to the EVO PTT Android App and the EVO PTT User Management Panel
-- Easy User management through the EVO PTT User Management Panel
-- Mobile Users log in on a per-company basis for better user isolation and security (using secure docker containers)
-- Start on boot, Auto-login, Remember Login Credentials and Auto-reconnect when Internet connection is lost
-- Stay Awake mode to keep the screen on
-- EVO PTT stays active in background so you can use other apps while listening other Users in real time
-- Compatible with the latest version of Android 10, Android Studio IDE and Gradle
-- Competitive subscription and one off pay pricing plans
-- Ability for source code purchase and app rebranding
-<br />
-
-
-Screenshots
----------------------
+EVO PTT Android App Screenshots
+-------------------------------
 ![Alt text](https://lh3.googleusercontent.com/QHKcGjB1coyKFnoMMlMDKFZsxb5b2QIPDGkVRa7l2B1iYPpyqAqKp7EwNM47eivWmtQ=w720-h380-rw "Login Screen") 
 ![Alt text](https://lh3.googleusercontent.com/jPr6XrHdUqLu-cHzY_Dx4Rx1y7EyP2j-VIMmVrLAYwCVcMu8icfUCZI4-ebSyZIl11U=w720-h380-rw "Server Screen") 
 ![Alt text](https://lh3.googleusercontent.com/p_BwjT4Qvb3m_a8J7jW8HLPeI4jSLh84FT5__dJQUP6oIiObLpujtze7YMP9B-QOHwA=w720-h380-rw "Mapview Screen") 
@@ -45,9 +28,31 @@ Screenshots
 ![Alt text](https://lh3.googleusercontent.com/GEb4GqhKVz7NjIKZygA6qggeA-WA_7B-_ESqHLKJohQA7YZoTD--JAkXrQeQPR0JU5I=w720-h380-rw "Side Menu")
 ![Alt text](https://lh3.googleusercontent.com/Xp-WIpbpKCMPK6vYzgBwXYDGJ5w9-wMfikgopJXRl26KfXUaeK5d9a2LEgk6z1rqjhH6=w720-h380-rw "General Settings")
 ![Alt text](https://lh3.googleusercontent.com/UH4IizfoTs5-GmJkqnJaASVTWIDOCAydbu007FH27y2RhjYlRtBQGlzMqJGDDJZFAtY=w720-h380-rw "Audio Settings")
+<br/>
 
 
-
+Main Features
+---------------------
+- Easy to understand and use UI.
+- Fast and low latency real time voice communication,
+- Seamless geolocation monitoring of EVO PTT Users location.
+- Superior voice compression CODECs and low data consumption.
+- High security voice encryption.
+- Works over any network condition (2G, 3G, 4G or Wifi) with Network Type Switching mode to switch seamlessly between Data and WiFi without disconnecting.
+- Native integration with Android Walkie Talkie devices (F22, F22+, F25 and more).
+- Ability to work with screen off in Android Walkie Talkie devices.
+- SOS button function with location reporting.
+- Real time location tracking of Mobile Users to the EVO PTT Android App and the EVO PTT Web Panel.
+- Easy User management through the EVO PTT Web Panel.
+- Mobile Users log in on a per-company basis for better user isolation and security (using secure docker containers).
+- Start on boot, Auto-login, Remember Login Credentials and Auto-reconnect when Internet connection is lost.
+- Stay Awake mode to keep the screen on.
+- EVO PTT stays active in background so you can use other apps while listening other Users in real time.
+- Compatible with the latest version of Android 10, Android Studio IDE and Gradle tools.
+- Ideal for security companies, cleaning companies, taxi drivers, police or fire departments, lorry drivers and more!
+- Competitive subscription and one off pay pricing plans!
+- Ability for source code purchase and app rebranding!
+<br />
 
 <br/><br/>
 Downloads
