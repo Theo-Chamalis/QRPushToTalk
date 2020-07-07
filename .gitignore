@@ -17,3 +17,6 @@ local.properties
 
 # Java
 *.class
+
+# MacOS
+.DS_Store
