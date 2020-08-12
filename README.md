@@ -74,7 +74,7 @@ Downloads
 
 Partnership, Services & Pricing
 -----------------------
-Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistribution and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>theofxam@gmail.com</b> for more information.
+Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistribution and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>info@evoptt.com</b> for more information.
 <br/>
 <br/>
 <br/>
@@ -103,6 +103,6 @@ Contributing
 Coding
 ------
 
-Standard FOSS project procedure applies; fork and submit a PR or just email us at theofxam@gmail.com !
+Standard FOSS project procedure applies; fork and submit a PR or just email us at info@evoptt.com !
 
 Please use Transifex for translations, not pull requests.
