@@ -78,7 +78,7 @@ Downloads
 <a href="https://play.google.com/store/apps/details?id=com.theofilos.chamalis.evoptt">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>
-<img alt="Available on Samsung Galaxy Store" src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/samsung.png" style="vertical-align:center;" height="65"/>
+<img alt="Available on Samsung Galaxy Store" src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/samsung.png" style="vertical-align:center;" height="45"/>
 <img alt="Explore it on Huawei AppGallery" src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/huawei.png" height="45"/>
 </p>
 
