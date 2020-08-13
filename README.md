@@ -55,7 +55,6 @@ EVO PTT Android App Screenshots
 ![Alt text](https://lh3.googleusercontent.com/UH4IizfoTs5-GmJkqnJaASVTWIDOCAydbu007FH27y2RhjYlRtBQGlzMqJGDDJZFAtY=w720-h380-rw "Audio Settings")
 <br/>
 <br/>
-<br/>
 
 EVO PTT Web Panel Screenshots
 -------------------------------
@@ -67,7 +66,6 @@ EVO PTT Web Panel Screenshots
 <img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel5.png" width="400" title="Users Page">
 <img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel6.png" width="400" title="Users Location Page">
 </p>
-<br/>
 <br/>
 <br/>
 
