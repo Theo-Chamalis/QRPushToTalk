@@ -72,11 +72,15 @@ EVO PTT Web Panel Screenshots
 Downloads
 ---------------------
 
-<strong>EVO PTT on Google Play</strong>
+<strong>EVO PTT is available on Google Play, Samsung Galaxy Store and Huawei AppGallery</strong>
 <br /><br />
+<p float="left">
 <a href="https://play.google.com/store/apps/details?id=com.theofilos.chamalis.evoptt">
   <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
 </a>
+<img alt="Available on Samsung Galaxy Store" src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/samsung.png" />
+<img alt="Explore it on Huawei AppGallery" src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/huawei.png" />
+</p>
 
 <br/>
 
