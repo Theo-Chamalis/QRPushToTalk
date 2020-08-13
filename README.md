@@ -1,7 +1,7 @@
 <h1 align="center">EVO PTT - Walkie Talkie Solution for Businesses</h1>
 <br/>
 
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/EVO%20PTT-feature-graphic.png "EVO PTT - The Evolution in PTT communication")
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/EVO-PTT-feature-graphic.png "EVO PTT - The Evolution in PTT communication")
 <br/>
 <br/>
 
