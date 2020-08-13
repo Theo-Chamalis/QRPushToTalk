@@ -55,6 +55,19 @@ EVO PTT Android App Screenshots
 ![Alt text](https://lh3.googleusercontent.com/UH4IizfoTs5-GmJkqnJaASVTWIDOCAydbu007FH27y2RhjYlRtBQGlzMqJGDDJZFAtY=w720-h380-rw "Audio Settings")
 <br/>
 <br/>
+<br/>
+
+EVO PTT Web Panel Screenshots
+-------------------------------
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel1.jpg "Login Page") 
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel2.jpg "Server Status Page")
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel3.jpg "Companies Page")
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel4.jpg "Managers Page")
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel5.jpg "Users Page")
+![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel6.jpg "Users Location Page")
+<br/>
+<br/>
+<br/>
 
 Downloads
 ---------------------
