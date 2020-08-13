@@ -59,12 +59,9 @@ EVO PTT Android App Screenshots
 
 EVO PTT Web Panel Screenshots
 -------------------------------
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel1.jpg "Login Page") 
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel2.jpg "Server Status Page")
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel3.jpg "Companies Page")
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel4.jpg "Managers Page")
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel5.jpg "Users Page")
-![Alt text](https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel6.jpg "Users Location Page")
+<p float="left">
+<img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel1.jpg" width="48" title="Login Page"><img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel2.jpg" align="right" width="48" title="Server Status Page"><img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel3.jpg" width="48" title="Companies Page"><img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel4.jpg" width="48" title="Managers Page"><img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel5.jpg" width="48" title="Users Page"><img src="https://github.com/Theofilos-Chamalis/QR-PTT-PushToTalk/blob/master/githubResources/webpanel6.jpg" width="48" title="Users Location Page">
+</p>
 <br/>
 <br/>
 <br/>
