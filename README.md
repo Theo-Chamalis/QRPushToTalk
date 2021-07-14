@@ -88,7 +88,7 @@ Downloads
 
 Partnership, Services & Pricing
 -----------------------
-Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistribution and rebranding rights. If you are interested in using EVO PTT or a customized version of it based on your company's needs, feel free to contact us at <b>info@evoptt.com</b> for more information.
+Our services include plans with customized and private (per customer) servers based on the amount of users as well as the ability to buy the full source (front end and back end) alongside with redistribution and rebranding rights. If you are interested in using EVO PTT or a rebranded version of it based on your company's brand & logo, feel free to contact us at <b>info@evoptt.com</b> for more information.
 <br/>
 <br/>
 <br/>
